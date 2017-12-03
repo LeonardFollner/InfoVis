@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './Components/Prototyp';
+import Prototyp from './Components/Prototyp';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<Prototyp/>, document.getElementById('root'));
 registerServiceWorker();

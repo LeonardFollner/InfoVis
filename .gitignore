@@ -100,4 +100,6 @@ fabric.properties
 ### Sass template
 .sass-cache/
 *.css.map
+
+### React
 *.css

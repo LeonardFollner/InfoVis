@@ -1,12 +1,20 @@
 import React, {Component} from 'react';
-import '../sass/Organisms/_prototyp.scss';
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
-class App extends Component {
+import SideBar from "./SideBar";
+import MapContainer from "./MapContainer";
+
+
+class Prototyp extends Component {
   render() {
     return (
-      <div></div>
+      <div className="prototyp">
+        <MapContainer/>
+        <SideBar/>
+      </div>
     );
   }
 }
 
-export default App;
+export default DragDropContext(HTML5Backend)(Prototyp);

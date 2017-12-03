@@ -1,0 +1,35 @@
+@keyframes shake {
+  0% {
+    right: 0;
+  }
+  98% {
+    right: 0;
+  }
+  99% {
+    right: 30px;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+.card {
+  position: relative;
+
+  height: 20%;
+  width: 100%;
+
+  background: slategray;
+}
+
+.card--isIddle {
+  animation-name: shake;
+  animation-duration: 10s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.card--isBeingDragged {
+  visibility: hidden;
+}
