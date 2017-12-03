@@ -1,0 +1,38 @@
+{
+  "name": "kp-infovis-prototyp",
+  "version": "1.0.0",
+  "description": "A prototype for the KP InfoVis at TU-Dresden by group 02",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeonardFollner/InfoVis.git"
+  },
+  "keywords": [
+    "React",
+    "KP",
+    "InfoVis",
+    "TUD",
+    "Arabismen"
+  ],
+  "authors": [
+    "Anselm Bunsen",
+    "Leonard Follner"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeonardFollner/InfoVis/issues"
+  },
+  "homepage": "https://github.com/LeonardFollner/InfoVis#readme",
+  "private": true,
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
