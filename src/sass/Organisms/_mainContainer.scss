@@ -1,12 +1,5 @@
 .main-container {
-  width: $main-container-width;
-  display: flex;
-
-  z-index: layer(mainContainer);
-}
-
-.map {
   height: inherit;
-  display: flex;
   width: 100%;
+  display: flex;
 }
