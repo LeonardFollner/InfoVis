@@ -4,8 +4,8 @@ import {connect} from "react-redux";
 import HTML5Backend from 'react-dnd-html5-backend';
 
 import SideBar from "./SideBar";
-import Map from "./Map";
 import {selectors} from "../Redux";
+import MainContainer from "./MainContainer";
 
 
 const mapStateToProps = state => {
@@ -16,9 +16,10 @@ const mapStateToProps = state => {
 
 class Prototyp extends PureComponent {
   render() {
+
     return (
       <div className="prototyp">
-        <Map/>
+        <MainContainer detailsView={true}/>
         <SideBar detailsView={this.props.isDetailsViewVisible}/>
       </div>
     );

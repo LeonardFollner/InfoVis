@@ -24,6 +24,9 @@
   },
   "homepage": ".",
   "private": true,
+  "devDependencies": {
+    "node-sass": "^4.7.2"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "mapbox-gl": "^0.43.0",
