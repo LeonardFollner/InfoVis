@@ -1,20 +1,28 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {DragDropContext} from 'react-dnd';
+import {connect} from "react-redux";
 import HTML5Backend from 'react-dnd-html5-backend';
 
 import SideBar from "./SideBar";
 import MapContainer from "./MapContainer";
+import {selectors} from "../Redux";
 
 
-class Prototyp extends Component {
+const mapStateToProps = state => {
+  return {
+    isDetailsViewVisible: selectors.UI.DetailsView.isDetailsViewVisible(state)
+  }
+};
+
+class Prototyp extends PureComponent {
   render() {
     return (
       <div className="prototyp">
         <MapContainer/>
-        <SideBar detailsView={false}/>
+        <SideBar detailsView={this.props.isDetailsViewVisible}/>
       </div>
     );
   }
 }
 
-export default DragDropContext(HTML5Backend)(Prototyp);
+export default connect(mapStateToProps, null)(DragDropContext(HTML5Backend)(Prototyp));
