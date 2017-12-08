@@ -11,7 +11,7 @@ class Prototyp extends Component {
     return (
       <div className="prototyp">
         <MapContainer/>
-        <SideBar/>
+        <SideBar detailsView={false}/>
       </div>
     );
   }
