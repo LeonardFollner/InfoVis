@@ -1,0 +1,21 @@
+.details-section {
+  border: 1px solid blue;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  padding-bottom: 20px;
+
+  p, h1 {
+  }
+
+
+}
+
+
+@for $i from 1 through 5 {
+.details-section-#{$i} {
+  width: percentage(1/$i);
+}
+}

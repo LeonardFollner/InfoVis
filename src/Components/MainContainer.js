@@ -7,7 +7,7 @@ class MainContainer extends Component {
   render() {
     return (
       <div className="main-container">
-        {this.props.detailView ? <DetailMain/> : <MapMain/>}
+        {this.props.detailsView ? <DetailMain/> : <MapMain/>}
       </div>
     );
   }
