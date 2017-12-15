@@ -24,9 +24,7 @@ export const reducer = handleActions({
   },
 });
 
-const importersByUuid = $get('data.importers.byUuid');
-const importerStatusByUuid = $get('data.importers.statusByUuid');
-const currentlyEditedImporter = $get('data.importers.currentlyEditedImporter');
+const cardsInSidebar = $get('data.terms');
 
 export const actions = {
   startEditing,
@@ -39,7 +37,5 @@ export const actionTypes = {
 };
 
 export const selectors = {
-  importersByUuid,
-  importerStatusByUuid,
-  currentlyEditedImporter
+  cardsInSidebar,
 };

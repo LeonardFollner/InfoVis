@@ -1,17 +1,17 @@
-import * as Importer from './terms';
+import * as terms from './terms';
 
 export const actions = {
-  Importer: Importer.actions,
+  terms: terms.actions,
 };
 
 export const actionTypes = {
-  Importer: Importer.actionTypes,
+  terms: terms.actionTypes,
 };
 
 export const reducerArray = [
-  Importer.reducer,
+  terms.reducer,
 ];
 
 export const selectors = {
-  Importer: Importer.selectors,
+  terms: terms.selectors
 };
