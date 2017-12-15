@@ -8,8 +8,8 @@ class MapContainer extends Component {
     return (
       <div className="map-container">
         <Map/>
-        <Region label="Europe"/>
-        <Region label="Arab"/>
+        <Region label="EUROPE"/>
+        <Region label="ARAB"/>
       </div>
     );
   }

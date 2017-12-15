@@ -1,41 +1,51 @@
 import {createAction} from 'redux-actions';
 import {createSelector} from 'reselect';
-import {$all, $drop, $get, $merge, $set, $toggle} from 'plow-js';
+import {$add, $all, $drop, $get, $merge, $pop, $set, $toggle} from 'plow-js';
 import {handleActions} from '../../Utility/HandleActions';
 import {actionTypes as system} from '../System';
 import * as json from "../../data.json";
 
 // action types
 
-const START_EDITING = 'EXPLY/DATA/IMPORTER/START_EDITING';
-const LOADED_CONFIGURATION = 'EXPLY/DATA/IMPORTER/LOADED_CONFIGURATION';
+const CARD_DROPPED = 'PROTOTYPE/DATA/TERMS/DROPPED_CARD';
 
 // actions
 
-const startEditing = createAction(START_EDITING);
-const loadedConfiguration = createAction(LOADED_CONFIGURATION);
+const cardDropped = createAction(CARD_DROPPED);
 
 export const reducer = handleActions({
   [system.INIT]: () => state => {
-    return $set('data', json, state);
+    state = $set('data', json, state);
+    state = $set(['data', 'cardsInSideBar'], [], state);
+    for (let i = 0; i < 5; i++) {
+      const term = $get(terms(state).length - 1, terms(state));
+      state = $add(['data', 'cardsInSideBar'], term, state);
+      state = $pop(['data', 'terms'], state);
+    }
+    state = $set(['data', 'cardsOnMap'], {}, state);
+    return state;
   },
-  [LOADED_CONFIGURATION]: payload => state => {
-    return $set('data.importers.currentlyEditedImporter', payload, state);
-  },
+  [CARD_DROPPED]: payload => state => {
+    console.log(payload);
+
+    return state;
+  }
 });
 
-const cardsInSidebar = $get('data.terms');
+const terms = $get('data.terms');
+const cardsInSidebar = $get('data.cardsInSideBar');
+const cardsOnMap = $get('data.cardsOnMap');
 
 export const actions = {
-  startEditing,
-  loadedConfiguration
+  cardDropped
 };
 
 export const actionTypes = {
-  START_EDITING,
-  LOADED_CONFIGURATION
+  CARD_DROPPED: CARD_DROPPED
 };
 
 export const selectors = {
+  terms,
   cardsInSidebar,
+  cardsOnMap
 };

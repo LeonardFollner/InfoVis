@@ -3,6 +3,8 @@ import {DropTarget} from 'react-dnd';
 import classnames from "classnames";
 
 import {CardTypes} from "../constants";
+import {actions} from "../Redux";
+import {connect} from "react-redux";
 
 
 const target = {
@@ -12,6 +14,7 @@ const target = {
 
   drop(props, monitor) {
     console.log("dropped");
+    props.cardDropped(monitor.getItem().id);
   }
 };
 
@@ -35,4 +38,12 @@ class Region extends Component {
   }
 }
 
-export default DropTarget(CardTypes.CARD, target, collect)(Region);
+const mapDispatchToProps = dispatch => {
+  return {
+    cardDropped: id => {
+      dispatch(actions.Data.terms.cardDropped(id));
+    }
+  }
+};
+
+export default connect(null, mapDispatchToProps)(DropTarget(CardTypes.CARD, target, collect)(Region));
