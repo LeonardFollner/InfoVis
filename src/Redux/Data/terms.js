@@ -1,6 +1,6 @@
 import {createAction} from 'redux-actions';
 import {createSelector} from 'reselect';
-import {$add, $drop, $get, $pop, $set} from 'plow-js';
+import {$add, $drop, $get, $pop, $set, $shift} from 'plow-js';
 import {handleActions} from '../../Utility/HandleActions';
 import {actionTypes as system} from '../System';
 import data from '../../data.js';
@@ -21,9 +21,9 @@ export const reducer = handleActions({
     state = $set(['data', 'cardsOnMap', TargetRegions.EUROPE], [], state);
     state = $set(['data', 'cardsOnMap', TargetRegions.ARAB], [], state);
     for (let i = 0; i < 5; i++) {
-      const term = $get(terms(state).length - 1, terms(state));
+      const term = $get(0, terms(state));
       state = $add(['data', 'cardsInSideBar'], term, state);
-      state = $pop(['data', 'terms'], state);
+      state = $shift(['data', 'terms'], state);
     }
     return state;
   },
@@ -39,7 +39,7 @@ export const reducer = handleActions({
     if (terms(state).length > 0) {
       const newTermForSideBar = $get(terms(state).length - 1, terms(state));
       state = $add(['data', 'cardsInSideBar'], newTermForSideBar, state);
-      state = $pop(['data', 'terms'], state);
+      state = $shift(['data', 'terms'], state);
     }
 
     return state;
