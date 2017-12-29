@@ -3,8 +3,9 @@ import {DropTarget} from 'react-dnd';
 import classnames from "classnames";
 
 import {CardTypes} from "../constants";
-import {actions} from "../Redux";
+import {actions, selectors} from "../Redux";
 import {connect} from "react-redux";
+import Card from "./Card";
 
 
 const target = {
@@ -13,7 +14,6 @@ const target = {
   },
 
   drop(props, monitor) {
-    console.log("dropped");
     props.cardDropped(monitor.getItem().id);
   }
 };
@@ -33,10 +33,21 @@ class Region extends Component {
     return this.props.connectDropTarget(
       <div className={className}>
         &lt;{this.props.label}&gt;
+        {this.props.cardsInRegion.map((term, index) => <Card targetRegion={term.targetRegion} id={term.id}
+                                                             key={index}/>)}
       </div>
     );
   }
 }
+
+const mapStateToProps = () => {
+  const cardsInRegion = selectors.Data.terms.cardsOnMap();
+  return (state, props) => {
+    return {
+      cardsInRegion: cardsInRegion(state, props.label)
+    }
+  }
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -46,4 +57,4 @@ const mapDispatchToProps = dispatch => {
   }
 };
 
-export default connect(null, mapDispatchToProps)(DropTarget(CardTypes.CARD, target, collect)(Region));
+export default connect(mapStateToProps, mapDispatchToProps)(DropTarget(CardTypes.CARD, target, collect)(Region));
