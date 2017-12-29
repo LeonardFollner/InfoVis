@@ -35,6 +35,12 @@ export const reducer = handleActions({
         state = $add(['data', 'cardsOnMap', card.targetRegion], card, state);
       }
     });
+    // add a new term from the pool to the sidebar
+    if (terms(state).length > 0) {
+      const newTermForSideBar = $get(terms(state).length - 1, terms(state));
+      state = $add(['data', 'cardsInSideBar'], newTermForSideBar, state);
+      state = $pop(['data', 'terms'], state);
+    }
 
     return state;
   }

@@ -20,6 +20,10 @@ const data = [
     {
         "id": 4,
         "targetRegion": TargetRegions.EUROPE
+    },
+    {
+        "id": 5,
+        "targetRegion": TargetRegions.EUROPE
     }
 ];
 
