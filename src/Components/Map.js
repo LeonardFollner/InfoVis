@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl'
 
 import CustomMarker from "./CustomMarker";
-import {selectors} from "../Redux";
+import {actions, selectors} from "../Redux";
 import {connect} from "react-redux";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A';
@@ -18,10 +18,23 @@ class Map extends Component {
     };
   }
 
-  componentDidMount() {
-    // Container to put React generated content in, not added to DOM
-    this.tooltipContainer = document.createElement('div');
+  allowDrop = event => {
+    event.preventDefault();
+  };
+  drop = event => {
+    const mouseX = event.screenX;
+    const mouseY = event.screenY;
+    const {x, y} = this.mapContainer.getBoundingClientRect();
+    const mouseRelativeX = mouseX - x;
+    const mouseRelativeY = mouseY - y;
 
+    const id = event.dataTransfer.getData("text");
+    const lngLat = this.map.unproject([mouseRelativeX, mouseRelativeY]);
+
+    this.props.cardDropped(id, lngLat);
+  };
+
+  componentDidMount() {
     const {lng, lat, zoom} = this.state;
 
     this.map = new mapboxgl.Map({
@@ -34,56 +47,66 @@ class Map extends Component {
     this.map.scrollZoom.disable();
     this.map.doubleClickZoom.disable();
     this.map.dragPan.disable();
+
+    this.markers = [];
   }
 
-  generateCustomMarker() {
+  generateCustomMarker(tooltipContainer) {
     ReactDOM.render(
       React.createElement(
         CustomMarker, {
           targetRegion: 'test'
         }
       ),
-      this.tooltipContainer
+      tooltipContainer
     );
   }
 
-  render() {
-    const allowDrop = event => {
-      event.preventDefault();
-    };
+  componentDidUpdate() {
+    // remove all old markers
+    this.markers.forEach((marker) => {
+      marker.remove();
+    });
+    this.markers = [];
 
-    const drop = event => {
-      const mouseX = event.screenX;
-      const mouseY = event.screenY;
-      const {x, y} = this.mapContainer.getBoundingClientRect();
-      const mouseRelativeX = mouseX - x;
-      const mouseRelativeY = mouseY - y;
+    // add markers for terms on map
+    this.props.cardsOnMap.forEach(term => {
+      // Container to put React generated content in, not added to DOM
+      const tooltipContainer = document.createElement('div');
 
-      const coordinates = this.map.unproject([mouseRelativeX, mouseRelativeY]);
+      this.generateCustomMarker(tooltipContainer);
 
-      this.generateCustomMarker();
-
-      new mapboxgl.Marker(this.tooltipContainer)
+      this.markers.push(new mapboxgl.Marker(tooltipContainer)
         .setLngLat([
-          coordinates.lng,
-          coordinates.lat
+          term.coordinatesOnMap.lng,
+          term.coordinatesOnMap.lat
         ])
-        .addTo(this.map);
-    };
+        .addTo(this.map));
+    });
+  }
 
+  render() {
     return (
-      <div ref={el => this.mapContainer = el} className='map absolute top right left bottom' onDragOver={allowDrop}
-           onDrop={drop}/>
+      <div ref={el => this.mapContainer = el} className='map absolute top right left bottom' onDragOver={this.allowDrop}
+           onDrop={this.drop}/>
     );
   }
 }
 
 const mapStateToProps = () => {
-  return (state,) => {
+  return (state) => {
     return {
-      cardsInRegion: selectors.Data.terms.cardsOnMap(state)
+      cardsOnMap: selectors.Data.terms.cardsOnMap(state)
     }
   }
 };
 
-export default connect(mapStateToProps)(Map);
+const mapDispatchToProps = dispatch => {
+  return {
+    cardDropped: (id, lngLat) => {
+      dispatch(actions.Data.terms.cardDropped(id, lngLat));
+    }
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

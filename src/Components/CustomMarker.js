@@ -6,7 +6,7 @@ class CustomMarker extends Component {
     const className = classnames("card", {"card--isBeingDragged": this.props.isDragging}, {"card--isIddle": !this.props.isDragging && !this.props.didDrop});
 
     return (
-      <div className={className} draggable={true}>
+      <div className={className}>
         Drag me to {this.props.targetRegion}
       </div>
     );

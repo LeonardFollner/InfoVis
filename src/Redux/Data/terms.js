@@ -1,6 +1,5 @@
 import {createAction} from 'redux-actions';
-import {createSelector} from 'reselect';
-import {$add, $drop, $get, $pop, $set, $shift} from 'plow-js';
+import {$add, $drop, $get, $set, $shift} from 'plow-js';
 import {handleActions} from '../../Utility/HandleActions';
 import {actionTypes as system} from '../System';
 import data from '../../data.js';
@@ -12,7 +11,7 @@ const CARD_DROPPED = 'PROTOTYPE/DATA/TERMS/DROPPED_CARD';
 
 // actions
 
-const cardDropped = createAction(CARD_DROPPED);
+const cardDropped = createAction(CARD_DROPPED, (id, lngLat) => ({id, lngLat}));
 
 export const reducer = handleActions({
   [system.INIT]: () => state => {
@@ -26,13 +25,14 @@ export const reducer = handleActions({
     }
     return state;
   },
-  [CARD_DROPPED]: id => state => {
+  [CARD_DROPPED]: ({id, lngLat}) => state => {
     const cardsInSideBar = cardsInSidebar(state);
 
     // remove term from SideBar and move to mapRegion
     cardsInSideBar.forEach((card, index) => {
-      if (card.id === id) {
+      if (card.id === parseInt(id, 10)) {
         state = $drop(['data', 'cardsInSideBar', index], state);
+        card = $set(['coordinatesOnMap'], lngLat, card);
         state = $add(['data', 'cardsOnMap'], card, state);
       }
     });
@@ -58,15 +58,6 @@ export const reducer = handleActions({
 const terms = $get('data.terms');
 const cardsInSidebar = $get('data.cardsInSideBar');
 const cardsOnMap = $get('data.cardsOnMap');
-const cardsOnMapPerRegion = () => {
-  return createSelector(
-    cardsOnMap,
-    (_, region) => region,
-    (cardsOnMap, region) => {
-      return cardsOnMap.filter(elem => elem.targetRegion === region);
-    }
-  );
-};
 
 export const actions = {
   cardDropped
@@ -79,5 +70,5 @@ export const actionTypes = {
 export const selectors = {
   terms,
   cardsInSidebar,
-  cardsOnMap: cardsOnMapPerRegion
+  cardsOnMap: cardsOnMap
 };
