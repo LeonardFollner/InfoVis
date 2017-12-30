@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import HTML5Backend from 'react-dnd-html5-backend';
 
 import SideBar from "./SideBar";
-import MapContainer from "./MapContainer";
+import Map from "./Map";
 import {selectors} from "../Redux";
 
 
@@ -18,7 +18,7 @@ class Prototyp extends PureComponent {
   render() {
     return (
       <div className="prototyp">
-        <MapContainer/>
+        <Map/>
         <SideBar detailsView={this.props.isDetailsViewVisible}/>
       </div>
     );
