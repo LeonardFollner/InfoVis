@@ -2,8 +2,11 @@
   0% {
     right: 0;
   }
-  98% {
+  97% {
     right: 0;
+  }
+  98% {
+    right: 30px;
   }
   99% {
     right: 30px;
@@ -22,14 +25,15 @@
   background: slategray;
 }
 
-.card--isIddle {
+.card--isIdle {
   animation-name: shake;
   animation-duration: 10s;
-  animation-delay: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
-}
 
-.card--isBeingDragged {
-  visibility: hidden;
+  @for $i from 1 through 10 {
+    &:nth-of-type(#{$i}) {
+      animation-delay: random(60)+s;
+    }
+  }
 }

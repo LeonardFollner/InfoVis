@@ -14,7 +14,7 @@ class Card extends Component {
   };
 
   render() {
-    const className = classnames("card", {"card--isBeingDragged": this.props.isDragging}, {"card--isIddle": !this.props.isDragging && !this.props.didDrop});
+    const className = classnames("card", {"card--isBeingDragged": this.props.isDragging}, {"card--isIdle": !this.props.isDragging && !this.props.didDrop});
 
     return (
       <div className={className} draggable={true} onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}>
