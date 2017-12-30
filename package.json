@@ -26,12 +26,16 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
+    "plow-js": "^2.1.0",
     "react": "^16.2.0",
     "react-dnd": "^2.5.4",
     "react-dnd-html5-backend": "^2.5.4",
     "react-dom": "^16.2.0",
     "react-draggable": "^3.0.4",
-    "react-scripts": "1.0.17"
+    "react-redux": "^5.0.6",
+    "react-scripts": "1.0.17",
+    "redux-actions": "^2.2.1",
+    "reselect": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
