@@ -26,6 +26,7 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
+    "mapbox-gl": "^0.43.0",
     "plow-js": "^2.1.0",
     "react": "^16.2.0",
     "react-dnd": "^2.5.4",
