@@ -3,7 +3,7 @@ import classnames from "classnames";
 
 class CustomMarker extends Component {
   render() {
-    const className = classnames("card", {"card--isBeingDragged": this.props.isDragging}, {"card--isIddle": !this.props.isDragging && !this.props.didDrop});
+    const className = classnames("custom-marker");
 
     return (
       <div className={className}>
