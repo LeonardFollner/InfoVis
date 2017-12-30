@@ -7,7 +7,7 @@ class CustomMarker extends Component {
 
     return (
       <div className={className}>
-        Drag me to {this.props.targetRegion}
+        Drag me to {this.props.term.targetRegion}
       </div>
     );
   }

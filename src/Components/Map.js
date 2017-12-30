@@ -5,6 +5,7 @@ import mapboxgl from 'mapbox-gl'
 import CustomMarker from "./CustomMarker";
 import {actions, selectors} from "../Redux";
 import {connect} from "react-redux";
+import {mapOverlayColorArab, mapOverlayColorEurope, mapOverlayTransparency} from "../settings";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A';
 
@@ -31,10 +32,13 @@ class Map extends Component {
     const id = event.dataTransfer.getData("text");
     const lngLat = this.map.unproject([mouseRelativeX, mouseRelativeY]);
 
+    this.props.toggleCardIsBeingDragged();
     this.props.cardDropped(id, lngLat);
   };
 
   componentDidMount() {
+    this.markers = [];
+
     const {lng, lat, zoom} = this.state;
 
     this.map = new mapboxgl.Map({
@@ -48,14 +52,73 @@ class Map extends Component {
     this.map.doubleClickZoom.disable();
     this.map.dragPan.disable();
 
-    this.markers = [];
+    this.map.on('load', () => {
+      const containerWidth = this.mapContainer.offsetWidth;
+      const containerHeight = this.mapContainer.offsetHeight;
+
+      const topLeftCorner = this.map.unproject([0, 0]);
+      const topRightCorner = this.map.unproject([containerWidth, 0]);
+      const bottomLeftCorner = this.map.unproject([0, containerHeight]);
+      const bottomRightCorner = this.map.unproject([containerWidth, containerHeight]);
+
+      this.map.addLayer({
+        'id': 'europe',
+        'type': 'fill',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Polygon',
+              'coordinates': [[
+                [topLeftCorner.lng, topLeftCorner.lat],
+                [topRightCorner.lng, topRightCorner.lat],
+                [bottomLeftCorner.lng, bottomLeftCorner.lat],
+                [topLeftCorner.lng, topLeftCorner.lat]
+              ]]
+            }
+          }
+        },
+        'layout': {},
+        'paint': {
+          'fill-color': mapOverlayColorEurope,
+          'fill-opacity': mapOverlayTransparency
+        }
+      });
+      this.map.addLayer({
+        'id': 'arab',
+        'type': 'fill',
+        'source': {
+          'type': 'geojson',
+          'data': {
+            'type': 'Feature',
+            'geometry': {
+              'type': 'Polygon',
+              'coordinates': [[
+                [topRightCorner.lng, topRightCorner.lat],
+                [bottomRightCorner.lng, bottomRightCorner.lat],
+                [bottomLeftCorner.lng, bottomLeftCorner.lat],
+                [topRightCorner.lng, topRightCorner.lat]
+              ]]
+            }
+          }
+        },
+        'layout': {},
+        'paint': {
+          'fill-color': mapOverlayColorArab,
+          'fill-opacity': mapOverlayTransparency
+        }
+      });
+      this.map.setLayoutProperty('europe', 'visibility', 'none');
+      this.map.setLayoutProperty('arab', 'visibility', 'none');
+    });
   }
 
-  generateCustomMarker(tooltipContainer) {
+  generateCustomMarker(term, tooltipContainer) {
     ReactDOM.render(
       React.createElement(
         CustomMarker, {
-          targetRegion: 'test'
+          term: term
         }
       ),
       tooltipContainer
@@ -74,7 +137,7 @@ class Map extends Component {
       // Container to put React generated content in, not added to DOM
       const tooltipContainer = document.createElement('div');
 
-      this.generateCustomMarker(tooltipContainer);
+      this.generateCustomMarker(term, tooltipContainer);
 
       this.markers.push(new mapboxgl.Marker(tooltipContainer)
         .setLngLat([
@@ -83,6 +146,10 @@ class Map extends Component {
         ])
         .addTo(this.map));
     });
+
+    // render region highlights
+    this.map.setLayoutProperty('europe', 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
+    this.map.setLayoutProperty('arab', 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
   }
 
   render() {
@@ -96,13 +163,15 @@ class Map extends Component {
 const mapStateToProps = () => {
   return (state) => {
     return {
-      cardsOnMap: selectors.Data.terms.cardsOnMap(state)
+      cardsOnMap: selectors.Data.terms.cardsOnMap(state),
+      isCardBeingDragged: selectors.UI.Cards.isCardBeingDragged(state)
     }
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    toggleCardIsBeingDragged: () => dispatch(actions.UI.Cards.toggleCardIsBeingDragged()),
     cardDropped: (id, lngLat) => {
       dispatch(actions.Data.terms.cardDropped(id, lngLat));
     }
