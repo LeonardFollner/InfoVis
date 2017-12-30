@@ -28,7 +28,7 @@ function collect(connect, monitor) {
 
 class Region extends Component {
   render() {
-    const className = classnames("region", {"region--isHovered": this.props.isOver});
+    const className = classnames("region", {["region__" + this.props.label + "--isHovered"]: this.props.isOver}, "region__" + this.props.label);
 
     return this.props.connectDropTarget(
       <div className={className}>

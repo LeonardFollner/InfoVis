@@ -1,8 +1,27 @@
 .region {
-  height: inherit;
-  width: 50%;
+  width: 0;
+  height: 0;
+  position: absolute;
 }
 
-.region--isHovered {
-  background-color: cadetblue;
+.region__Arab {
+  border-top: 1050px solid transparent;
+  border-bottom: 710px solid transparent;
+  border-right: 710px solid transparent;
+}
+
+.region__Europe {
+  border-bottom: 1050px solid transparent;
+  border-left: 710px solid transparent;
+}
+
+.region__Arab--isHovered {
+  border-top: 1050px solid transparent;
+  border-bottom: 710px solid crimson;
+  border-right: 710px solid crimson;
+}
+
+.region__Europe--isHovered {
+  border-bottom: 1050px solid transparent;
+  border-left: 710px solid cadetblue;
 }
