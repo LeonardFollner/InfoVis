@@ -7,11 +7,11 @@ import {maxNumberOfCardsOnMap} from "../../settings";
 
 // action types
 
-const CARD_DROPPED = 'PROTOTYPE/DATA/TERMS/DROPPED_CARD';
+const CARD_DROPPED_RIGHT = 'PROTOTYPE/DATA/TERMS/CARD_DROPPED_RIGHT';
 
 // actions
 
-const cardDropped = createAction(CARD_DROPPED, (id, lngLat) => ({id, lngLat}));
+const cardDroppedRight = createAction(CARD_DROPPED_RIGHT, (id, lngLat) => ({id, lngLat}));
 
 export const reducer = handleActions({
   [system.INIT]: () => state => {
@@ -25,7 +25,7 @@ export const reducer = handleActions({
     }
     return state;
   },
-  [CARD_DROPPED]: ({id, lngLat}) => state => {
+  [CARD_DROPPED_RIGHT]: ({id, lngLat}) => state => {
     const cardsInSideBar = cardsInSidebar(state);
 
     // remove term from SideBar and move to mapRegion
@@ -60,11 +60,11 @@ const cardsInSidebar = $get('data.cardsInSideBar');
 const cardsOnMap = $get('data.cardsOnMap');
 
 export const actions = {
-  cardDropped
+  cardDroppedRight
 };
 
 export const actionTypes = {
-  CARD_DROPPED: CARD_DROPPED
+  CARD_DROPPED: CARD_DROPPED_RIGHT
 };
 
 export const selectors = {

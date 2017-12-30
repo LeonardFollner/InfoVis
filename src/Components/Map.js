@@ -6,6 +6,7 @@ import CustomMarker from "./CustomMarker";
 import {actions, selectors} from "../Redux";
 import {connect} from "react-redux";
 import {mapOverlayColorArab, mapOverlayColorEurope, mapOverlayTransparency} from "../settings";
+import {TargetRegions} from "../constants";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A';
 
@@ -20,8 +21,17 @@ class Map extends Component {
   }
 
   allowDrop = event => {
-    event.preventDefault();
+    const mouseX = event.screenX;
+    const mouseY = event.screenY;
+    const layersUnderCursor = this.map.queryRenderedFeatures([mouseX, mouseY]);
+
+    layersUnderCursor.forEach(feature => {
+      if (feature.layer.id === this.props.targetRegionOfDraggedCard) {
+        event.preventDefault();
+      }
+    });
   };
+
   drop = event => {
     const mouseX = event.screenX;
     const mouseY = event.screenY;
@@ -29,11 +39,10 @@ class Map extends Component {
     const mouseRelativeX = mouseX - x;
     const mouseRelativeY = mouseY - y;
 
-    const id = event.dataTransfer.getData("text");
+    const id = event.dataTransfer.getData("text/plain");
     const lngLat = this.map.unproject([mouseRelativeX, mouseRelativeY]);
 
-    this.props.toggleCardIsBeingDragged();
-    this.props.cardDropped(id, lngLat);
+    this.props.cardDroppedRight(id, lngLat);
   };
 
   componentDidMount() {
@@ -62,7 +71,7 @@ class Map extends Component {
       const bottomRightCorner = this.map.unproject([containerWidth, containerHeight]);
 
       this.map.addLayer({
-        'id': 'europe',
+        'id': TargetRegions.EUROPE,
         'type': 'fill',
         'source': {
           'type': 'geojson',
@@ -86,7 +95,7 @@ class Map extends Component {
         }
       });
       this.map.addLayer({
-        'id': 'arab',
+        'id': TargetRegions.ARAB,
         'type': 'fill',
         'source': {
           'type': 'geojson',
@@ -109,8 +118,9 @@ class Map extends Component {
           'fill-opacity': mapOverlayTransparency
         }
       });
-      this.map.setLayoutProperty('europe', 'visibility', 'none');
-      this.map.setLayoutProperty('arab', 'visibility', 'none');
+
+      this.map.setLayoutProperty(TargetRegions.EUROPE, 'visibility', 'none');
+      this.map.setLayoutProperty(TargetRegions.ARAB, 'visibility', 'none');
     });
   }
 
@@ -148,8 +158,8 @@ class Map extends Component {
     });
 
     // render region highlights
-    this.map.setLayoutProperty('europe', 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
-    this.map.setLayoutProperty('arab', 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
+    this.map.setLayoutProperty(TargetRegions.EUROPE, 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
+    this.map.setLayoutProperty(TargetRegions.ARAB, 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
   }
 
   render() {
@@ -164,7 +174,8 @@ const mapStateToProps = () => {
   return (state) => {
     return {
       cardsOnMap: selectors.Data.terms.cardsOnMap(state),
-      isCardBeingDragged: selectors.UI.Cards.isCardBeingDragged(state)
+      isCardBeingDragged: selectors.UI.Cards.isCardBeingDragged(state),
+      targetRegionOfDraggedCard: selectors.UI.Cards.targetRegionOfDraggedCard(state)
     }
   }
 };
@@ -172,9 +183,9 @@ const mapStateToProps = () => {
 const mapDispatchToProps = dispatch => {
   return {
     toggleCardIsBeingDragged: () => dispatch(actions.UI.Cards.toggleCardIsBeingDragged()),
-    cardDropped: (id, lngLat) => {
-      dispatch(actions.Data.terms.cardDropped(id, lngLat));
-    }
+    cardDroppedRight: (id, lngLat) => {
+      dispatch(actions.Data.terms.cardDroppedRight(id, lngLat));
+    },
   }
 };
 
