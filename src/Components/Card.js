@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import {DragSource} from 'react-dnd';
 import classnames from "classnames";
-
-import {CardTypes} from "../constants";
 
 /**
  * Specifies the drag source contract.
@@ -40,8 +37,8 @@ class Card extends Component {
   render() {
     const className = classnames("card", {"card--isBeingDragged": this.props.isDragging}, {"card--isIddle": !this.props.isDragging && !this.props.didDrop});
 
-    return this.props.connectDragSource(
-      <div className={className}>
+    return (
+      <div className={className} draggable={true}>
         Drag me to {this.props.targetRegion}
       </div>
     );
@@ -49,4 +46,4 @@ class Card extends Component {
 }
 
 // Export the wrapped version
-export default DragSource(CardTypes.CARD, cardSource, collect)(Card);
+export default Card;
