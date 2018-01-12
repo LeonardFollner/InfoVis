@@ -4,7 +4,7 @@ class DetailSidebar extends Component {
   render() {
     return (
       <div>
-        <p>I am detailed sidebar</p>
+        <p>I am the detailed sidebar</p>
       </div>
     );
   }

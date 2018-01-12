@@ -53,7 +53,8 @@ class Map extends Component {
     ReactDOM.render(
       React.createElement(
         CustomMarker, {
-          term: term
+          term: term,
+          handleOnClick: this.props.handleMarkerOnClick
         }
       ),
       tooltipContainer
@@ -197,6 +198,7 @@ const mapDispatchToProps = dispatch => {
     cardDroppedRight: (id, lngLat) => {
       dispatch(actions.Data.terms.cardDroppedRight(id, lngLat));
     },
+    handleMarkerOnClick: id => dispatch(actions.UI.DetailsView.markerClicked(id))
   }
 };
 
