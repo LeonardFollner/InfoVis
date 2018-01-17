@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 
-import DetailSection from "./DetailSection";
 import {selectors} from "../../Redux/index";
 import {connect} from "react-redux";
+
+import DetailSection from "./DetailSection";
+import ExitButton from "./ExitButton";
 
 class DetailMain extends Component {
   render() {
@@ -11,13 +13,15 @@ class DetailMain extends Component {
 
     const changes = ["change1", "change2", "change3", "change4"];
     return(
-      changes.map((currentValue, index) => {
-      return (
-        <DetailSection name={currentValue} id={currentValue.index} sectionsCount={changes.length} key={index}/>
-      );
-      }
-
-    ));
+      <div className="detail-main">
+        <ExitButton/>
+        {changes.map((currentValue, index) => {
+          return (
+            <DetailSection name={currentValue} id={currentValue.index} sectionsCount={changes.length} key={index}/>
+          );
+        })}
+      </div>
+    );
 
   }
 }

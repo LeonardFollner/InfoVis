@@ -6,26 +6,26 @@ import {handleActions} from '../../Utility/HandleActions';
 //
 // actionTypes
 //
-const TOGGLE_DETAILS_VIEW_VISIBILITY = 'UI/DetailsView/TOGGLE_DETAILS_VIEW_VISIBILITY';
 const MARKER_CLICKED = 'PROTOTYPE/UI/MARKER/MARKER_CLICKED';
+const EXIT_DETAILS_VIEW = 'PROTOTYPE/UI/DETAILS_VIEW/EXIT_DETAILS_VIEW';
 
 //
 // Create actions
 //
-const toggleMenuVisibility = createAction(TOGGLE_DETAILS_VIEW_VISIBILITY);
 const markerClicked = createAction(MARKER_CLICKED, id => ({id}));
+const exitDetailsView = createAction(EXIT_DETAILS_VIEW);
 
 //
 // Export actions
 //
 export const actions = {
-  toggleMenuVisibility,
-  markerClicked
+  markerClicked,
+  exitDetailsView
 };
 
 export const actionTypes = {
-  TOGGLE_DETAILS_VIEW_VISIBILITY,
-  MARKER_CLICKED
+  MARKER_CLICKED,
+  EXIT_DETAILS_VIEW
 };
 
 //
@@ -40,11 +40,6 @@ export const reducer = handleActions({
       return state;
     },
 
-  [TOGGLE_DETAILS_VIEW_VISIBILITY]: () =>
-    state => {
-      return $set('ui.detailsView.isVisible', !($get('ui.detailsView.isVisible', state)), state);
-    },
-
   [MARKER_CLICKED]: ({id}) => state => {
     const cardsOnMap = $get(['data', 'cardsOnMap'], state);
     cardsOnMap.forEach(card => {
@@ -53,6 +48,12 @@ export const reducer = handleActions({
       }
     });
     state = $set(['ui', 'detailsView', 'isVisible'], true, state);
+    return state;
+  },
+
+  [EXIT_DETAILS_VIEW]: () => state => {
+    state = $set('ui.detailsView.isVisible', false, state);
+    state = $set('ui.detailsView.term', null, state);
     return state;
   }
 });

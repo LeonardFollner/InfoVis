@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "font-awesome": "^4.7.0",
     "mapbox-gl": "^0.43.0",
     "mobile-drag-drop": "^2.2.0",
     "plow-js": "^2.1.0",
