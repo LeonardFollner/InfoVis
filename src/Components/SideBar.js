@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
-import DetailSidebar from "./DetailSidebar";
-import CardContainer from "./CardContainer";
+import DetailSidebar from "./DetailView/DetailSidebar";
+import CardContainer from "./Cards/CardContainer";
 
 class SideBar extends Component {
   render() {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import DetailSection from "./DetailSection";
-import {selectors} from "../Redux";
+import {selectors} from "../../Redux/index";
 import {connect} from "react-redux";
 
 class DetailMain extends Component {
