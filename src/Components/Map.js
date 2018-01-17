@@ -45,6 +45,48 @@ class Map extends Component {
     this.props.cardDroppedRight(id, lngLat);
   };
 
+  dragEnterHandler = e => {
+    e.preventDefault();
+  };
+
+  generateCustomMarker(term, tooltipContainer) {
+    ReactDOM.render(
+      React.createElement(
+        CustomMarker, {
+          term: term
+        }
+      ),
+      tooltipContainer
+    );
+  }
+
+  componentDidUpdate() {
+    // remove all old markers
+    this.markers.forEach((marker) => {
+      marker.remove();
+    });
+    this.markers = [];
+
+    // add markers for terms on map
+    this.props.cardsOnMap.forEach(term => {
+      // Container to put React generated content in, not added to DOM
+      const tooltipContainer = document.createElement('div');
+
+      this.generateCustomMarker(term, tooltipContainer);
+
+      this.markers.push(new mapboxgl.Marker(tooltipContainer)
+        .setLngLat([
+          term.coordinatesOnMap.lng,
+          term.coordinatesOnMap.lat
+        ])
+        .addTo(this.map));
+    });
+
+    // render region highlights
+    this.map.setLayoutProperty(TargetRegions.EUROPE, 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
+    this.map.setLayoutProperty(TargetRegions.ARAB, 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
+  }
+
   componentDidMount() {
     this.markers = [];
 
@@ -57,9 +99,15 @@ class Map extends Component {
       zoom
     });
 
+    // disable all interaction
+    this.map.boxZoom.disable();
     this.map.scrollZoom.disable();
-    this.map.doubleClickZoom.disable();
     this.map.dragPan.disable();
+    this.map.dragRotate.disable();
+    this.map.keyboard.disable();
+    this.map.doubleClickZoom.disable();
+    this.map.touchZoomRotate.disable();
+
 
     this.map.on('load', () => {
       const containerWidth = this.mapContainer.offsetWidth;
@@ -124,47 +172,10 @@ class Map extends Component {
     });
   }
 
-  generateCustomMarker(term, tooltipContainer) {
-    ReactDOM.render(
-      React.createElement(
-        CustomMarker, {
-          term: term
-        }
-      ),
-      tooltipContainer
-    );
-  }
-
-  componentDidUpdate() {
-    // remove all old markers
-    this.markers.forEach((marker) => {
-      marker.remove();
-    });
-    this.markers = [];
-
-    // add markers for terms on map
-    this.props.cardsOnMap.forEach(term => {
-      // Container to put React generated content in, not added to DOM
-      const tooltipContainer = document.createElement('div');
-
-      this.generateCustomMarker(term, tooltipContainer);
-
-      this.markers.push(new mapboxgl.Marker(tooltipContainer)
-        .setLngLat([
-          term.coordinatesOnMap.lng,
-          term.coordinatesOnMap.lat
-        ])
-        .addTo(this.map));
-    });
-
-    // render region highlights
-    this.map.setLayoutProperty(TargetRegions.EUROPE, 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
-    this.map.setLayoutProperty(TargetRegions.ARAB, 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
-  }
-
   render() {
     return (
       <div ref={el => this.mapContainer = el} className='map absolute top right left bottom' onDragOver={this.allowDrop}
+           onDragEnter={this.dragEnterHandler}
            onDrop={this.drop}/>
     );
   }

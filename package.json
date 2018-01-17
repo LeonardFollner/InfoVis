@@ -22,11 +22,12 @@
   "bugs": {
     "url": "https://github.com/LeonardFollner/InfoVis/issues"
   },
-  "homepage": "https://github.com/LeonardFollner/InfoVis#readme",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
     "mapbox-gl": "^0.43.0",
+    "mobile-drag-drop": "^2.2.0",
     "plow-js": "^2.1.0",
     "react": "^16.2.0",
     "react-dnd": "^2.5.4",

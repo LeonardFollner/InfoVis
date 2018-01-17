@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 
 class Card extends Component {
   handleDragStart = event => {
-    event.dataTransfer.setData("text/plain", this.props.term.id);
+    event.dataTransfer.setData("text/plain", this.props.term.id.toString());
     this.props.toggleCardIsBeingDragged(this.props.term.targetRegion);
   };
 
