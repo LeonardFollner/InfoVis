@@ -1,8 +1,8 @@
 .custom-marker {
   position: relative;
 
-  height: 20%;
+  height: $size--large;
   width: 100%;
 
-  background: slategray;
+  background: color(card);
 }

@@ -1,7 +1,7 @@
 .exit-button {
   position: absolute;
-  top: $spacing--small;
-  left: $spacing--small;
-  color: #cccccc;
+  top: $size--small;
+  left: $size--small;
+  color: color(faded);
   cursor: pointer;
 }

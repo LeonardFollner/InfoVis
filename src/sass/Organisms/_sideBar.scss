@@ -1,6 +1,6 @@
 .side-bar {
   height: inherit;
-  width: 30%;
+  width: 100% - $main-container-width;
 
-  border-left: 1px solid black;
+  border-left: 1px solid color(border);
 }

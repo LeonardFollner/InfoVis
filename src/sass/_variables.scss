@@ -1,4 +1,13 @@
-$spacing--tiny: 3px;
-$spacing--small: 3 * $spacing--tiny;
-$spacing--medium: 2 * $spacing--small;
-$spacing--large: 3 * $spacing--small;
+$size--tiny: 3px;
+$size--small: 3 * $size--tiny;
+$size--medium: 2 * $size--small;
+$size--large: 3 * $size--small;
+
+$main-container-width: percentage(0.7);
+
+$colors: (
+        text: #333333,
+        border: #cccccc,
+        faded: #cccccc,
+        card: slategray,
+)

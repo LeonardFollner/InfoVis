@@ -10,5 +10,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  color: color(text);
   height: inherit;
+}
+
+* {
+  box-sizing: border-box;
 }
