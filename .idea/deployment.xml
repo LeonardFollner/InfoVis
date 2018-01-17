@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="leonardfollner.de">
+    <serverData>
+      <paths name="leonardfollner.de">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/infovis" local="$PROJECT_DIR$/build" web="/infovis" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
