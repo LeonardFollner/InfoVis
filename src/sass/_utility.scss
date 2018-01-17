@@ -1,3 +1,13 @@
 @function color($name) {
   @return map-get($colors, $name);
 }
+
+@function layer($name) {
+  @if index($layers, $name) {
+    @return 100 + (length($layers) - index($layers, $name)) * 100;
+  } @else {
+    @error '"#{$name}" not found in "layers"';
+  }
+
+  @return initial;
+}
