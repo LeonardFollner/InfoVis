@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import classnames from "classnames";
-import {actions} from "../Redux";
+import {actions} from "../../Redux/index";
 import {connect} from "react-redux";
 
 class Card extends Component {

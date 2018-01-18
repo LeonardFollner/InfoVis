@@ -1,0 +1,5 @@
+@mixin shadow--left {
+  -moz-box-shadow: -$size--medium 0 $size--large 0 transparentize(color(shadow), 0.8);
+  -webkit-box-shadow: -$size--medium 0 $size--large 0 transparentize(color(shadow), 0.8);
+  box-shadow: -$size--medium 0 $size--large 0 transparentize(color(shadow), 0.8);
+}
