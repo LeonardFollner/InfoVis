@@ -6,8 +6,8 @@ class DetailSidebar extends Component {
     const term = this.props.termInDetailsView;
     return (
 
-      <div>
-        <p>{this.props.name} </p>
+      <div className="detail-side-bar side-bar">
+        <h1>{this.props.name} </h1>
         <p>{this.props.description}</p>
       </div>
     );
