@@ -26,9 +26,13 @@
 
   height: percentage(1/$cards-in-sidebar);
   width: 100%;
+
+  background: color(card);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
+  cursor: pointer;
 
   -webkit-transition: right $animation-default-length;
   -moz-transition: right $animation-default-length;
@@ -39,6 +43,7 @@
   &:hover {
     @include card--shaking;
   }
+}
 
   h2 {
     position: absolute;
