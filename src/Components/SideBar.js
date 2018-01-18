@@ -11,21 +11,11 @@ class SideBar extends Component {
 
     return (
       <div className="side-bar">
-        {this.props.detailsView ? <DetailSidebar name={term.name} description={term.description}/> : <CardContainer/>}
+        {this.props.detailsView ? <DetailSidebar/> : <CardContainer/>}
       </div>
     );
   }
 }
 
 
-const mapStateToProps = () => {
-  return state => {
-    return {
-      termInDetailsView: selectors.UI.DetailsView.termInDetailsView(state)
-    }
-  }
-
-};
-
-export default connect(mapStateToProps, null)(SideBar);
-
+export default SideBar;

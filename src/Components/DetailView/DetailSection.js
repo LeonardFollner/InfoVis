@@ -7,7 +7,7 @@ import classnames from "classnames";
 class DetailSection extends Component {
   render() {
 
-    const className = classnames("details-section-" + this.props.section, "details-section");
+    const className = classnames("details-section-" + this.props.sectionsCount, "details-section");
       return(
         <div className={className} >
           <article>

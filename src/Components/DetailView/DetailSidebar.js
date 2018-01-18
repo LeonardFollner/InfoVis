@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
+import {selectors} from "../../Redux";
+import SideBar from "../SideBar";
 
 class DetailSidebar extends Component {
   render() {
@@ -7,11 +10,21 @@ class DetailSidebar extends Component {
     return (
 
       <div className="detail-side-bar side-bar">
-        <h1>{this.props.name} </h1>
-        <p>{this.props.description}</p>
+        <h1>{term.name} </h1>
+        <p>{term.description}</p>
       </div>
     );
   }
 }
 
-export default DetailSidebar;
+
+const mapStateToProps = () => {
+  return state => {
+    return {
+      termInDetailsView: selectors.UI.DetailsView.termInDetailsView(state)
+    }
+  }
+
+};
+
+export default connect(mapStateToProps, null)(DetailSidebar);

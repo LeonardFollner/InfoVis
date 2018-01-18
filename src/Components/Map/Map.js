@@ -6,7 +6,7 @@ import CustomMarker from "./CustomMarker";
 import {actions, selectors} from "../../Redux/index";
 import {connect} from "react-redux";
 import {mapOverlayColorArab, mapOverlayColorEurope, mapOverlayTransparency} from "../../settings";
-import {TargetRegions as targetRegions, TargetRegions} from "../../constants";
+import {TargetRegions} from "../../constants";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A';
 

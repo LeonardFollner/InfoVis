@@ -8,12 +8,12 @@
   padding-bottom: $size--medium;
 
   p {
-    padding: 0 10px 0 10px;
+    padding: 0 $size--small 0 $size--small;
   }
 }
 
-@for $i from 0 through 4 {
+@for $i from 1 through 6 {
   .details-section-#{$i} {
-    width: percentage(1/4);
+    width: percentage(1/$i);
   }
 }
