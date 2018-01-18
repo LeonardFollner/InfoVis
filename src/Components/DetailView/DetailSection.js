@@ -9,9 +9,8 @@ class DetailSection extends Component {
 
     const className = classnames("details-section-" + this.props.sectionsCount, "details-section");
       return(
-        <div className={className} >
+        <div className={className} style={ {backgroundImage: "url(" + "images/" + this.props.name.toLowerCase() + "/" + this.props.name.toLowerCase() + "-" + this.props.section + ".jpg" + ")" }}>
           <article>
-            <img className="detail-section__image" src={"images/" + this.props.name.toLowerCase() + "/" + this.props.name.toLowerCase() + "-" + this.props.section + ".jpg"} />
             <p><span>{this.props.content}</span></p>
           </article>
         </div>

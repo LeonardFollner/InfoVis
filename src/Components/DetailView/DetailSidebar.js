@@ -9,7 +9,7 @@ class DetailSidebar extends Component {
     const term = this.props.termInDetailsView;
     return (
 
-      <div className="detail-side-bar side-bar">
+      <div className="detail-side-bar">
         <img class="detail-side-bar__image" src={"images/" + term.name.toLowerCase() + "/" + term.name.toLowerCase() + ".jpg" }  />
 
         <h2><span>{term.name}</span></h2>

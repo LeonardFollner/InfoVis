@@ -5,12 +5,15 @@
   align-content: center;
   justify-content: center;
   display: flex;
-  padding-bottom: $size--medium;
   overflow: hidden;
   background: color(card);
+  background: no-repeat center auto;
 
   p {
-    padding: 0 $size--small 0 $size--small;
+    padding: $size--medium $size--small $size--medium $size--small;
+    background: color(transparent-black);
+    color: white;
+    margin: 0;
   }
 
   .detail-section__image {

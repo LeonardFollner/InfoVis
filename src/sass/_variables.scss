@@ -12,10 +12,17 @@ $colors: (
         border: #cccccc,
         faded: #cccccc,
         card: slategray,
-        shadow: #333333
+        shadow: #333333,
+        transparent-black: rgba(0, 0, 0, 0.6),
+        side-bar: #ecf0f1
 );
 
 $layers: (
         sideBar,
         mainContainer
-)
+);
+
+
+$font-sizes: (
+        medium: 20px
+);
