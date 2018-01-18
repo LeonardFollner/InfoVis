@@ -19,7 +19,7 @@ const data = [
         "name": "Giraffe",
         "arab": "",
         "description": "Tier mit seeehr langem Hals",
-      "changes": [
+        "changes": [
         "Giraffe geht übers Italienische auf zarafa zurück. Das Wort ist im Arabischen aber ein Fremdwort.",
         "Es könnte, der Herkunft des Tiers entsprechend, aus einer äthiopischen Sprache stammen, im alt-äthiopischen Ge'ez wird die Giraffe zarat genannt. Nun waren aber Giraffenarten vor einigen Jahrtausenden noch weiter nördlich als heute verbreitet und im alten Ägypten durchaus bekannt, wie Abbildungen und sogar eine Hieroglyphe zeigen. Zafara könnte deshalt auch auf ein unbekanntes ägyptisches Wort zurückgehen.",
         "In Europa kennt man die Giraffe nur aus spärlichen Textstellen der Antike und im Lauf der Zeit dann auch aus Berichten anlässlich von Kreuzzügen, Kauffahrts- und Pilgerreisen. Es ist daher nicht verwunderlich, dass zafara ab Mitte des 13. Jh. in unterschiedliche Formen in europäische Sprachen übernommen wurden.",
@@ -53,7 +53,7 @@ const data = [
     },
     {
         "id": 5,
-      "name": "Oma",
+      "name": "Blume",
       "changes": [],
         "targetRegion": TargetRegions.EUROPE
     },

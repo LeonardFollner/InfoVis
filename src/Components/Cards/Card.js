@@ -18,7 +18,8 @@ class Card extends Component {
 
     return (
       <div className={className} draggable={true} onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}>
-        {this.props.term.name}
+        <img class="card__image" src={"images/" + this.props.term.name.toLowerCase() + "/" + this.props.term.name.toLowerCase() + ".jpg" }  />
+        <h2><span>{this.props.term.name}</span></h2>
       </div>
     );
   }
