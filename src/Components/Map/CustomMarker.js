@@ -11,7 +11,8 @@ class CustomMarker extends Component {
 
     return (
       <div className={className} onClick={this.handleOnClick}>
-        Drag me to {this.props.term.targetRegion}
+        Drag me to {this.props.term.targetRegion} <br />
+        {this.props.term.name}
       </div>
     );
   }

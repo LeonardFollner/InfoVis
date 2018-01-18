@@ -11,13 +11,14 @@ class DetailMain extends Component {
 
     const term = this.props.termInDetailsView;
 
-    const changes = ["change1", "change2", "change3", "change4"];
+    const changes = term.changes;
+    console.log(term.changes);
     return(
       <div className="detail-main">
         <ExitButton/>
         {changes.map((currentValue, index) => {
           return (
-            <DetailSection name={currentValue} id={currentValue.index} sectionsCount={changes.length} key={index}/>
+            <DetailSection id={currentValue.index} section={index} sectionsCount={changes.length} content={currentValue}/>
           );
         })}
       </div>

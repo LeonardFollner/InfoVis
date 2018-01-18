@@ -8,8 +8,8 @@
   padding-bottom: $size--medium;
 }
 
-@for $i from 1 through 5 {
+@for $i from 0 through 4 {
   .details-section-#{$i} {
-    width: percentage(1/$i);
+    width: percentage(1/4);
   }
 }

@@ -7,12 +7,12 @@ import classnames from "classnames";
 class DetailSection extends Component {
   render() {
 
-    const className = classnames("details-section-" + this.props.sectionsCount, "details-section");
+    const className = classnames("details-section-" + this.props.section, "details-section");
       return(
         <div className={className} >
           <article>
-            <p>{this.props.terms.name}</p>
-            <p>We are  {this.props.sectionsCount}</p>
+
+            <p>{this.props.content}</p>
           </article>
         </div>
       );
