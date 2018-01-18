@@ -5,7 +5,7 @@ const data = [
         "id": 0,
         "name": "Alkohol",
         "arab": "",
-        "description": "Alkohol meist Getränke die betrunken machen",
+        "description": "meist Getränke die betrunken machen :)",
       "changes": [
         "Die erste Gewinnung von konzentriertem Ethanol gelang dem persischen Arzt, Naturwissenschaftler, Philosophen  und Schriftsteller Abu Bakr Mohammad Ibn Zakariya al-Razi durch die Destillation von Wein.",
         "Ursprünglich Pulver, sogeannt Spießglanzpulver, das aus Antimon hergestellt wurde und zum Einfärben der Wimpern, Augenbrauen und Lider benutzt wurde.",
@@ -18,6 +18,7 @@ const data = [
         "id": 1,
         "name": "Giraffe",
         "arab": "",
+        "description": "Tier mit seeehr langem Hals",
       "changes": [
         "Giraffe geht übers Italienische auf zarafa zurück. Das Wort ist im Arabischen aber ein Fremdwort.",
         "Es könnte, der Herkunft des Tiers entsprechend, aus einer äthiopischen Sprache stammen, im alt-äthiopischen Ge'ez wird die Giraffe zarat genannt. Nun waren aber Giraffenarten vor einigen Jahrtausenden noch weiter nördlich als heute verbreitet und im alten Ägypten durchaus bekannt, wie Abbildungen und sogar eine Hieroglyphe zeigen. Zafara könnte deshalt auch auf ein unbekanntes ägyptisches Wort zurückgehen.",

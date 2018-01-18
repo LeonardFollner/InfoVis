@@ -11,8 +11,8 @@ class DetailSection extends Component {
       return(
         <div className={className} >
           <article>
-            <p>{this.props.terms.name}</p>
-            <p>We are  {this.props.sectionsCount}</p>
+
+            <p>{this.props.content}</p>
           </article>
         </div>
       );

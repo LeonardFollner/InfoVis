@@ -18,7 +18,7 @@ class Card extends Component {
 
     return (
       <div className={className} draggable={true} onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}>
-        Drag me to {this.props.term.targetRegion}
+        {this.props.term.name}
       </div>
     );
   }

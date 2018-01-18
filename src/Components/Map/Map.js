@@ -55,7 +55,9 @@ class Map extends Component {
         CustomMarker, {
           term: term,
           handleOnClick: this.props.handleMarkerOnClick
-        }
+          }
+
+
       ),
       tooltipContainer
     );
