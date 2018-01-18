@@ -10,7 +10,9 @@ class DetailSidebar extends Component {
     return (
 
       <div className="detail-side-bar side-bar">
-        <h1>{term.name} </h1>
+        <img class="detail-side-bar__image" src={"images/" + term.name.toLowerCase() + "/" + term.name.toLowerCase() + ".jpg" }  />
+
+        <h2><span>{term.name}</span></h2>
         <p>{term.description}</p>
       </div>
     );

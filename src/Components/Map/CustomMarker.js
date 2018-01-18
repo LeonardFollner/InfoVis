@@ -12,7 +12,9 @@ class CustomMarker extends Component {
 
     return (
       <div className={className} onClick={this.handleOnClick}>
-        {this.props.term.name}
+        <img class="custom-marker__image" src={"images/" + this.props.term.name.toLowerCase() + "/" + this.props.term.name.toLowerCase() + ".jpg" }  />
+        <p><span>{this.props.term.name}</span></p>
+
       </div>
     );
   }

@@ -2,7 +2,26 @@
   position: relative;
 
   height: $size--large;
-  width: 100%;
+  width: $size--giant;
+
+  .custom-marker__image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  p {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+
+    span {
+      color: white;
+      background: rgb(0, 0, 0); /*fallback*/
+      background: rgba(0, 0, 0, 0);
+      padding: $size--small;
+    }
+  }
 
   background: color(card);
 }
