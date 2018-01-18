@@ -19,6 +19,7 @@ class Prototyp extends PureComponent {
 
     return (
       <div className="prototyp">
+
         <MainContainer detailsView={this.props.isDetailsViewVisible}/>
         <SideBar detailsView={this.props.isDetailsViewVisible}/>
       </div>
