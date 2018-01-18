@@ -12,7 +12,6 @@ class DetailMain extends Component {
     const term = this.props.termInDetailsView;
 
     const changes = term.changes;
-    console.log(term.changes);
     return(
       <div className="detail-main">
         <ExitButton/>
