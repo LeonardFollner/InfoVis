@@ -39,7 +39,7 @@
       color: white;
       font: bold;
       background: rgb(0, 0, 0); /*fallback*/
-      background: rgba(0, 0, 0, 0.6);
+      background: color(transparent-black);
       padding: $size--small;
     }
   }

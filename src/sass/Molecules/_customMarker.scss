@@ -14,11 +14,12 @@
     left: 0;
     top: 0;
     width: 100%;
+    font-size: font-sizes(medium);
 
     span {
       color: white;
       background: rgb(0, 0, 0); /*fallback*/
-      background: rgba(0, 0, 0, 0.2);
+      background: color(transparent-black);
       padding: $size--small;
     }
   }
