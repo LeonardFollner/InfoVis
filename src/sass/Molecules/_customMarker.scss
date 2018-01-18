@@ -1,8 +1,8 @@
 .custom-marker {
   position: relative;
 
-  height: $size--large;
-  width: $size--giant;
+  height: $size--extralarge;
+  width: 100%;
 
   .custom-marker__image {
     max-width: 100%;
@@ -18,7 +18,7 @@
     span {
       color: white;
       background: rgb(0, 0, 0); /*fallback*/
-      background: rgba(0, 0, 0, 0);
+      background: rgba(0, 0, 0, 0.2);
       padding: $size--small;
     }
   }

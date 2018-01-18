@@ -6,10 +6,18 @@
   justify-content: center;
   display: flex;
   padding-bottom: $size--medium;
+  overflow: hidden;
+  background: color(card);
 
   p {
     padding: 0 $size--small 0 $size--small;
   }
+
+  .detail-section__image {
+    max-width: 100%;
+  }
+
+
 }
 
 @for $i from 1 through 6 {

@@ -17,7 +17,7 @@ class DetailMain extends Component {
         <ExitButton/>
         {changes.map((currentValue, index) => {
           return (
-            <DetailSection id={currentValue.index} section={index} sectionsCount={changes.length} content={currentValue}/>
+            <DetailSection name={term.name} section={index} sectionsCount={changes.length} content={currentValue}/>
           );
         })}
       </div>

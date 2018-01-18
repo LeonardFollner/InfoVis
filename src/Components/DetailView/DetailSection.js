@@ -11,8 +11,8 @@ class DetailSection extends Component {
       return(
         <div className={className} >
           <article>
-
-            <p>{this.props.content}</p>
+            <img className="detail-section__image" src={"images/" + this.props.name.toLowerCase() + "/" + this.props.name.toLowerCase() + "-" + this.props.section + ".jpg"} />
+            <p><span>{this.props.content}</span></p>
           </article>
         </div>
       );
