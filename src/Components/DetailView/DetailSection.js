@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import classnames from "classnames";
 
-//import  from "./";
-
-
 class DetailSection extends Component {
   render() {
 
@@ -13,9 +10,14 @@ class DetailSection extends Component {
       backgroundImage: "url(" + imgURL + ")"
     };
 
-    const className = classnames("details-section-" + this.props.sectionsCount, "details-section");
+    const className = classnames(
+      "details-section",
+      "details-section-" + this.props.sectionsCount,
+      {'details-section--active': this.props.isActive}
+    );
+
       return(
-        <div className={className} style={style}>
+        <div className={className} style={style} onClick={this.props.onClick(this.props.section)}>
           <article>
             <p><span>{this.props.content}</span></p>
           </article>

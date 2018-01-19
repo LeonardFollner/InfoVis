@@ -28,3 +28,9 @@ $layers: (
 $font-sizes: (
         medium: 20px
 );
+
+$breakpoints: (
+        small: '(max-width: 500px)',
+        medium: '(max-width: 767px)',
+        large: '(min-width: 768px)',
+);

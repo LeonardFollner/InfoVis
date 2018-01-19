@@ -1,10 +1,14 @@
 .details-section {
+  display: flex;
+  justify-content: center;
+
   height: 100%;
+
   align-items: flex-end;
   align-content: center;
-  justify-content: center;
-  display: flex;
+
   overflow: hidden;
+
   background: color(card);
   background-size: cover;
   background-repeat: no-repeat;
@@ -14,8 +18,11 @@
   transition: all 0.5s;
 
   &:hover {
-    filter: initial;
-    width: 100%;
+    @include mq(large) {
+      // @extend %details-section--extended;
+      filter: initial;
+      width: 100% !important;
+    }
   }
 
   p {
@@ -28,8 +35,19 @@
   .detail-section__image {
     max-width: 100%;
   }
+}
 
+%details-section--extended {
+  filter: initial;
+  width: 100% !important;
+}
 
+.details-section--active {
+  @include mq(medium) {
+    //@extend %details-section--extended;
+    filter: initial;
+    width: 100% !important;
+  }
 }
 
 @for $i from 1 through 6 {
