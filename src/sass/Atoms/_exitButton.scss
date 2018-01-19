@@ -1,7 +1,8 @@
 .exit-button {
   position: absolute;
   top: $size--small;
-  left: $size--small;
+  right: $size--small;
   color: color(faded);
   cursor: pointer;
+  z-index: layer(exitButton);
 }
