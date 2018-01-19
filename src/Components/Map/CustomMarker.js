@@ -17,10 +17,7 @@ class CustomMarker extends Component {
     };
 
     return (
-      <div className={className} onClick={this.handleOnClick} style={style}>
-        <p><span>{this.props.term.name}</span></p>
-
-      </div>
+      <div className={className} onClick={this.handleOnClick} style={style}/>
     );
   }
 }

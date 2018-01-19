@@ -7,6 +7,8 @@ $size--giant: 5 * $size--large;
 
 $main-container-width: percentage(0.7);
 
+$animation-default-length: 0.3s;
+
 $colors: (
         text: #333333,
         border: #cccccc,
@@ -21,7 +23,6 @@ $layers: (
         sideBar,
         mainContainer
 );
-
 
 $font-sizes: (
         medium: 20px
