@@ -2,6 +2,10 @@
   @return map-get($colors, $name);
 }
 
+@function font-size($name) {
+  @return map-get($font-sizes, $name);
+}
+
 @function layer($name) {
   @if index($layers, $name) {
     @return 100 + (length($layers) - index($layers, $name)) * 100;

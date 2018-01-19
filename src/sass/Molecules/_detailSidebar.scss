@@ -2,7 +2,7 @@
   width: 100%;
   background: color(side-bar);
   height: 100%;
-  box-shadow: inset 7px 0 9px -7px color(transparent-black);
+  @include shadow--left-inset;
 
 .detail-side-bar__image {
   max-width:100%;

@@ -10,9 +10,14 @@ class CustomMarker extends Component {
   render() {
     const className = classnames("custom-marker");
 
+    const imgURL = "images/" + this.props.term.name.toLowerCase() + "/" + this.props.term.name.toLowerCase() + ".jpg";
+
+    const style = {
+      backgroundImage: 'url(' + imgURL + ')'
+    };
+
     return (
-      <div className={className} onClick={this.handleOnClick}>
-        <img class="custom-marker__image" src={"images/" + this.props.term.name.toLowerCase() + "/" + this.props.term.name.toLowerCase() + ".jpg" }  />
+      <div className={className} onClick={this.handleOnClick} style={style}>
         <p><span>{this.props.term.name}</span></p>
 
       </div>
