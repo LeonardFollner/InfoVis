@@ -1,37 +1,27 @@
+/* eslint-disable */
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import mapboxgl from 'mapbox-gl'
+import ReactDOMServer from 'react-dom/server';
 
 import CustomMarker from "./CustomMarker";
 import {actions, selectors} from "../../Redux/index";
 import {connect} from "react-redux";
 import {mapOverlayColorArab, mapOverlayColorEurope, mapOverlayTransparency} from "../../settings";
-import {TargetRegions} from "../../constants";
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A';
+L.mapbox.accessToken = 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A';
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lng: 27.8770,
-      lat: 41.7667,
-      zoom: 3.25
-    };
-  }
-
   allowDrop = event => {
+    event.preventDefault();
     const mouseX = event.screenX;
     const mouseY = event.screenY;
-    const layersUnderCursor = this.map.queryRenderedFeatures([mouseX, mouseY]);
+    //const layersUnderCursor = this.map.queryRenderedFeatures([mouseX, mouseY]);
 
-    layersUnderCursor.forEach(feature => {
+    /*layersUnderCursor.forEach(feature => {
       if (feature.layer.id === this.props.targetRegionOfDraggedCard) {
         event.preventDefault();
       }
-    });
+    });*/
   };
-
   drop = event => {
     const mouseX = event.screenX;
     const mouseY = event.screenY;
@@ -40,28 +30,23 @@ class Map extends Component {
     const mouseRelativeY = mouseY - y;
 
     const id = event.dataTransfer.getData("text/plain");
-    const lngLat = this.map.unproject([mouseRelativeX, mouseRelativeY]);
+    const lngLat = this.map.layerPointToLatLng([mouseRelativeX, mouseRelativeY]);
 
     this.props.cardDroppedRight(id, lngLat);
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      lng: 28,
+      lat: 41,
+      zoom: 4.5
+    };
+  }
+
   dragEnterHandler = e => {
     e.preventDefault();
   };
-
-  generateCustomMarker(term, tooltipContainer) {
-    ReactDOM.render(
-      React.createElement(
-        CustomMarker, {
-          term: term,
-          handleOnClick: this.props.handleMarkerOnClick
-          }
-
-
-      ),
-      tooltipContainer
-    );
-  }
 
   componentDidUpdate() {
     // remove all old markers
@@ -72,109 +57,87 @@ class Map extends Component {
 
     // add markers for terms on map
     this.props.cardsOnMap.forEach(term => {
-      // Container to put React generated content in, not added to DOM
-      const tooltipContainer = document.createElement('div');
+      const iconHTML = ReactDOMServer.renderToStaticMarkup(<CustomMarker term={term}
+                                                                         handleOnClick={this.props.handleMarkerOnClick}/>);
+      const markerIcon = L.divIcon({html: iconHTML});
 
-      this.generateCustomMarker(term, tooltipContainer);
+      this.markers.push(L.marker(term.coordinatesOnMap, {icon: markerIcon}));
+    });
 
-      this.markers.push(new mapboxgl.Marker(tooltipContainer)
-        .setLngLat([
-          term.coordinatesOnMap.lng,
-          term.coordinatesOnMap.lat
-        ])
-        .addTo(this.map));
+    this.markers.forEach(marker => {
+      marker.on('click', this.props.handleMarkerOnClick);
+      marker.addTo(this.map);
     });
 
     // render region highlights
-    this.map.setLayoutProperty(TargetRegions.EUROPE, 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
-    this.map.setLayoutProperty(TargetRegions.ARAB, 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
+    this.polygons.map(polygon => {
+      polygon.setStyle({fill: this.props.isCardBeingDragged});
+      return polygon;
+    });
+    this.polygons.forEach(polygon => {
+      polygon.bringToFront().redraw();
+      polygon.addTo(this.map);
+    });
   }
 
   componentDidMount() {
     this.markers = [];
+    this.polygons = [];
 
     const {lng, lat, zoom} = this.state;
 
-    this.map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/streets-v9',
-      center: [lng, lat],
-      zoom
+    this.map = L.mapbox.map(
+      this.mapContainer,
+      'mapbox.streets',
+      {
+        center: [lat, lng],
+        zoom: zoom,
+        dragging: false,
+        touchZoom: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        closePopupOnClick: false
+      }
+    );
+
+    const containerWidth = this.mapContainer.offsetWidth;
+    const containerHeight = this.mapContainer.offsetHeight;
+
+    const topLeftCorner = this.map.layerPointToLatLng([0, 0]);
+    const topRightCorner = this.map.layerPointToLatLng([containerWidth, 0]);
+    const bottomLeftCorner = this.map.layerPointToLatLng([0, containerHeight]);
+    const bottomRightCorner = this.map.layerPointToLatLng([containerWidth, containerHeight]);
+
+    this.polygons.push(L.polygon([
+        topLeftCorner,
+        topRightCorner,
+        bottomLeftCorner
+      ],
+      {
+        fillColor: mapOverlayColorEurope,
+        fillOpacity: mapOverlayTransparency,
+        fill: false,
+        stroke: false
+      }));
+    this.polygons.push(L.polygon([
+        topRightCorner,
+        bottomRightCorner,
+        bottomLeftCorner
+      ],
+      {
+        fillColor: mapOverlayColorArab,
+        fillOpacity: mapOverlayTransparency,
+        fill: false,
+        stroke: false
+      }
+    ));
+
+    this.polygons.forEach(polygon => {
+      polygon.addTo(this.map);
     });
 
-    // disable all interaction
-    this.map.boxZoom.disable();
-    this.map.scrollZoom.disable();
-    this.map.dragPan.disable();
-    this.map.dragRotate.disable();
-    this.map.keyboard.disable();
-    this.map.doubleClickZoom.disable();
-    this.map.touchZoomRotate.disable();
-
-
-    this.map.on('load', () => {
-      const containerWidth = this.mapContainer.offsetWidth;
-      const containerHeight = this.mapContainer.offsetHeight;
-
-      const topLeftCorner = this.map.unproject([0, 0]);
-      const topRightCorner = this.map.unproject([containerWidth, 0]);
-      const bottomLeftCorner = this.map.unproject([0, containerHeight]);
-      const bottomRightCorner = this.map.unproject([containerWidth, containerHeight]);
-
-      this.map.addLayer({
-        'id': TargetRegions.EUROPE,
-        'type': 'fill',
-        'source': {
-          'type': 'geojson',
-          'data': {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Polygon',
-              'coordinates': [[
-                [topLeftCorner.lng, topLeftCorner.lat],
-                [topRightCorner.lng, topRightCorner.lat],
-                [bottomLeftCorner.lng, bottomLeftCorner.lat],
-                [topLeftCorner.lng, topLeftCorner.lat]
-              ]]
-            }
-          }
-        },
-        'layout': {},
-        'paint': {
-          'fill-color': mapOverlayColorEurope,
-          'fill-opacity': mapOverlayTransparency
-        }
-      });
-      this.map.addLayer({
-        'id': TargetRegions.ARAB,
-        'type': 'fill',
-        'source': {
-          'type': 'geojson',
-          'data': {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Polygon',
-              'coordinates': [[
-                [topRightCorner.lng, topRightCorner.lat],
-                [bottomRightCorner.lng, bottomRightCorner.lat],
-                [bottomLeftCorner.lng, bottomLeftCorner.lat],
-                [topRightCorner.lng, topRightCorner.lat]
-              ]]
-            }
-          }
-        },
-        'layout': {},
-        'paint': {
-          'fill-color': mapOverlayColorArab,
-          'fill-opacity': mapOverlayTransparency
-        }
-      });
-
-      this.map.setLayoutProperty(TargetRegions.EUROPE, 'visibility', 'none');
-      this.map.setLayoutProperty(TargetRegions.ARAB, 'visibility', 'none');
-
-      this.forceUpdate();
-    });
+    L.polyline([[0.0, 0.0], [53.0, 13.0]], {color: 'red'}).addTo(this.map);
   }
 
   render() {
