@@ -23,6 +23,14 @@
       filter: initial;
       width: 100% !important;
     }
+
+    .full-detail {
+      display: block;
+    }
+  }
+
+  article {
+    width: 100%;
   }
 
   p {
@@ -30,6 +38,11 @@
     background: color(transparent-black);
     color: white;
     margin: 0;
+    width: 100%;
+  }
+
+  .full-detail {
+    display: none;
   }
 
   .detail-section__image {
@@ -40,6 +53,10 @@
 %details-section--extended {
   filter: initial;
   width: 100% !important;
+
+  .full-detail {
+    display: block;
+  }
 }
 
 .details-section--active {

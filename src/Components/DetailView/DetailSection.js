@@ -19,7 +19,8 @@ class DetailSection extends Component {
       return(
         <div className={className} style={style} onClick={this.props.onClick(this.props.section)}>
           <article>
-            <p><span>{this.props.content}</span></p>
+            <p><span>{this.props.content.teaser}</span></p>
+            <p className="full-detail"><span>{this.props.content.fullDetail}</span></p>
           </article>
         </div>
       );
