@@ -7,9 +7,15 @@ import classnames from "classnames";
 class DetailSection extends Component {
   render() {
 
+    const imgURL = "images/" + this.props.name.toLowerCase() + "/" + this.props.name.toLowerCase() + "-" + this.props.section + ".jpg";
+
+    const style = {
+      backgroundImage: "url(" + imgURL + ")"
+    };
+
     const className = classnames("details-section-" + this.props.sectionsCount, "details-section");
       return(
-        <div className={className} style={ {backgroundImage: "url(" + "images/" + this.props.name.toLowerCase() + "/" + this.props.name.toLowerCase() + "-" + this.props.section + ".jpg" + ")" }}>
+        <div className={className} style={style}>
           <article>
             <p><span>{this.props.content}</span></p>
           </article>

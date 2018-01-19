@@ -4,7 +4,9 @@ import {TargetRegions} from "../../constants";
 
 class CustomMarker extends Component {
   handleOnClick = () => {
-    this.props.term.targetRegion === TargetRegions.ARAB ? this.props.handleOnClick(this.props.term.id)  : null
+    if (this.props.term.targetRegion === TargetRegions.ARAB) {
+      this.props.handleOnClick(this.props.term.id)
+    }
   };
 
   render() {
