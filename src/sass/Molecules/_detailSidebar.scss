@@ -1,6 +1,6 @@
 .detail-side-bar {
   width: 100%;
-  background: color(side-bar);
+  background: color(faded);
   height: 100%;
   @include shadow--left-inset;
 
@@ -19,8 +19,7 @@ h2 {
   span {
     color: white;
     font-weight: bold;
-    background: rgb(0, 0, 0); /*fallback*/
-    background: color(transparent-black);
+    background: transparentize(color(black), 0.4);
     padding: $size--small;
   }
 }

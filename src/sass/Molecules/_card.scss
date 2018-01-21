@@ -24,7 +24,7 @@
   position: relative;
   right: 0;
 
-  height: 20%;
+  height: percentage(1/$cards-in-sidebar);
   width: 100%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -47,10 +47,9 @@
     width: 100%;
 
     span {
-      color: white;
+      color: color(white);
       font-weight: bold;
-      background: rgb(0, 0, 0); /*fallback*/
-      background: color(transparent-black);
+      background: transparentize(color(black), 0.4);
       padding: $size--small;
     }
   }

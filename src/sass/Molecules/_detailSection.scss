@@ -35,7 +35,7 @@
 
   p {
     padding: $size--medium $size--small $size--medium $size--small;
-    background: color(transparent-black);
+    background: transparentize(color(black), 0.4);
     color: white;
     margin: 0;
     width: 100%;

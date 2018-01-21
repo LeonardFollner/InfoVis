@@ -1,9 +1,17 @@
 @function color($name) {
-  @return map-get($colors, $name);
+  @if map-has_key($colors, $name) {
+    @return map-get($colors, $name);
+  } @else {
+    @error '"#{$name}" not found in "colors"';
+  }
 }
 
 @function font-size($name) {
-  @return map-get($font-sizes, $name);
+  @if map_has_key($font-sizes, $name) {
+    @return map-get($font-sizes, $name);
+  } @else {
+    @error '"#{$name}" not found in "font-sizes"';
+  }
 }
 
 @function layer($name) {
@@ -17,5 +25,9 @@
 }
 
 @function breakpoint($key) {
-  @return map-get($breakpoints, $key);
+  @if map-has_key($breakpoints, $key) {
+    @return map-get($breakpoints, $key);
+  } @else {
+    @error '"#{$key}" not found in "breakpoints"';
+  }
 }
