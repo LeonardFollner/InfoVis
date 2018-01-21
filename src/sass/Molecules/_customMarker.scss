@@ -1,8 +1,8 @@
 .custom-marker {
   position: relative;
 
-  height: 170px;
-  width: 170px;
+  height: $size--giant;
+  width: $size--giant;
 
   border-radius: 50%;
 
@@ -20,20 +20,5 @@
 
   &:active {
     transform: scale(1);
-  }
-
-  p {
-    position: absolute;
-    left: 0;
-    top: $size--large;
-    width: 100%;
-    font-size: font-size(medium);
-
-    span {
-      color: white;
-      background: rgb(0, 0, 0); /*fallback*/
-      background: color(transparent-black);
-      padding: $size--small;
-    }
   }
 }
