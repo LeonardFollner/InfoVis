@@ -1,0 +1,33 @@
+.detail-side-bar {
+  width: 100%;
+  background: color(faded);
+  height: 100%;
+  @include shadow--left-inset;
+
+.detail-side-bar__image {
+  max-width:100%;
+  max-height: 100%;
+  position: relative;
+}
+
+h2 {
+  /*position: absolute;*/
+  left: 0;
+  top: $size--large;
+  width: 100%;
+
+  span {
+    color: white;
+    font-weight: bold;
+    background: transparentize(color(black), 0.4);
+    padding: $size--small;
+  }
+}
+
+  p {
+    padding: 0 $size--small 0 $size--small;
+    margin: 0;
+    font-size: font-size(medium);
+  }
+
+}

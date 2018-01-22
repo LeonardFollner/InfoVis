@@ -4,16 +4,22 @@ import {TargetRegions} from "../../constants";
 
 class CustomMarker extends Component {
   handleOnClick = () => {
-    this.props.term.targetRegion === TargetRegions.ARAB ? this.props.handleOnClick(this.props.term.id)  : null
+    if (this.props.term.targetRegion === TargetRegions.ARAB) {
+      this.props.handleOnClick(this.props.term.id)
+    }
   };
 
   render() {
     const className = classnames("custom-marker");
 
+    const imgURL = "images/" + this.props.term.name.toLowerCase() + "/" + this.props.term.name.toLowerCase() + ".jpg";
+
+    const style = {
+      backgroundImage: 'url(' + imgURL + ')'
+    };
+
     return (
-      <div className={className} onClick={this.handleOnClick}>
-        {this.props.term.name}
-      </div>
+      <div className={className} onClick={this.handleOnClick} style={style}/>
     );
   }
 }

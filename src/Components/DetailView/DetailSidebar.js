@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {selectors} from "../../Redux";
-import SideBar from "../SideBar";
 
 class DetailSidebar extends Component {
   render() {
@@ -9,8 +8,11 @@ class DetailSidebar extends Component {
     const term = this.props.termInDetailsView;
     return (
 
-      <div className="detail-side-bar side-bar">
-        <h1>{term.name} </h1>
+      <div className="detail-side-bar">
+        <img className="detail-side-bar__image"
+             src={"images/" + term.name.toLowerCase() + "/" + term.name.toLowerCase() + ".jpg"} alt={term.name}/>
+
+        <h2><span>{term.name}</span></h2>
         <p>{term.description}</p>
       </div>
     );

@@ -1,18 +1,26 @@
 import React, {Component} from 'react';
 import classnames from "classnames";
 
-//import  from "./";
-
-
 class DetailSection extends Component {
   render() {
 
-    const className = classnames("details-section-" + this.props.sectionsCount, "details-section");
-      return(
-        <div className={className} >
-          <article>
+    const imgURL = "images/" + this.props.name.toLowerCase() + "/" + this.props.name.toLowerCase() + "-" + this.props.section + ".jpg";
 
-            <p>{this.props.content}</p>
+    const style = {
+      backgroundImage: "url(" + imgURL + ")"
+    };
+
+    const className = classnames(
+      "details-section",
+      "details-section-" + this.props.sectionsCount,
+      {'details-section--active': this.props.isActive}
+    );
+
+      return(
+        <div className={className} style={style} onClick={this.props.onClick(this.props.section)}>
+          <article>
+            <p><span>{this.props.content.teaser}</span></p>
+            <p className="full-detail"><span>{this.props.content.fullDetail}</span></p>
           </article>
         </div>
       );

@@ -1,8 +1,24 @@
 .custom-marker {
   position: relative;
 
-  height: $size--large;
-  width: 100%;
+  height: $size--giant;
+  width: $size--giant;
 
-  background: color(card);
+  border-radius: 50%;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  @include shadow__custom-marker;
+  transition: 0.3s;
+
+  &:hover {
+    @include shadow__custom-marker--hover;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
 }

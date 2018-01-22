@@ -2,18 +2,34 @@ $size--tiny: 3px;
 $size--small: 3 * $size--tiny;
 $size--medium: 2 * $size--small;
 $size--large: 3 * $size--small;
+$size--extralarge: 2 * $size--large;
+$size--giant: 5 * $size--large;
 
 $main-container-width: percentage(0.7);
+$cards-in-sidebar: 5;
+
+$animation-default-length: 0.3s;
 
 $colors: (
-        text: #333333,
+        black: #333333,
+        white: white,
         border: #cccccc,
         faded: #cccccc,
         card: slategray,
-        shadow: #333333
 );
 
 $layers: (
+        exitButton,
         sideBar,
         mainContainer
-)
+);
+
+$font-sizes: (
+        medium: 20px
+);
+
+$breakpoints: (
+        small: '(max-width: 500px)',
+        medium: '(max-width: 767px)',
+        large: '(min-width: 768px)',
+);

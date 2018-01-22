@@ -1,3 +1,7 @@
+@mixin card--shaking {
+  right: $size--large;
+}
+
 @keyframes shake {
   0% {
     right: 0;
@@ -6,10 +10,10 @@
     right: 0;
   }
   98% {
-    right: $size--large;
+    @include card--shaking;
   }
   99% {
-    right: $size--large;
+    @include card--shaking;
   }
   100% {
     right: 0;
@@ -18,24 +22,49 @@
 
 .card {
   position: relative;
+  right: 0;
 
-  height: 20%;
+  height: percentage(1/$cards-in-sidebar);
   width: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 
-  padding: $size--small;
+  -webkit-transition: right $animation-default-length;
+  -moz-transition: right $animation-default-length;
+  -o-transition: right $animation-default-length;
+  -ms-transition: right $animation-default-length;
+  transition: right $animation-default-length;
 
-  background: color(card);
+  &:hover {
+    @include card--shaking;
+  }
+
+  h2 {
+    position: absolute;
+    left: 0;
+    top: $size--large;
+    width: 100%;
+
+    span {
+      color: color(white);
+      font-weight: bold;
+      background: transparentize(color(black), 0.4);
+      padding: $size--small;
+    }
+  }
+
 }
 
 .card--isIdle {
-  animation-name: shake;
-  animation-duration: 10s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+  //animation-name: shake;
+  //animation-duration: 10s;
+  //animation-iteration-count: infinite;
+  //animation-timing-function: ease-in-out;
 
-  @for $i from 1 through 10 {
-    &:nth-of-type(#{$i}) {
-      animation-delay: random(60)+s;
-    }
-  }
+  //@for $i from 1 through 10 {
+  //  &:nth-of-type(#{$i}) {
+  //    animation-delay: random(60)+s;
+  //  }
+  //}
 }
