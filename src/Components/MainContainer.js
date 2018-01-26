@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 
 import DetailMain from "./DetailView/DetailMain";
-import Map from "./Map/Map";
+import MapMain from "./MapMain";
 
 
 class MainContainer extends Component {
   render() {
     return (
       <div className="main-container">
-        {this.props.detailsView ? <DetailMain/> : <Map/>}
+        {this.props.detailsView ? <DetailMain/> : <MapMain/>}
       </div>
     );
   }
