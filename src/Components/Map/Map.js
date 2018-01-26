@@ -97,7 +97,7 @@ class Map extends Component {
 
     this.map = new mapboxgl.Map({
       container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/streets-v9',
+      style: 'mapbox://styles/leonard-follner/cjcvwqre20vl02smsgkep9l51',
       center: [lng, lat],
       zoom
     });
