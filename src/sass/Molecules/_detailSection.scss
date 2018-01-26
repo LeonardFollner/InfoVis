@@ -9,12 +9,14 @@
 
   overflow: hidden;
 
-  background: color(card);
+  background: color(map);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 
-  @include greyscale;
+  @include shadow--bottom-inset;
+
+  @include filter--sepia;
   transition: all 0.5s;
 
   &:hover {
@@ -35,7 +37,6 @@
 
   p {
     padding: $size--medium $size--small $size--medium $size--small;
-    background: transparentize(color(black), 0.4);
     color: white;
     margin: 0;
     width: 100%;
