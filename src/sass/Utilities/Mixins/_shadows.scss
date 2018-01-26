@@ -21,23 +21,3 @@
 @mixin shadow__custom-marker--hover {
   box-shadow: 0 8px 16px 0 transparentize(color(black), 0.5);
 }
-
-@mixin filter--greyscale {
-  filter: grayscale(100%);
-}
-
-@mixin filter--sepia {
-  filter: sepia(1) hue-rotate(350deg) saturate(55%);
-}
-
-@mixin mq($key) {
-  @if breakpoint($key) {
-    @media #{breakpoint($key)} {
-      @content;
-    }
-  }
-}
-
-@mixin filter--brown {
-  filter: hue-rotate(333deg) saturate(70%);
-}
