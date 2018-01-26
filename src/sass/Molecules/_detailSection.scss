@@ -1,22 +1,11 @@
-@mixin details-section--extended($device-size) {
-  @include mq($device-size) {
-    @include filter--brown;
-    width: 100% !important;
-
-    .full-detail {
-      display: block;
-    }
-  }
-}
+$full-detail-height: 100px;
 
 .details-section {
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  justify-content: flex-end;
 
   height: 100%;
-
-  align-items: flex-end;
-  align-content: center;
 
   overflow: hidden;
 
@@ -30,23 +19,31 @@
   @include filter--sepia;
   transition: all 0.5s;
 
-  &:hover {
-    @include details-section--extended(large);
-  }
-
   article {
     width: 100%;
   }
 
   p {
-    padding: $size--medium $size--small $size--medium $size--small;
     color: white;
     margin: 0;
     width: 100%;
   }
 
-  .full-detail {
-    display: none;
+  .details-section__full-detail {
+    position: relative;
+    top: 100%;
+    transition: top 0.5s;
+    height: $full-detail-height;
+
+    padding: 0 $size--medium;
+  }
+
+  .details-section__teaser {
+    position: absolute;
+    transition: all 0.5s;
+    transform: translate(0, 0);
+    transform-origin: top left;
+    padding: $size--medium;
   }
 
   .detail-section__image {
@@ -54,8 +51,29 @@
   }
 }
 
-.details-section--active {
-  @include details-section--extended(medium);
+.details-section--expanded {
+  @include filter--brown;
+  width: 100% !important;
+
+  .details-section__full-detail {
+    top: 0;
+  }
+
+  .details-section__teaser {
+    position: absolute;
+    transform: rotate(0deg) translate(0, -$full-detail-height);
+    padding: $size--small $size--medium;
+  }
+}
+
+.details-section--collapsed {
+  .details-section__teaser {
+    position: absolute;
+    transform-origin: top left;
+    transform: rotate(-90deg);
+    width: 300px;
+    padding: $size--small $size--medium;
+  }
 }
 
 @for $i from 1 through 6 {
