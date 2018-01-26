@@ -8,4 +8,6 @@
   background-color: color(faded);
 
   z-index: layer(taskbar);
+
+  @include shadow--bottom;
 }
