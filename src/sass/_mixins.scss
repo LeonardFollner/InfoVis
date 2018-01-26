@@ -28,3 +28,7 @@
     }
   }
 }
+
+@mixin filter--brown {
+  filter: hue-rotate(333deg) saturate(70%);
+}

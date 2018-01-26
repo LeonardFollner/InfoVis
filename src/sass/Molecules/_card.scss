@@ -30,11 +30,9 @@
   background-position: center center;
   background-size: cover;
 
-  -webkit-transition: right $animation-default-length;
-  -moz-transition: right $animation-default-length;
-  -o-transition: right $animation-default-length;
-  -ms-transition: right $animation-default-length;
   transition: right $animation-default-length;
+
+  @include filter--brown;
 
   &:hover {
     @include card--shaking;

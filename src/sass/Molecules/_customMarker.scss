@@ -10,6 +10,8 @@
   background-position: center center;
   background-size: cover;
 
+  @include filter--brown;
+
   @include shadow__custom-marker;
   transition: 0.3s;
 

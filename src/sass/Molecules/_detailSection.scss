@@ -20,7 +20,7 @@
   &:hover {
     @include mq(large) {
       // @extend %details-section--extended;
-      filter: initial;
+      @include filter--brown;
       width: 100% !important;
     }
 
