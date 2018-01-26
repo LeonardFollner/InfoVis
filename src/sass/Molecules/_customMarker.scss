@@ -15,8 +15,6 @@
   @include shadow__custom-marker;
   transition: 0.3s;
 
-  @include sepia;
-
   &:hover {
     @include shadow__custom-marker--hover;
     transform: scale(1.05);
