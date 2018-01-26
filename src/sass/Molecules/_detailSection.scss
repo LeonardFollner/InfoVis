@@ -17,7 +17,6 @@
 .details-section {
   display: flex;
   justify-content: center;
-
   height: 100%;
 
   align-items: flex-end;
@@ -57,10 +56,6 @@
     padding: 0;
     transition-delay: 1s;
     -webkit-transition-delay: 1s;
-
-    p {
-      padding: 0;
-    }
   }
 
   .detail-section__image {
