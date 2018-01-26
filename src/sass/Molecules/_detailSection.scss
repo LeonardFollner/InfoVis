@@ -1,3 +1,14 @@
+@mixin details-section--extended($device-size) {
+  @include mq($device-size) {
+    @include filter--brown;
+    width: 100% !important;
+
+    .full-detail {
+      display: block;
+    }
+  }
+}
+
 .details-section {
   display: flex;
   justify-content: center;
@@ -20,15 +31,7 @@
   transition: all 0.5s;
 
   &:hover {
-    @include mq(large) {
-      // @extend %details-section--extended;
-      @include filter--brown;
-      width: 100% !important;
-    }
-
-    .full-detail {
-      display: block;
-    }
+    @include details-section--extended(large);
   }
 
   article {
@@ -51,21 +54,8 @@
   }
 }
 
-%details-section--extended {
-  filter: initial;
-  width: 100% !important;
-
-  .full-detail {
-    display: block;
-  }
-}
-
 .details-section--active {
-  @include mq(medium) {
-    //@extend %details-section--extended;
-    filter: initial;
-    width: 100% !important;
-  }
+  @include details-section--extended(medium);
 }
 
 @for $i from 1 through 6 {
