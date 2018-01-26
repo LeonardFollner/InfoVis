@@ -47,7 +47,7 @@
     span {
       color: color(white);
       font-weight: bold;
-      background: transparentize(color(black), 0.4);
+      background: color(black);
       padding: $size--small;
     }
   }
