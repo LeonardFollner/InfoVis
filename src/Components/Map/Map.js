@@ -172,6 +172,8 @@ class Map extends Component {
 
       this.map.setLayoutProperty(TargetRegions.EUROPE, 'visibility', 'none');
       this.map.setLayoutProperty(TargetRegions.ARAB, 'visibility', 'none');
+
+      this.forceUpdate();
     });
   }
 
