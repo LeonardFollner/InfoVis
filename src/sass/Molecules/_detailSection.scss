@@ -5,6 +5,11 @@
 
     .full-detail {
       display: block;
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 1s;
+      -webkit-transition-delay: 1s;
+      height: auto;
     }
   }
 }
@@ -46,7 +51,16 @@
   }
 
   .full-detail {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    transition-delay: 1s;
+    -webkit-transition-delay: 1s;
+
+    p {
+      padding: 0;
+    }
   }
 
   .detail-section__image {
