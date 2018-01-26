@@ -46,7 +46,7 @@ export const reducer = handleActions({
 
     // add a new term from the pool to the sidebar
     if (terms(state).length > 0) {
-      const newTermForSideBar = $get(terms(state).length - 1, terms(state));
+      const newTermForSideBar = $get(0, terms(state));
       state = $add(['data', 'cardsInSideBar'], newTermForSideBar, state);
       state = $shift(['data', 'terms'], state);
     }
