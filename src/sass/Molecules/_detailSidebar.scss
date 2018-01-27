@@ -19,10 +19,22 @@ h2 {
   width: 100%;
 
   span {
+    position: relative;
     color: white;
     font-weight: bold;
     background: transparentize(color(black), 0.4);
-    padding: $size--small;
+    padding: $size--small 50px $size--small $size--small;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      border-top: 25px solid transparent;
+      border-bottom: 25px solid transparent;
+      border-right: 25px solid color(map);
+      top: 0;
+      right: 0;
+    }
   }
 }
 
