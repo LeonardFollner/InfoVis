@@ -4,7 +4,6 @@ import {selectors} from "../../Redux/index";
 import {connect} from "react-redux";
 
 import DetailSection from "./DetailSection";
-import ExitButton from "./ExitButton";
 import DetailMap from "./DetailMap";
 
 class DetailMain extends Component {
@@ -50,7 +49,6 @@ class DetailMain extends Component {
 
     return (
       <div className="detail-main">
-        <ExitButton/>
         {details.type === 'sections' ? this.renderSections(term) : this.renderMap(term)}
       </div>
     )

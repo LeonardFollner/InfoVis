@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import classnames from "classnames";
+import "font-awesome/css/font-awesome.css";
 
 class Icon extends Component {
   render() {
