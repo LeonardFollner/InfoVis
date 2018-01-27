@@ -44,7 +44,7 @@ export const reducer = handleActions({
     const cardsOnMap = $get(['data', 'cardsOnMap'], state);
     cardsOnMap.forEach(card => {
       if (card.id === parseInt(id, 10)) {
-        state = $set(['ui', 'detailsView', 'term'], card, state)
+        state = $set(['ui', 'detailsView', 'term'], card, state);
       }
     });
     state = $set(['ui', 'detailsView', 'isVisible'], true, state);

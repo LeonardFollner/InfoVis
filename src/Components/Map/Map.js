@@ -2,11 +2,12 @@
 import React, {Component} from 'react';
 import ReactDOMServer from 'react-dom/server';
 
-import CustomMarker from "./CustomMarker";
 import {actions, selectors} from "../../Redux/index";
 import {connect} from "react-redux";
 import {mapOverlayColorArab, mapOverlayColorEurope, mapOverlayTransparency} from "../../settings";
 import {TargetRegions} from "../../constants";
+
+import CustomTermMarker from "./CustomTermMarker";
 
 L.mapbox.accessToken = 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A';
 
@@ -53,7 +54,7 @@ class Map extends Component {
 
     // add markers for terms on map
     this.props.cardsOnMap.forEach(term => {
-      const iconHTML = ReactDOMServer.renderToStaticMarkup(<CustomMarker term={term}/>);
+      const iconHTML = ReactDOMServer.renderToStaticMarkup(<CustomTermMarker term={term}/>);
       const markerIcon = L.divIcon({
         html: iconHTML,
         className: 'classname-to-prevent-default-leaflet-rendering',
@@ -138,8 +139,6 @@ class Map extends Component {
     this.polygons.forEach(polygon => {
       polygon.addTo(this.map);
     });
-
-    L.polyline([[0.0, 0.0], [53.0, 13.0]], {color: 'red'}).addTo(this.map);
 
     this.forceUpdate();
   }
