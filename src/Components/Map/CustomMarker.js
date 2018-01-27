@@ -1,14 +1,7 @@
 import React, {Component} from 'react';
 import classnames from "classnames";
-import {TargetRegions} from "../../constants";
 
 class CustomMarker extends Component {
-  handleOnClick = () => {
-    if (this.props.term.targetRegion === TargetRegions.ARAB) {
-      this.props.handleOnClick(this.props.term.id)
-    }
-  };
-
   render() {
     const className = classnames("custom-marker");
 
@@ -19,7 +12,7 @@ class CustomMarker extends Component {
     };
 
     return (
-      <div className={className} onClick={this.handleOnClick} style={style}/>
+      <div className={className} style={style}/>
     );
   }
 }

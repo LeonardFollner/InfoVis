@@ -46,22 +46,22 @@ class Map extends Component {
 
   componentDidUpdate() {
     // remove all old markers
-    this.markers.forEach((marker) => {
+    Object.values(this.markers).forEach((marker) => {
       marker.remove();
     });
-    this.markers = [];
+    this.markers = {};
 
     // add markers for terms on map
     this.props.cardsOnMap.forEach(term => {
-      const iconHTML = ReactDOMServer.renderToStaticMarkup(<CustomMarker term={term}
-                                                                         handleOnClick={this.props.handleMarkerOnClick}/>);
+      const iconHTML = ReactDOMServer.renderToStaticMarkup(<CustomMarker term={term}/>);
       const markerIcon = L.divIcon({html: iconHTML});
 
-      this.markers.push(L.marker(term.coordinatesOnMap, {icon: markerIcon}));
+      this.markers[term.id] = (L.marker(term.coordinatesOnMap, {icon: markerIcon}));
     });
 
-    this.markers.forEach(marker => {
-      marker.on('click', this.props.handleMarkerOnClick);
+    Object.keys(this.markers).forEach(termId => {
+      const marker = this.markers[termId];
+      marker.on('click', this.props.handleMarkerOnClick(termId));
       marker.addTo(this.map);
     });
 
@@ -77,7 +77,7 @@ class Map extends Component {
   }
 
   componentDidMount() {
-    this.markers = [];
+    this.markers = {};
     this.polygons = [];
 
     const {lng, lat, zoom} = this.state;
@@ -136,6 +136,8 @@ class Map extends Component {
     });
 
     L.polyline([[0.0, 0.0], [53.0, 13.0]], {color: 'red'}).addTo(this.map);
+
+    this.forceUpdate();
   }
 
   render() {
@@ -163,7 +165,9 @@ const mapDispatchToProps = dispatch => {
     cardDroppedRight: (id, lngLat) => {
       dispatch(actions.Data.terms.cardDroppedRight(id, lngLat));
     },
-    handleMarkerOnClick: id => dispatch(actions.UI.DetailsView.markerClicked(id))
+    handleMarkerOnClick: id => {
+      return () => dispatch(actions.UI.DetailsView.markerClicked(id));
+    }
   }
 };
 
