@@ -1,7 +1,5 @@
 import React, {PureComponent} from 'react';
-import {DragDropContext} from 'react-dnd';
 import {connect} from "react-redux";
-import HTML5Backend from 'react-dnd-html5-backend';
 
 import {selectors} from "../Redux";
 import SideBar from "./SideBar";
@@ -26,4 +24,4 @@ const mapStateToProps = state => {
   }
 };
 
-export default connect(mapStateToProps, null)(DragDropContext(HTML5Backend)(Prototyp));
+export default connect(mapStateToProps)(Prototyp);
