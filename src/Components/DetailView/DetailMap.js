@@ -9,7 +9,7 @@ import {createMap} from "../Map/Map";
 
 class DetailMap extends Component {
   componentDidMount() {
-    this.map = createMap(this.mapContainer);
+    this.map = createMap(this.mapContainer, 4.0);
 
     const linePoints = [];
 

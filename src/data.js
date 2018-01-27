@@ -2,34 +2,6 @@ import {TargetRegions} from "./constants";
 
 const data = [
   {
-    "id": 8,
-    "name": "Mokka",
-    "arab": "",
-    "description": "Unter Mokka oder Türkischem Kaffee versteht man einen Kaffee, der auf ursprüngliche Art durch Aufgießen von Wasser in einem mit staubfein gemahlenem Kaffeepulver gefüllten Kännchen (Ibrik) im Sandbett in der Glut einer Feuerstelle oder auf einer heißen Kochplatte hergestellt wird. Es handelt sich um die ursprünglichste Art der Kaffeezubereitung. Daher war vor der Erfindung des Filterkaffees jeder Kaffee ein Mokka-Kaffee. Charakteristisch für den Mokka ist der beim Einschenken in die Tasse miteingeschenkte Kaffeesatz.",
-    "details": {
-      "type": "map",
-      "changes": [
-        {
-          "location": "Mokka",
-          "description": "Die Bezeichnung Mokka leitet sich von der jemenitischen Hafenstadt al-Muchā (Mokka) am Roten Meer ab, von wo der ursprünglich aus Äthiopien stammende Kaffee der Sorte Coffea arabica in alle Welt verschifft wurde."
-        },
-        {
-          "location": "Istanbul",
-          "description": "Griechischer und Türkischer Mokka sind identisch, da die Griechen die Zubereitung des Mokka-Kaffees während der Osmanischen Herrschaft von den Türken übernommen haben."
-        },
-        {
-          "location": "Venedig",
-          "description": "Bis ins 16. Jahrhundert war sie eine der größten Handelsstädte, über die der Handel zwischen Westeuropa und dem östlichen Mittelmeer abgewickelt wurde. Venedig unterhielt die meisten Handels- und Kriegsschiffe."
-        },
-        {
-          "location": "Dresden",
-          "description": "Seit 2013 gehören die Zubereitung von Mokka und die Türkische Kaffeekultur zum immateriellen Unesco-Weltkulturerbe."
-        }
-      ]
-    },
-    "targetRegion": TargetRegions.ARAB
-  },
-  {
     "id": 0,
     "name": "Alkohol",
     "arab": "",
@@ -204,6 +176,34 @@ const data = [
         {
           "teaser": "teaser",
           "fullDetail": "Auch der Name des sofaähnlichen Ottomane (osmanisch) abgeleitet vom ersten Osmanenherrscher, weist auf das Bestreben hin, osmanischen Komfort nachzuahmen. Im deutschen, wo aus dem Französischen stammendes soffa erstmals 1694 belegt ist, wird bis Mitte des 18 Jh unter soffa / Sofa noch die türkische Sitzgelegenheit verstanden, etwas später ist das Wort dann in der modernen Bedeutung bezeugt."
+        }
+      ]
+    },
+    "targetRegion": TargetRegions.ARAB
+  },
+  {
+    "id": 8,
+    "name": "Mokka",
+    "arab": "",
+    "description": "Unter Mokka oder Türkischem Kaffee versteht man einen Kaffee, der auf ursprüngliche Art durch Aufgießen von Wasser in einem mit staubfein gemahlenem Kaffeepulver gefüllten Kännchen (Ibrik) im Sandbett in der Glut einer Feuerstelle oder auf einer heißen Kochplatte hergestellt wird. Es handelt sich um die ursprünglichste Art der Kaffeezubereitung. Daher war vor der Erfindung des Filterkaffees jeder Kaffee ein Mokka-Kaffee. Charakteristisch für den Mokka ist der beim Einschenken in die Tasse miteingeschenkte Kaffeesatz.",
+    "details": {
+      "type": "map",
+      "changes": [
+        {
+          "location": "Mokka",
+          "description": "Die Bezeichnung Mokka leitet sich von der jemenitischen Hafenstadt al-Muchā (Mokka) am Roten Meer ab, von wo der ursprünglich aus Äthiopien stammende Kaffee der Sorte Coffea arabica in alle Welt verschifft wurde."
+        },
+        {
+          "location": "Istanbul",
+          "description": "Griechischer und Türkischer Mokka sind identisch, da die Griechen die Zubereitung des Mokka-Kaffees während der Osmanischen Herrschaft von den Türken übernommen haben."
+        },
+        {
+          "location": "Venedig",
+          "description": "Bis ins 16. Jahrhundert war sie eine der größten Handelsstädte, über die der Handel zwischen Westeuropa und dem östlichen Mittelmeer abgewickelt wurde. Venedig unterhielt die meisten Handels- und Kriegsschiffe."
+        },
+        {
+          "location": "Dresden",
+          "description": "Seit 2013 gehören die Zubereitung von Mokka und die Türkische Kaffeekultur zum immateriellen Unesco-Weltkulturerbe."
         }
       ]
     },
