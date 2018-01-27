@@ -6,21 +6,17 @@ import CustomMarker from "./CustomMarker";
 import {actions, selectors} from "../../Redux/index";
 import {connect} from "react-redux";
 import {mapOverlayColorArab, mapOverlayColorEurope, mapOverlayTransparency} from "../../settings";
+import {TargetRegions} from "../../constants";
 
 L.mapbox.accessToken = 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A';
 
 class Map extends Component {
   allowDrop = event => {
-    event.preventDefault();
     const mouseX = event.screenX;
     const mouseY = event.screenY;
-    //const layersUnderCursor = this.map.queryRenderedFeatures([mouseX, mouseY]);
-
-    /*layersUnderCursor.forEach(feature => {
-      if (feature.layer.id === this.props.targetRegionOfDraggedCard) {
-        event.preventDefault();
-      }
-    });*/
+    if (document.elementFromPoint(mouseX, mouseY).classList[0] === this.props.targetRegionOfDraggedCard) {
+      event.preventDefault();
+    }
   };
   drop = event => {
     const mouseX = event.screenX;
@@ -115,6 +111,7 @@ class Map extends Component {
         bottomLeftCorner
       ],
       {
+        className: TargetRegions.EUROPE,
         fillColor: mapOverlayColorEurope,
         fillOpacity: mapOverlayTransparency,
         fill: false,
@@ -126,6 +123,7 @@ class Map extends Component {
         bottomLeftCorner
       ],
       {
+        className: TargetRegions.ARAB,
         fillColor: mapOverlayColorArab,
         fillOpacity: mapOverlayTransparency,
         fill: false,
