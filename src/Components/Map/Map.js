@@ -6,10 +6,10 @@ import {actions, selectors} from "../../Redux/index";
 import {connect} from "react-redux";
 import {mapOverlayColorArab, mapOverlayColorEurope, mapOverlayTransparency} from "../../settings";
 import {TargetRegions} from "../../constants";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css"
 
 import CustomTermMarker from "./CustomTermMarker";
-
-L.mapbox.accessToken = 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A';
 
 class Map extends Component {
   allowDrop = event => {
@@ -31,15 +31,6 @@ class Map extends Component {
 
     this.props.cardDroppedRight(id, lngLat);
   };
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      lng: 28,
-      lat: 41,
-      zoom: 4.5
-    };
-  }
 
   dragEnterHandler = e => {
     e.preventDefault();
@@ -85,22 +76,7 @@ class Map extends Component {
     this.markers = {};
     this.polygons = [];
 
-    const {lng, lat, zoom} = this.state;
-
-    this.map = L.mapbox.map(
-      this.mapContainer,
-      'mapbox.streets',
-      {
-        center: [lat, lng],
-        zoom: zoom,
-        dragging: false,
-        touchZoom: false,
-        scrollWheelZoom: false,
-        doubleClickZoom: false,
-        boxZoom: false,
-        closePopupOnClick: false
-      }
-    );
+    this.map = createMap(this.mapContainer);
 
     const containerWidth = this.mapContainer.offsetWidth;
     const containerHeight = this.mapContainer.offsetHeight;
@@ -145,7 +121,7 @@ class Map extends Component {
 
   render() {
     return (
-      <div ref={el => this.mapContainer = el} className='map absolute top right left bottom' onDragOver={this.allowDrop}
+      <div ref={el => this.mapContainer = el} className='map' onDragOver={this.allowDrop}
            onDragEnter={this.dragEnterHandler}
            onDrop={this.drop}/>
     );
@@ -160,6 +136,31 @@ const mapStateToProps = () => {
       targetRegionOfDraggedCard: selectors.UI.Cards.targetRegionOfDraggedCard(state)
     }
   }
+};
+
+export const createMap = (mapContainer) => {
+  const map = L.map(
+    mapContainer,
+    {
+      center: [41, 28],
+      zoom: 4.5,
+      dragging: false,
+      touchZoom: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      closePopupOnClick: false,
+      zoomControl: false
+    }
+  );
+
+  L.tileLayer(
+    'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A'
+    }).addTo(map);
+
+  return map
 };
 
 const mapDispatchToProps = dispatch => {

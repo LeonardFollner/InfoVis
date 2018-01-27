@@ -5,36 +5,11 @@ import ReactDOMServer from 'react-dom/server';
 import CustomLocationMarker from "./CustomLocationMarker";
 import {selectors} from "../../Redux";
 import {connect} from "react-redux";
-
-L.mapbox.accessToken = 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A';
+import {createMap} from "../Map/Map";
 
 class DetailMap extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lng: 28,
-      lat: 41,
-      zoom: 4
-    };
-  }
-
   componentDidMount() {
-    const {lng, lat, zoom} = this.state;
-
-    this.map = L.mapbox.map(
-      this.mapContainer,
-      'mapbox.streets',
-      {
-        center: [lat, lng],
-        zoom: zoom,
-        dragging: false,
-        touchZoom: false,
-        scrollWheelZoom: false,
-        doubleClickZoom: false,
-        boxZoom: false,
-        closePopupOnClick: false
-      }
-    );
+    this.map = createMap(this.mapContainer);
 
     const linePoints = [];
 
