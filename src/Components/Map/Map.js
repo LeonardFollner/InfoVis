@@ -54,7 +54,7 @@ class Map extends Component {
     // add markers for terms on map
     this.props.cardsOnMap.forEach(term => {
       const iconHTML = ReactDOMServer.renderToStaticMarkup(<CustomMarker term={term}/>);
-      const markerIcon = L.divIcon({html: iconHTML});
+      const markerIcon = L.divIcon({html: iconHTML, className: 'classname-to-prevent-default-leaflet-rendering'});
 
       this.markers[term.id] = (L.marker(term.coordinatesOnMap, {icon: markerIcon}));
     });
