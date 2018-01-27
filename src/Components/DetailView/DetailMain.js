@@ -18,7 +18,7 @@ class DetailMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clickedSection: null
+      clickedSection: 0
     }
   };
 
