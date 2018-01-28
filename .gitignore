@@ -104,3 +104,4 @@ fabric.properties
 
 ### React
 *.css
+!src/fonts/PlayfairDisplay/PlayfairDisplay.css

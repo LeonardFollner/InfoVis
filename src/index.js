@@ -7,7 +7,7 @@ import {createStore} from "redux";
 import {combineReducers} from "./Utility/HandleActions";
 import {polyfill} from "mobile-drag-drop";
 import {scrollBehaviourDragImageTranslateOverride} from "mobile-drag-drop/scroll-behaviour";
-import 'font-awesome/css/font-awesome.min.css';
+import "./fonts/PlayfairDisplay/PlayfairDisplay.css";
 
 import Prototyp from './Components/Prototyp';
 
