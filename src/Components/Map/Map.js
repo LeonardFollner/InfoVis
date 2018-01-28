@@ -155,8 +155,7 @@ export const createMap = (mapContainer, zoom) => {
   );
 
   L.tileLayer(
-    'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-      id: 'mapbox.streets',
+    'https://api.mapbox.com/styles/v1/leonard-follner/cjcvwqre20vl02smsgkep9l51/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
       accessToken: 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A'
     }).addTo(map);
 
