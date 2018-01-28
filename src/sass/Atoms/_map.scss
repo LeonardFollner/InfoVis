@@ -1,6 +1,7 @@
 .map {
   height: inherit;
   width: 100%;
+  z-index: layer(map);
 }
 
 .map-main {

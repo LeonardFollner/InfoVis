@@ -1,4 +1,4 @@
-.custom-marker {
+.custom-term-marker {
   position: relative;
 
   height: $size--giant;
@@ -6,9 +6,12 @@
 
   border-radius: 50%;
 
+  background-color: color(card);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+
+  cursor: pointer;
 
   @include shadow__custom-marker;
   transition: 0.3s;
@@ -21,4 +24,16 @@
   &:active {
     transform: scale(1);
   }
+}
+
+.custom-location-marker {
+  width: 300px;
+
+  padding: $size--small;
+
+  background-color: color(card);
+
+  @include shadow__custom-marker;
+
+  cursor: initial;
 }
