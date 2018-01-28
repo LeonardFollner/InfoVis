@@ -1,6 +1,6 @@
 .main-container {
   height: inherit;
-  width: 100%;
+  width: $main-container-width;
   display: flex;
   z-index: layer(mainContainer);
 }

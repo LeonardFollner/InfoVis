@@ -2,7 +2,6 @@ import {createAction} from 'redux-actions';
 import {$add, $drop, $get, $set, $shift} from 'plow-js';
 import {handleActions} from '../../Utility/HandleActions';
 import {actionTypes as system} from '../System';
-import data from '../../data.js';
 import {maxNumberOfCardsOnMap} from "../../settings";
 
 // action types
@@ -15,7 +14,7 @@ const cardDroppedRight = createAction(CARD_DROPPED_RIGHT, (id, lngLat) => ({id, 
 
 export const reducer = handleActions({
   [system.INIT]: () => state => {
-    state = $set(['data', 'terms'], data, state);
+    state = $set(['data', 'terms'], window.data, state);
     state = $set(['data', 'cardsInSideBar'], [], state);
     state = $set(['data', 'cardsOnMap'], [], state);
     for (let i = 0; i < 5; i++) {

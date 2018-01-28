@@ -1,6 +1,4 @@
-import {TargetRegions} from "./constants";
-
-const data = [
+data = [
   {
     "id": 0,
     "name": "Alkohol",
@@ -27,7 +25,7 @@ const data = [
         }
       ]
     },
-    "targetRegion": TargetRegions.ARAB
+    "targetRegion": "Arab"
   },
   {
     "id": 1,
@@ -55,7 +53,7 @@ const data = [
         }
       ]
     },
-    "targetRegion": TargetRegions.ARAB
+    "targetRegion": "Arab"
   },
   {
     "id": 2,
@@ -64,7 +62,7 @@ const data = [
       "type": "sections",
       "changes": []
     },
-    "targetRegion": TargetRegions.EUROPE
+    "targetRegion": "Europe"
   },
   {
     "id": 3,
@@ -91,7 +89,7 @@ const data = [
         }
       ]
     },
-    "targetRegion": TargetRegions.ARAB
+    "targetRegion": "Arab"
   },
   {
     "id": 4,
@@ -100,7 +98,7 @@ const data = [
       "type": "sections",
       "changes": []
     },
-    "targetRegion": TargetRegions.EUROPE
+    "targetRegion": "Europe"
   },
   {
     "id": 5,
@@ -109,9 +107,8 @@ const data = [
       "type": "sections",
       "changes": []
     },
-    "targetRegion": TargetRegions.EUROPE
+    "targetRegion": "Europe"
   },
-
   {
     "id": 6,
     "name": "Magazin",
@@ -146,9 +143,8 @@ const data = [
         }
       ]
     },
-    "targetRegion": TargetRegions.ARAB
+    "targetRegion": "Arab"
   },
-
   {
     "id": 7,
     "name": "Sofa",
@@ -179,7 +175,7 @@ const data = [
         }
       ]
     },
-    "targetRegion": TargetRegions.ARAB
+    "targetRegion": "Arab"
   },
   {
     "id": 8,
@@ -207,7 +203,7 @@ const data = [
         }
       ]
     },
-    "targetRegion": TargetRegions.ARAB
+    "targetRegion": "Arab"
   },
   /*
   {
@@ -233,5 +229,3 @@ const data = [
     "targetRegion": TargetRegions.
   }*/
 ];
-
-export default data;

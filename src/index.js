@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Prototyp from './Components/Prototyp';
 import registerServiceWorker from './registerServiceWorker';
 import {actions, reducerArray} from "./Redux";
 import {Provider} from "react-redux";
@@ -8,6 +7,9 @@ import {createStore} from "redux";
 import {combineReducers} from "./Utility/HandleActions";
 import {polyfill} from "mobile-drag-drop";
 import {scrollBehaviourDragImageTranslateOverride} from "mobile-drag-drop/scroll-behaviour";
+import 'font-awesome/css/font-awesome.min.css';
+
+import Prototyp from './Components/Prototyp';
 
 const store = createStore(
   combineReducers(reducerArray),

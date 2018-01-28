@@ -1,8 +1,11 @@
 .map {
   height: inherit;
   width: 100%;
+  z-index: layer(map);
 }
 
-.mapboxgl-canvas {
-  cursor: auto;
+.map-main {
+  display: flex;
+  width: 100%;
+  height: inherit;
 }
