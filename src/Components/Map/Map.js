@@ -76,7 +76,7 @@ class Map extends Component {
     this.markers = {};
     this.polygons = [];
 
-    this.map = createMap(this.mapContainer, 4.5);
+    this.map = createMap(this.mapContainer);
 
     const containerWidth = this.mapContainer.offsetWidth;
     const containerHeight = this.mapContainer.offsetHeight;
@@ -138,12 +138,12 @@ const mapStateToProps = () => {
   }
 };
 
-export const createMap = (mapContainer, zoom) => {
+export const createMap = (mapContainer) => {
   const map = L.map(
     mapContainer,
     {
       center: [41, 28],
-      zoom: zoom,
+      zoom: 4.0,
       dragging: false,
       touchZoom: false,
       scrollWheelZoom: false,
