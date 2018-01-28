@@ -6,6 +6,10 @@
   box-shadow: 0 #{-$size--medium} $size--large $size--medium transparentize(color(black), 0.2);
 }
 
+@mixin shadow--bottom {
+  box-shadow: 0 $size--medium $size--large 0 transparentize(color(black), 0.8);
+}
+
 @mixin shadow--left-inset {
   box-shadow: inset 7px 0 9px -7px transparentize(color(black), 0.4);
 }

@@ -4,7 +4,7 @@ import {selectors} from "../../Redux/index";
 import {connect} from "react-redux";
 
 import DetailSection from "./DetailSection";
-import ExitButton from "./ExitButton";
+import DetailMap from "./DetailMap";
 
 class DetailMain extends Component {
   handleSectionOnClick = (index) => {
@@ -22,29 +22,37 @@ class DetailMain extends Component {
     }
   };
 
+  renderSections(term) {
+    const details = term.details;
+    const changes = details.changes;
+    return changes.map((currentValue, index) => {
+      return (
+        <DetailSection name={term.name}
+                       key={index}
+                       section={index}
+                       sectionsCount={changes.length}
+                       content={currentValue}
+                       isExpanded={this.state.clickedSection === index}
+                       isCollapsed={this.state.clickedSection !== index && this.state.clickedSection !== null}
+                       onClick={this.handleSectionOnClick}/>
+      );
+    });
+  }
+
+  renderMap(term) {
+    const details = term.details;
+    return <DetailMap changes={details.changes}/>
+  }
+
   render() {
-
     const term = this.props.termInDetailsView;
+    const details = term.details;
 
-    const changes = term.changes;
-    return(
+    return (
       <div className="detail-main">
-        <ExitButton/>
-        {changes.map((currentValue, index) => {
-          return (
-            <DetailSection name={term.name}
-                           key={index}
-                           section={index}
-                           sectionsCount={changes.length}
-                           content={currentValue}
-                           isExpanded={this.state.clickedSection === index}
-                           isCollapsed={this.state.clickedSection !== index && this.state.clickedSection !== null}
-                           onClick={this.handleSectionOnClick}/>
-          );
-        })}
+        {details.type === 'sections' ? this.renderSections(term) : this.renderMap(term)}
       </div>
-    );
-
+    )
   }
 }
 

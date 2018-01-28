@@ -1,37 +1,24 @@
+/* eslint-disable */
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import mapboxgl from 'mapbox-gl'
+import ReactDOMServer from 'react-dom/server';
 
-import CustomMarker from "./CustomMarker";
 import {actions, selectors} from "../../Redux/index";
 import {connect} from "react-redux";
 import {mapOverlayColorArab, mapOverlayColorEurope, mapOverlayTransparency} from "../../settings";
 import {TargetRegions} from "../../constants";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css"
 
-mapboxgl.accessToken = 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A';
+import CustomTermMarker from "./CustomTermMarker";
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lng: 27.8770,
-      lat: 41.7667,
-      zoom: 3.25
-    };
-  }
-
   allowDrop = event => {
     const mouseX = event.screenX;
     const mouseY = event.screenY;
-    const layersUnderCursor = this.map.queryRenderedFeatures([mouseX, mouseY]);
-
-    layersUnderCursor.forEach(feature => {
-      if (feature.layer.id === this.props.targetRegionOfDraggedCard) {
-        event.preventDefault();
-      }
-    });
+    if (document.elementFromPoint(mouseX, mouseY).classList[0] === this.props.targetRegionOfDraggedCard) {
+      event.preventDefault();
+    }
   };
-
   drop = event => {
     const mouseX = event.screenX;
     const mouseY = event.screenY;
@@ -40,7 +27,7 @@ class Map extends Component {
     const mouseRelativeY = mouseY - y;
 
     const id = event.dataTransfer.getData("text/plain");
-    const lngLat = this.map.unproject([mouseRelativeX, mouseRelativeY]);
+    const lngLat = this.map.layerPointToLatLng([mouseRelativeX, mouseRelativeY]);
 
     this.props.cardDroppedRight(id, lngLat);
   };
@@ -49,137 +36,92 @@ class Map extends Component {
     e.preventDefault();
   };
 
-  generateCustomMarker(term, tooltipContainer) {
-    ReactDOM.render(
-      React.createElement(
-        CustomMarker, {
-          term: term,
-          handleOnClick: this.props.handleMarkerOnClick
-          }
-
-
-      ),
-      tooltipContainer
-    );
-  }
-
   componentDidUpdate() {
     // remove all old markers
-    this.markers.forEach((marker) => {
+    Object.values(this.markers).forEach((marker) => {
       marker.remove();
     });
-    this.markers = [];
+    this.markers = {};
 
     // add markers for terms on map
     this.props.cardsOnMap.forEach(term => {
-      // Container to put React generated content in, not added to DOM
-      const tooltipContainer = document.createElement('div');
+      const iconHTML = ReactDOMServer.renderToStaticMarkup(<CustomTermMarker term={term}/>);
+      const markerIcon = L.divIcon({
+        html: iconHTML,
+        className: 'classname-to-prevent-default-leaflet-rendering',
+        iconAnchor: [135 / 2, 135 / 2] //make marker drop directly under cursor, half of css-width
+      });
 
-      this.generateCustomMarker(term, tooltipContainer);
+      this.markers[term.id] = (L.marker(term.coordinatesOnMap, {icon: markerIcon}));
+    });
 
-      this.markers.push(new mapboxgl.Marker(tooltipContainer)
-        .setLngLat([
-          term.coordinatesOnMap.lng,
-          term.coordinatesOnMap.lat
-        ])
-        .addTo(this.map));
+    Object.keys(this.markers).forEach(termId => {
+      const marker = this.markers[termId];
+      marker.on('click', this.props.handleMarkerOnClick(termId));
+      marker.addTo(this.map);
     });
 
     // render region highlights
-    this.map.setLayoutProperty(TargetRegions.EUROPE, 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
-    this.map.setLayoutProperty(TargetRegions.ARAB, 'visibility', this.props.isCardBeingDragged ? 'visible' : 'none');
+    this.polygons.map(polygon => {
+      polygon.setStyle({fill: this.props.isCardBeingDragged});
+      return polygon;
+    });
+    this.polygons.forEach(polygon => {
+      polygon.bringToFront().redraw();
+      polygon.addTo(this.map);
+    });
   }
 
   componentDidMount() {
-    this.markers = [];
+    this.markers = {};
+    this.polygons = [];
 
-    const {lng, lat, zoom} = this.state;
+    this.map = createMap(this.mapContainer, 4.5);
 
-    this.map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: 'mapbox://styles/leonard-follner/cjcvwqre20vl02smsgkep9l51',
-      center: [lng, lat],
-      zoom
+    const containerWidth = this.mapContainer.offsetWidth;
+    const containerHeight = this.mapContainer.offsetHeight;
+
+    const topLeftCorner = this.map.layerPointToLatLng([0, 0]);
+    const topRightCorner = this.map.layerPointToLatLng([containerWidth, 0]);
+    const bottomLeftCorner = this.map.layerPointToLatLng([0, containerHeight]);
+    const bottomRightCorner = this.map.layerPointToLatLng([containerWidth, containerHeight]);
+
+    this.polygons.push(L.polygon([
+        topLeftCorner,
+        topRightCorner,
+        bottomLeftCorner
+      ],
+      {
+        className: TargetRegions.EUROPE,
+        fillColor: mapOverlayColorEurope,
+        fillOpacity: mapOverlayTransparency,
+        fill: false,
+        stroke: false
+      }));
+    this.polygons.push(L.polygon([
+        topRightCorner,
+        bottomRightCorner,
+        bottomLeftCorner
+      ],
+      {
+        className: TargetRegions.ARAB,
+        fillColor: mapOverlayColorArab,
+        fillOpacity: mapOverlayTransparency,
+        fill: false,
+        stroke: false
+      }
+    ));
+
+    this.polygons.forEach(polygon => {
+      polygon.addTo(this.map);
     });
 
-    // disable all interaction
-    this.map.boxZoom.disable();
-    this.map.scrollZoom.disable();
-    this.map.dragPan.disable();
-    this.map.dragRotate.disable();
-    this.map.keyboard.disable();
-    this.map.doubleClickZoom.disable();
-    this.map.touchZoomRotate.disable();
-
-
-    this.map.on('load', () => {
-      const containerWidth = this.mapContainer.offsetWidth;
-      const containerHeight = this.mapContainer.offsetHeight;
-
-      const topLeftCorner = this.map.unproject([0, 0]);
-      const topRightCorner = this.map.unproject([containerWidth, 0]);
-      const bottomLeftCorner = this.map.unproject([0, containerHeight]);
-      const bottomRightCorner = this.map.unproject([containerWidth, containerHeight]);
-
-      this.map.addLayer({
-        'id': TargetRegions.EUROPE,
-        'type': 'fill',
-        'source': {
-          'type': 'geojson',
-          'data': {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Polygon',
-              'coordinates': [[
-                [topLeftCorner.lng, topLeftCorner.lat],
-                [topRightCorner.lng, topRightCorner.lat],
-                [bottomLeftCorner.lng, bottomLeftCorner.lat],
-                [topLeftCorner.lng, topLeftCorner.lat]
-              ]]
-            }
-          }
-        },
-        'layout': {},
-        'paint': {
-          'fill-color': mapOverlayColorEurope,
-          'fill-opacity': mapOverlayTransparency
-        }
-      });
-      this.map.addLayer({
-        'id': TargetRegions.ARAB,
-        'type': 'fill',
-        'source': {
-          'type': 'geojson',
-          'data': {
-            'type': 'Feature',
-            'geometry': {
-              'type': 'Polygon',
-              'coordinates': [[
-                [topRightCorner.lng, topRightCorner.lat],
-                [bottomRightCorner.lng, bottomRightCorner.lat],
-                [bottomLeftCorner.lng, bottomLeftCorner.lat],
-                [topRightCorner.lng, topRightCorner.lat]
-              ]]
-            }
-          }
-        },
-        'layout': {},
-        'paint': {
-          'fill-color': mapOverlayColorArab,
-          'fill-opacity': mapOverlayTransparency
-        }
-      });
-
-      this.map.setLayoutProperty(TargetRegions.EUROPE, 'visibility', 'none');
-      this.map.setLayoutProperty(TargetRegions.ARAB, 'visibility', 'none');
-
-      this.forceUpdate();
-    });
+    this.forceUpdate();
   }
 
   render() {
     return (
-      <div ref={el => this.mapContainer = el} className='map absolute top right left bottom' onDragOver={this.allowDrop}
+      <div ref={el => this.mapContainer = el} className='map' onDragOver={this.allowDrop}
            onDragEnter={this.dragEnterHandler}
            onDrop={this.drop}/>
     );
@@ -196,13 +138,40 @@ const mapStateToProps = () => {
   }
 };
 
+export const createMap = (mapContainer, zoom) => {
+  const map = L.map(
+    mapContainer,
+    {
+      center: [41, 28],
+      zoom: zoom,
+      dragging: false,
+      touchZoom: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      closePopupOnClick: false,
+      zoomControl: false
+    }
+  );
+
+  L.tileLayer(
+    'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+      id: 'mapbox.streets',
+      accessToken: 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A'
+    }).addTo(map);
+
+  return map
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     toggleCardIsBeingDragged: () => dispatch(actions.UI.Cards.toggleCardIsBeingDragged()),
     cardDroppedRight: (id, lngLat) => {
       dispatch(actions.Data.terms.cardDroppedRight(id, lngLat));
     },
-    handleMarkerOnClick: id => dispatch(actions.UI.DetailsView.markerClicked(id))
+    handleMarkerOnClick: id => {
+      return () => dispatch(actions.UI.DetailsView.markerClicked(id));
+    }
   }
 };
 

@@ -1,0 +1,13 @@
+.taskbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $main-container-width;
+  padding: $size--small;
+
+  background-color: color(faded);
+
+  z-index: layer(taskbar);
+
+  @include shadow--bottom;
+}
