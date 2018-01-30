@@ -21,7 +21,7 @@
 }
 
 .card {
-  position: relative;
+  position: absolute;
   right: 0;
 
   height: percentage(1/$cards-in-sidebar);
@@ -34,9 +34,16 @@
 
   cursor: pointer;
 
-  transition: right $animation-default-length;
+  transition: right $animation-default-length, top 0.5s;
 
   @include filter--brown;
+
+  @for $i from 0 through $cards-in-sidebar + 1 {
+    &:nth-of-type(#{$i}) {
+      top: ($i - 1) * percentage(1/$cards-in-sidebar);
+      z-index: $cards-in-sidebar - $i;
+    }
+  }
 
   &:hover {
     @include mq(large) {
@@ -67,7 +74,7 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
 
-    @for $i from 1 through 10 {
+    @for $i from 1 through $cards-in-sidebar {
       &:nth-of-type(#{$i}) {
         animation-delay: random(60)+s;
       }
