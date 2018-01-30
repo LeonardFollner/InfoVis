@@ -12,7 +12,7 @@ class DetailSidebar extends Component {
         <img className="detail-side-bar__image"
              src={"images/" + term.name.toLowerCase() + "/" + term.name.toLowerCase() + ".jpg"} alt={term.name}/>
 
-        <h2><span>{term.name}</span></h2>
+        <h2>{term.name}</h2>
         <p>{term.description}</p>
       </div>
     );

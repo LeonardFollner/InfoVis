@@ -64,7 +64,6 @@ $full-detail-height: 100px;
   }
 
   .details-section__teaser {
-    position: absolute;
     transform: rotate(0deg) translate(0, -$full-detail-height);
     padding: $size--small $size--medium;
   }

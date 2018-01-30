@@ -37,7 +37,7 @@ class Card extends Component {
     return (
       <div className={className} draggable={true} onDragStart={this.handleDragStart} onDragEnd={this.handleDragEnd}
            style={style}>
-        <h2><span>{this.props.term.name}</span></h2>
+        <h2>{this.props.term.name}</h2>
       </div>
     );
   }

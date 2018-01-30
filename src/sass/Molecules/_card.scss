@@ -53,16 +53,14 @@
 
   h2 {
     position: absolute;
-    left: 0;
     top: $size--large;
-    width: 100%;
+    width: 35%;
+    padding: $size--small;
 
-    span {
-      color: color(white);
-      font-weight: bold;
-      background: color(black);
-      padding: $size--small;
-    }
+    color: color(white);
+    font-weight: bold;
+
+    background: color(black);
   }
 
 }

@@ -51,8 +51,8 @@ class DetailSection extends Component {
            onMouseEnter={this.props.onClick(this.props.section)}
            onMouseOver={this.props.onClick(this.props.section)}
            onMouseLeave={this.props.onClick(null)}>
-        <p className="details-section__teaser"><span>{this.props.content.teaser}</span></p>
-        <p className="details-section__full-detail"><span>{this.props.content.fullDetail}</span></p>
+        <p className="details-section__teaser">{this.props.content.teaser}</p>
+        <p className="details-section__full-detail">{this.props.content.fullDetail}</p>
       </div>
     );
 
