@@ -121,22 +121,14 @@ class Map extends Component {
 
   render() {
     return (
-      <div ref={el => this.mapContainer = el} className='map' onDragOver={this.allowDrop}
+      <div ref={el => this.mapContainer = el}
+           className='map'
+           onDragOver={this.allowDrop}
            onDragEnter={this.dragEnterHandler}
            onDrop={this.drop}/>
     );
   }
 }
-
-const mapStateToProps = () => {
-  return (state) => {
-    return {
-      cardsOnMap: selectors.Data.terms.cardsOnMap(state),
-      isCardBeingDragged: selectors.UI.Cards.isCardBeingDragged(state),
-      targetRegionOfDraggedCard: selectors.UI.Cards.targetRegionOfDraggedCard(state)
-    }
-  }
-};
 
 export const createMap = (mapContainer) => {
   const map = L.map(
@@ -160,6 +152,16 @@ export const createMap = (mapContainer) => {
     }).addTo(map);
 
   return map
+};
+
+const mapStateToProps = () => {
+  return (state) => {
+    return {
+      cardsOnMap: selectors.Data.terms.cardsOnMap(state),
+      isCardBeingDragged: selectors.UI.Cards.isCardBeingDragged(state),
+      targetRegionOfDraggedCard: selectors.UI.Cards.targetRegionOfDraggedCard(state)
+    }
+  }
 };
 
 const mapDispatchToProps = dispatch => {
