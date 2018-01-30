@@ -39,7 +39,9 @@
   @include filter--brown;
 
   &:hover {
-    @include card--shaking;
+    @include mq(large) {
+      @include card--shaking;
+    }
   }
 
   h2 {
@@ -59,14 +61,16 @@
 }
 
 .card--isIdle {
-  //animation-name: shake;
-  //animation-duration: 10s;
-  //animation-iteration-count: infinite;
-  //animation-timing-function: ease-in-out;
+  @include mq(medium) {
+    animation-name: shake;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 
-  //@for $i from 1 through 10 {
-  //  &:nth-of-type(#{$i}) {
-  //    animation-delay: random(60)+s;
-  //  }
-  //}
+    @for $i from 1 through 10 {
+      &:nth-of-type(#{$i}) {
+        animation-delay: random(60)+s;
+      }
+    }
+  }
 }

@@ -7,7 +7,7 @@ class TaskBar extends Component {
 
     return (
       <div className={className}>
-        Ordne die Begriffe nach ihrem Ursprung in den europäischen oder den arabischen Sprachraum ein.
+        Ordne die Begriffe nach ihrem Ursprung in den europäischen oder arabischen Sprachraum ein.
       </div>
     );
   }
