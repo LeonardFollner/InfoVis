@@ -1,4 +1,5 @@
 export const maxNumberOfCardsOnMap = 3;
+export const swipeGestures = false;
 
 export const mapOverlayTransparency = 0.65;
 export const mapOverlayColorEurope = '#5F9EA0';

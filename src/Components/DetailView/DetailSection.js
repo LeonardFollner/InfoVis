@@ -1,19 +1,22 @@
 import React, {Component} from 'react';
 import classnames from "classnames";
 import * as Hammer from 'hammerjs';
+import {swipeGestures} from "../../settings";
 
 class DetailSection extends Component {
   componentDidUpdate() {
     if (this.props.isExpanded) {
       this.elem.className += " details-section--expanded";
-      const hammer = Hammer(this.elem);
-      hammer.on('pan', function (event) {
-        if (event.direction === 2) { // left
-          this.props.onClick(this.props.section + 1)();
-        } else if (event.direction === 4) { // right
-          this.props.onClick(this.props.section - 1)();
-        }
-      }.bind(this));
+      if (swipeGestures) {
+        const hammer = Hammer(this.elem);
+        hammer.on('pan', function (event) {
+          if (event.direction === 2) { // left
+            this.props.onClick(this.props.section + 1)();
+          } else if (event.direction === 4) { // right
+            this.props.onClick(this.props.section - 1)();
+          }
+        }.bind(this));
+      }
     } else {
       this.elem.className = "details-section details-section-" + this.props.sectionsCount;
       if (this.props.isCollapsed) {
