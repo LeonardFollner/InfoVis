@@ -41,10 +41,13 @@ $full-detail-height: 100px;
 
   .details-section__teaser {
     position: absolute;
+    padding: $size--medium;
+
     transition: all 0.5s;
     transform: translate(0, 0);
     transform-origin: top left;
-    padding: $size--medium;
+
+    font-size: 1.3rem;
   }
 
   .detail-section__image {
@@ -69,11 +72,10 @@ $full-detail-height: 100px;
 
 .details-section--collapsed {
   .details-section__teaser {
-    position: absolute;
-    transform-origin: top left;
-    transform: rotate(-90deg);
     width: 300px;
-    padding: $size--small $size--medium;
+    padding: $size--small 0;
+
+    transform: rotate(-90deg);
   }
 }
 
