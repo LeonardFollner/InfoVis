@@ -10,4 +10,11 @@
   z-index: layer(taskbar);
 
   @include shadow--bottom;
+
+  transition: all 1.5s;
+  transform: translate(0, 0);
+}
+
+.taskbar--hidden {
+  transform: translate(0, -500%);
 }
