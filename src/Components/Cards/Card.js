@@ -21,6 +21,13 @@ class Card extends Component {
     };
   }
 
+  // dirty workaround: dragEnd-Handler is not called on successful unmount because component is unmounted too early (?)
+  componentWillUnmount() {
+    if (this.state.isBeingDragged) {
+      this.handleDragEnd();
+    }
+  }
+
   render() {
     const className = classnames(
       "card",
