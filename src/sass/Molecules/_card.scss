@@ -55,7 +55,7 @@
     position: absolute;
     top: $size--large;
     width: 35%;
-    padding: $size--small;
+    padding: $size--small $size--small $size--small $size--medium;
 
     color: color(white);
     font-weight: bold;

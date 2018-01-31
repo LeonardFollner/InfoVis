@@ -4,35 +4,35 @@
   height: 100%;
   @include shadow--left-inset;
 
-.detail-side-bar__image {
-  max-width:100%;
-  max-height: 100%;
-  position: relative;
+  .detail-side-bar__image {
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
 
-  @include filter--brown;
-}
-
-h2 {
-  left: 0;
-  width: 50%;
-
-  position: relative;
-  color: white;
-  font-weight: bold;
-  background: transparentize(color(black), 0.4);
-  padding: $size--small 50px $size--small $size--medium;
-
-  &:after {
-    content: '';
-    display: block;
-    position: absolute;
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-    border-right: 25px solid color(map);
-    top: 0;
-    right: 0;
+    @include filter--brown;
   }
-}
+
+  h2 {
+    left: 0;
+    width: 50%;
+
+    position: relative;
+    color: white;
+    font-weight: bold;
+    background: transparentize(color(black), 0.4);
+    padding: $size--small 50px $size--small $size--medium;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      border-top: 25px solid transparent;
+      border-bottom: 25px solid transparent;
+      border-right: 25px solid color(map);
+      top: 0;
+      right: 0;
+    }
+  }
 
   p {
     padding: 0 $size--small 0 $size--small;
