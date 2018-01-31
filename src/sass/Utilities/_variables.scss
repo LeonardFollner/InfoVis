@@ -28,8 +28,11 @@ $layers: (
         mainContainer
 );
 
+$font-family: "Playfair Display", serif;
+
 $font-sizes: (
-        medium: 20px
+        normal: 1rem,
+        headline: 1.5rem
 );
 
 $breakpoints: (

@@ -48,7 +48,6 @@ $full-detail-height: 100px;
     transform-origin: top left;
 
     color: color(white);
-    font-size: 1.3rem;
   }
 
   .detail-section__image {
@@ -62,6 +61,8 @@ $full-detail-height: 100px;
 
   .details-section__full-detail {
     top: 0;
+
+    overflow: scroll;
   }
 
   .details-section__teaser {

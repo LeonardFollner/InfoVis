@@ -1,3 +1,6 @@
+$banner-height: 3rem;
+$detail-sidebar-image-height: 30%;
+
 .detail-side-bar {
   width: 100%;
   background: color(map);
@@ -5,40 +8,60 @@
   @include shadow--left-inset;
 
   .detail-side-bar__image {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: $detail-sidebar-image-height;
     position: relative;
+
+    background: color(map);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
 
     @include filter--brown;
   }
 
-  h2 {
-    left: 0;
-    width: 50%;
-    min-width: 170px;
+  .detail-side-bar__content {
+    display: flex;
+    flex-direction: column;
 
-    position: relative;
-    color: white;
-    font-weight: bold;
-    background: transparentize(color(black), 0.4);
-    padding: $size--small 50px $size--small $size--medium;
+    height: 100% - $detail-sidebar-image-height;
 
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      border-top: 25px solid transparent;
-      border-bottom: 25px solid transparent;
-      border-right: 25px solid color(map);
-      top: 0;
-      right: 0;
+    h2 {
+      display: flex;
+      align-items: center;
+
+      width: 50%;
+      min-width: 170px;
+      height: $banner-height;
+
+      padding: $size--small 50px $size--small $size--medium;
+      margin-bottom: $size--small;
+
+      position: relative;
+      color: color(white);
+      font-weight: bold;
+
+      background: transparentize(color(black), 0.4);
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+
+        top: 0;
+        right: 0;
+
+        border-top: $banner-height/2 solid transparent;
+        border-bottom: $banner-height/2 solid transparent;
+        border-right: $banner-height/2 solid color(map);
+      }
+    }
+
+    p {
+      padding: 0 $size--medium $size--medium;
+      margin: 0;
+
+      overflow: scroll;
     }
   }
-
-  p {
-    padding: 0 $size--small 0 $size--small;
-    margin: 0;
-    font-size: font-size(medium);
-  }
-
 }
