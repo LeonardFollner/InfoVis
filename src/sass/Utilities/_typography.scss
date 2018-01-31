@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 
 p {
-  font-size: font-size(normal);
+  @include font-size(normal);
 }
 
 h2 {
-  font-size: font-size(headline);
+  @include font-size(headline);
 }

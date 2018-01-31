@@ -11,9 +11,7 @@ $full-detail-height: 100px;
   position: relative;
 
   background: color(map);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  @include center-background-image();
 
   @include shadow--bottom-inset;
 

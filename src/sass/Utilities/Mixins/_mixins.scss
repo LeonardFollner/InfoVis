@@ -8,3 +8,28 @@
     }
   }
 }
+
+@mixin center-background-image($image: '') {
+  @if $image != '' {
+    background-image: $image;
+  }
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+@mixin font-size($size) {
+  @if map_has_key($font-sizes, $size) {
+    font-size: map-get($font-sizes, $size);
+  } @else {
+    @error '"#{size}" not found in "font-sizes"';
+  }
+}
+
+@mixin layer($name) {
+  @if index($layers, $name) {
+    z-index: 100 + (length($layers) - index($layers, $name)) * 100;
+  } @else {
+    @error '"#{$name}" not found in "layers"';
+  }
+}

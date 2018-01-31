@@ -2,7 +2,7 @@
   height: inherit;
   width: 100% - $main-container-width;
 
-  z-index: layer(sideBar);
+  @include layer(sideBar);
 
   border-left: 1px solid color(border);
 

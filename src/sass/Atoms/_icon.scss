@@ -1,9 +1,9 @@
 .icon--small {
-  font-size: font-size(normal);
+  @include font-size(normal);
 }
 
 .icon--medium {
-  font-size: font-size(headline);
+  @include font-size(headline);
 }
 
 .icon--large {

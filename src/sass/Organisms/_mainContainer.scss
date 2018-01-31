@@ -2,5 +2,5 @@
   height: inherit;
   width: $main-container-width;
   display: flex;
-  z-index: layer(mainContainer);
+  @include layer(mainContainer);
 }

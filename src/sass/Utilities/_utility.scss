@@ -6,24 +6,6 @@
   }
 }
 
-@function font-size($name) {
-  @if map_has_key($font-sizes, $name) {
-    @return map-get($font-sizes, $name);
-  } @else {
-    @error '"#{$name}" not found in "font-sizes"';
-  }
-}
-
-@function layer($name) {
-  @if index($layers, $name) {
-    @return 100 + (length($layers) - index($layers, $name)) * 100;
-  } @else {
-    @error '"#{$name}" not found in "layers"';
-  }
-
-  @return initial;
-}
-
 @function breakpoint($key) {
   @if map-has_key($breakpoints, $key) {
     @return map-get($breakpoints, $key);

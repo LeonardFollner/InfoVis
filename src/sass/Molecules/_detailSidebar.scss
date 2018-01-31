@@ -13,9 +13,7 @@ $detail-sidebar-image-height: 30%;
     position: relative;
 
     background: color(map);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+    @include center-background-image();
 
     @include filter--brown;
   }

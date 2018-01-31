@@ -7,14 +7,14 @@
 
   background-color: color(faded);
 
-  z-index: layer(taskbar);
+  @include layer(taskbar);
 
   @include shadow--bottom;
 
   transition: all 1.5s;
   transform: translate(0, 0);
 
-  font-size: font-size(normal);
+  @include font-size(normal);
 }
 
 .taskbar--hidden {
