@@ -20,7 +20,7 @@ h2 {
   color: white;
   font-weight: bold;
   background: transparentize(color(black), 0.4);
-  padding: $size--small 50px $size--small $size--small;
+  padding: $size--small 50px $size--small $size--medium;
 
   &:after {
     content: '';

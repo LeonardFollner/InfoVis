@@ -44,9 +44,10 @@ $full-detail-height: 100px;
     padding: $size--medium;
 
     transition: all 0.5s;
-    transform: translate3d(0, 0, 0);
+    transform: translate3d(0, -$size--medium, 0);
     transform-origin: top left;
 
+    color: color(white);
     font-size: 1.3rem;
   }
 
@@ -64,7 +65,7 @@ $full-detail-height: 100px;
   }
 
   .details-section__teaser {
-    transform: rotate3d(0, 0, 1, 0deg) translate3d(0, -$full-detail-height, 0);
+    transform: rotate3d(0, 0, 1, 0deg) translate3d(0, -$full-detail-height - $size--medium, 0);
     padding: $size--small $size--medium;
   }
 }
