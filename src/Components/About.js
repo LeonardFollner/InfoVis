@@ -1,0 +1,37 @@
+import React, {Component} from 'react';
+import classnames from "classnames";
+import {actions} from "../Redux";
+import {connect} from "react-redux";
+
+import ExitButton from "./DetailView/ExitButton";
+
+class About extends Component {
+  render() {
+    const className = classnames("about");
+
+    const handleOnBackgroundClick = event => {
+      event.stopPropagation();
+      this.props.toggleAboutPage();
+    };
+
+    return (
+      <div className={className} onClick={handleOnBackgroundClick}>
+        <div className="about__inner" onClick={event => event.stopPropagation()}>
+          <ExitButton onClick={this.props.toggleAboutPage}/>
+          <h1>Über dieses Projekt</h1>
+          <p>Anselm Bunsen & Leonard Follner</p>
+          <a href='https://github.com/LeonardFollner/InfoVis/issues/new' target='_blank' rel="noopener noreferrer">Einen
+            Fehler melden</a>
+        </div>
+      </div>
+    );
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    toggleAboutPage: () => dispatch(actions.UI.About.toggleAboutPage())
+  }
+};
+
+export default connect(null, mapDispatchToProps)(About);

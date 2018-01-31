@@ -128,16 +128,6 @@ class Map extends Component {
   }
 }
 
-const mapStateToProps = () => {
-  return (state) => {
-    return {
-      cardsOnMap: selectors.Data.terms.cardsOnMap(state),
-      isCardBeingDragged: selectors.UI.Cards.isCardBeingDragged(state),
-      targetRegionOfDraggedCard: selectors.UI.Cards.targetRegionOfDraggedCard(state)
-    }
-  }
-};
-
 export const createMap = (mapContainer, zoom) => {
   const map = L.map(
     mapContainer,
@@ -150,7 +140,8 @@ export const createMap = (mapContainer, zoom) => {
       doubleClickZoom: false,
       boxZoom: false,
       closePopupOnClick: false,
-      zoomControl: false
+      zoomControl: false,
+      attributionControl: false
     }
   );
 
@@ -161,6 +152,16 @@ export const createMap = (mapContainer, zoom) => {
     }).addTo(map);
 
   return map
+};
+
+const mapStateToProps = () => {
+  return (state) => {
+    return {
+      cardsOnMap: selectors.Data.terms.cardsOnMap(state),
+      isCardBeingDragged: selectors.UI.Cards.isCardBeingDragged(state),
+      targetRegionOfDraggedCard: selectors.UI.Cards.targetRegionOfDraggedCard(state)
+    }
+  }
 };
 
 const mapDispatchToProps = dispatch => {

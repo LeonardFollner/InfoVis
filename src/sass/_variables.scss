@@ -16,13 +16,16 @@ $colors: (
         border: #cccccc,
         faded: #cccccc,
         card: slategray,
-        red: crimson
+        red: crimson,
+        blue: cadetblue
 );
 
 $layers: (
         exitButton,
+        about,
         sideBar,
         taskbar,
+        aboutToggle,
         map,
         mainContainer
 );

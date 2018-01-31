@@ -1,0 +1,17 @@
+.about-toggle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  padding: $size--tiny;
+
+  background: transparentize(color(white), 0.4);
+  z-index: layer(aboutToggle);
+
+  font-size: 0.8rem;
+  color: color(blue);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
