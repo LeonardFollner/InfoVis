@@ -1,0 +1,17 @@
+.mobile-warning {
+  display: flex;
+  align-items: center;
+  padding: $size--large;
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-color: transparentize(color(black), 0.15);
+
+  color: color(red);
+  font-size: 2rem;
+  font-weight: bold;
+
+  z-index: layer(mobileWarning);
+}
