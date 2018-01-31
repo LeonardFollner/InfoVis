@@ -55,6 +55,7 @@
     position: absolute;
     top: $size--large;
     width: 35%;
+    min-width: 120px;
     padding: $size--small $size--small $size--small $size--medium;
 
     color: color(white);
