@@ -13,11 +13,7 @@
 
   @include layer(taskbar);
 
-  @include shadow--bottom;
-
   @include shadow--bottom-inset-small;
-
-
 
   transition: all 1.5s;
   transform: translate(0, 0);
