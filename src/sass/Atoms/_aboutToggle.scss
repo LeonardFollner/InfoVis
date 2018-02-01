@@ -6,7 +6,7 @@
   padding: $size--tiny;
 
   background: transparentize(color(white), 0.4);
-  z-index: layer(aboutToggle);
+  @include layer(aboutToggle);
 
   font-size: 0.8rem;
   color: color(blue);
