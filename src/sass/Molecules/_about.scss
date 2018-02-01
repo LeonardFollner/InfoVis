@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
 
-  background-color: transparentize(color(black), 0.1);
+  background-color: transparentize(color(black), 0.2);
   @include layer(about);
 }
 
@@ -16,13 +16,12 @@
 
   width: 70%;
   height: 50%;
-  background-color: inherit;
+  background-color: color(black);
 
   padding: $size--large;
 
   color: color(white);
 }
-
 
 a, a:visited, a:hover, a:active {
   color: color(white);
