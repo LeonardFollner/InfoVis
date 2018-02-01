@@ -104,3 +104,6 @@ fabric.properties
 
 ### React
 *.css
+
+# Secrets
+/src/secrets.js

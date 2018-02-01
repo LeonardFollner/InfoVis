@@ -10,6 +10,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css"
 
 import CustomTermMarker from "./CustomTermMarker";
+import {mapBoxAPI} from "../../secrets";
 
 class Map extends Component {
   allowDrop = event => {
@@ -150,7 +151,7 @@ export const createMap = (mapContainer, zoom) => {
   L.tileLayer(
     'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
       id: 'mapbox.streets',
-      accessToken: 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A'
+      accessToken: mapBoxAPI
     }).addTo(map);
 
   return map
