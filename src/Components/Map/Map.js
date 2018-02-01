@@ -20,6 +20,8 @@ class Map extends Component {
     }
   };
   drop = event => {
+    event.preventDefault();
+
     const mouseX = event.screenX;
     const mouseY = event.screenY;
     const {x, y} = this.mapContainer.getBoundingClientRect();
@@ -142,7 +144,8 @@ export const createMap = (mapContainer) => {
       doubleClickZoom: false,
       boxZoom: false,
       closePopupOnClick: false,
-      zoomControl: false
+      zoomControl: false,
+      attributionControl: false
     }
   );
 

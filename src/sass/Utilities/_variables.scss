@@ -17,13 +17,18 @@ $colors: (
         faded: #cccccc,
         card: slategray,
         map: #d2b8a7,
-        red: crimson
+        red: crimson,
+        blue: cadetblue
 );
+
 
 $layers: (
         exitButton,
+        mobileWarning,
+        about,
         sideBar,
         taskbar,
+        aboutToggle,
         map,
         mainContainer
 );
