@@ -18,6 +18,10 @@
   box-shadow: inset 0px -200px 200px 0px transparentize(color(black), 0.2);
 }
 
+@mixin shadow--bottom-inset-small {
+  box-shadow: inset 0px 0px 15px color(black);
+}
+
 @mixin shadow__custom-marker {
   box-shadow: 0 4px 8px 0 transparentize(color(black), 0.5);
 }

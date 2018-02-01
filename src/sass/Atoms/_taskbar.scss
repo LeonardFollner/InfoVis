@@ -5,11 +5,19 @@
   width: 100%;
   padding: $size--small;
 
-  background-color: color(faded);
+  background-color: color(brown);
+
+  color: color(white);
+
+  text-align: center;
 
   @include layer(taskbar);
 
   @include shadow--bottom;
+
+  @include shadow--bottom-inset-small;
+
+
 
   transition: all 1.5s;
   transform: translate(0, 0);
