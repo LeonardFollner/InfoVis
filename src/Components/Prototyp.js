@@ -7,6 +7,7 @@ import MainContainer from "./MainContainer";
 import ExitButton from "./ExitButton";
 import MobileWarning from "./MobileWarning";
 import {minimumDeviceWidthNeeded, mobileWarningMayBeIgnored} from "../settings";
+import About from "./About";
 
 class Prototyp extends PureComponent {
   constructor(props) {
@@ -33,6 +34,7 @@ class Prototyp extends PureComponent {
         {window.innerWidth < minimumDeviceWidthNeeded && !this.state.ignoreMobileWarning ?
           <MobileWarning onExitButtonClick={this.handleExitWarning()}/> : ''}
         {this.props.isDetailsViewVisible ? <ExitButton onClick={this.props.exitDetailsView}/> : ''}
+        {this.props.isAboutVisible ? <About/> : ''}
         <MainContainer detailsView={this.props.isDetailsViewVisible}/>
         <SideBar detailsView={this.props.isDetailsViewVisible}/>
       </div>
@@ -42,7 +44,8 @@ class Prototyp extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    isDetailsViewVisible: selectors.UI.DetailsView.isDetailsViewVisible(state)
+    isDetailsViewVisible: selectors.UI.DetailsView.isDetailsViewVisible(state),
+    isAboutVisible: selectors.UI.About.isAboutVisible(state)
   }
 };
 
