@@ -13,5 +13,6 @@
   font-size: 2rem;
   font-weight: bold;
 
-  z-index: layer(mobileWarning);
+  @include layer(mobileWarning);
 }
+

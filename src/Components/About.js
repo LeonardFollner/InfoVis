@@ -19,7 +19,7 @@ class About extends Component {
         <div className="about__inner" onClick={event => event.stopPropagation()}>
           <ExitButton onClick={this.props.toggleAboutPage}/>
           <h1>Über dieses Projekt</h1>
-          <p>Anselm Bunsen & Leonard Follner</p>
+          <p>Entwickelt von Anselm Bunsen & Leonard Follner für die SKD im Rahmen des Komplexpraktikum Informationsvisualisierung an der TU Dresden.</p>
           <a href='https://github.com/LeonardFollner/InfoVis/issues/new' target='_blank' rel="noopener noreferrer">Einen
             Fehler melden</a>
         </div>

@@ -78,7 +78,7 @@ class Map extends Component {
     this.markers = {};
     this.polygons = [];
 
-    this.map = createMap(this.mapContainer, 4.5);
+    this.map = createMap(this.mapContainer);
 
     const containerWidth = this.mapContainer.offsetWidth;
     const containerHeight = this.mapContainer.offsetHeight;
@@ -123,19 +123,21 @@ class Map extends Component {
 
   render() {
     return (
-      <div ref={el => this.mapContainer = el} className='map' onDragOver={this.allowDrop}
+      <div ref={el => this.mapContainer = el}
+           className='map'
+           onDragOver={this.allowDrop}
            onDragEnter={this.dragEnterHandler}
            onDrop={this.drop}/>
     );
   }
 }
 
-export const createMap = (mapContainer, zoom) => {
+export const createMap = (mapContainer) => {
   const map = L.map(
     mapContainer,
     {
       center: [41, 28],
-      zoom: zoom,
+      zoom: 4.0,
       dragging: false,
       touchZoom: false,
       scrollWheelZoom: false,
@@ -148,9 +150,8 @@ export const createMap = (mapContainer, zoom) => {
   );
 
   L.tileLayer(
-    'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-      id: 'mapbox.streets',
-      accessToken: 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqOXp5cnNwODh1MTkycWxnZHJnbnk2Z2IifQ.qFUBQPX9proV_Bj0mvdk2A'
+    'https://api.mapbox.com/styles/v1/leonard-follner/cjcvwqre20vl02smsgkep9l51/tiles/256/{z}/{x}/{y}?access_token={accessToken}', {
+      accessToken: 'pk.eyJ1IjoibGVvbmFyZC1mb2xsbmVyIiwiYSI6ImNqZDQ5amdlZjE0cjQycW9xczFkbGszOGIifQ.rn8ISxlnQ1BKDgv8OFY6BQ'
     }).addTo(map);
 
   return map

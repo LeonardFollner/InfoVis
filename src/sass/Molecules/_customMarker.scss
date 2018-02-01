@@ -7,9 +7,9 @@
   border-radius: 50%;
 
   background-color: color(card);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  @include center-background-image();
+
+  @include filter--brown;
 
   cursor: pointer;
 
@@ -36,4 +36,10 @@
   @include shadow__custom-marker;
 
   cursor: initial;
+
+  font-family: $font-family;
+
+  h2 {
+    margin: 0;
+  }
 }

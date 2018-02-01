@@ -1,48 +1,51 @@
+$full-detail-height: 100px;
+
 .details-section {
   display: flex;
-  justify-content: center;
+  flex-flow: column;
+  justify-content: flex-end;
 
   height: 100%;
 
-  align-items: flex-end;
-  align-content: center;
-
   overflow: hidden;
+  position: relative;
 
-  background: color(card);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background: color(map);
+  @include center-background-image();
 
-  @include greyscale;
+  @include shadow--bottom-inset;
+
+  @include filter--sepia;
   transition: all 0.5s;
-
-  &:hover {
-    @include mq(large) {
-      // @extend %details-section--extended;
-      filter: initial;
-      width: 100% !important;
-    }
-
-    .full-detail {
-      display: block;
-    }
-  }
 
   article {
     width: 100%;
   }
 
   p {
-    padding: $size--medium $size--small $size--medium $size--small;
-    background: transparentize(color(black), 0.4);
     color: white;
     margin: 0;
     width: 100%;
   }
 
-  .full-detail {
-    display: none;
+  .details-section__full-detail {
+    position: relative;
+    top: 100%;
+    transition: top 0.5s;
+    height: $full-detail-height;
+
+    padding: 0 $size--medium;
+  }
+
+  .details-section__teaser {
+    position: absolute;
+    padding: $size--medium;
+
+    transition: all 0.5s;
+    transform: translate3d(0, -$size--medium, 0);
+    transform-origin: top left;
+
+    color: color(white);
   }
 
   .detail-section__image {
@@ -50,20 +53,28 @@
   }
 }
 
-%details-section--extended {
-  filter: initial;
+.details-section--expanded {
+  @include filter--brown;
   width: 100% !important;
 
-  .full-detail {
-    display: block;
+  .details-section__full-detail {
+    top: 0;
+
+    overflow: scroll;
+  }
+
+  .details-section__teaser {
+    transform: rotate3d(0, 0, 1, 0deg) translate3d(0, -$full-detail-height - $size--medium, 0);
+    padding: $size--small $size--medium;
   }
 }
 
-.details-section--active {
-  @include mq(medium) {
-    //@extend %details-section--extended;
-    filter: initial;
-    width: 100% !important;
+.details-section--collapsed {
+  .details-section__teaser {
+    width: 300px;
+    padding: $size--small 0;
+
+    transform: rotate3d(0, 0, 1, -90deg);
   }
 }
 
