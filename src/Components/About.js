@@ -3,7 +3,7 @@ import classnames from "classnames";
 import {actions} from "../Redux";
 import {connect} from "react-redux";
 
-import ExitButton from "./DetailView/ExitButton";
+import ExitButton from "./ExitButton";
 
 class About extends Component {
   render() {
