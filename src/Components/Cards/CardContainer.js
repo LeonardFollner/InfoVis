@@ -7,8 +7,8 @@ class CardContainer extends Component {
   render() {
     return (
       <div className="card-container">
-        {this.props.cardsInSidebar.map((term, index) => {
-          return <Card term={term} key={index}/>
+        {this.props.cardsInSidebar.map((term) => {
+          return <Card term={term} key={term.name}/>
         })}
       </div>
     );

@@ -7,11 +7,16 @@ html {
 }
 
 body {
+  height: 100%;
+
+  overflow: hidden;
+
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+
+  font-family: $font-family;
   color: color(black);
-  height: inherit;
+  font-size: 2vmin;
 }
 
 * {

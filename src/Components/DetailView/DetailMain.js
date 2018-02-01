@@ -18,7 +18,7 @@ class DetailMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      clickedSection: null
+      clickedSection: 0
     }
   };
 
@@ -28,11 +28,12 @@ class DetailMain extends Component {
     return changes.map((currentValue, index) => {
       return (
         <DetailSection name={term.name}
+                       key={index}
                        section={index}
                        sectionsCount={changes.length}
                        content={currentValue}
-                       key={index}
-                       isActive={this.state.clickedSection === index}
+                       isExpanded={this.state.clickedSection === index}
+                       isCollapsed={this.state.clickedSection !== index && this.state.clickedSection !== null}
                        onClick={this.handleSectionOnClick}/>
       );
     });

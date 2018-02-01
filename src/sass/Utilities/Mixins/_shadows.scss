@@ -1,7 +1,9 @@
 @mixin shadow--left {
-  -moz-box-shadow: -$size--medium 0 $size--large 0 transparentize(color(black), 0.8);
-  -webkit-box-shadow: -$size--medium 0 $size--large 0 transparentize(color(black), 0.8);
   box-shadow: -$size--medium 0 $size--large 0 transparentize(color(black), 0.8);
+}
+
+@mixin shadow--top {
+  box-shadow: 0 #{-$size--medium} $size--large $size--medium transparentize(color(black), 0.2);
 }
 
 @mixin shadow--bottom {
@@ -12,23 +14,14 @@
   box-shadow: inset 7px 0 9px -7px transparentize(color(black), 0.4);
 }
 
+@mixin shadow--bottom-inset {
+  box-shadow: inset 0px -200px 200px 0px transparentize(color(black), 0.2);
+}
+
 @mixin shadow__custom-marker {
   box-shadow: 0 4px 8px 0 transparentize(color(black), 0.5);
 }
 
 @mixin shadow__custom-marker--hover {
   box-shadow: 0 8px 16px 0 transparentize(color(black), 0.5);
-}
-
-@mixin greyscale {
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
-}
-
-@mixin mq($key) {
-  @if breakpoint($key) {
-    @media #{breakpoint($key)} {
-      @content;
-    }
-  }
 }

@@ -21,54 +21,63 @@
 }
 
 .card {
-  position: relative;
+  position: absolute;
   right: 0;
 
   height: percentage(1/$cards-in-sidebar);
   width: 100%;
 
   background: color(card);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  @include center-background-image();
 
   cursor: pointer;
 
-  -webkit-transition: right $animation-default-length;
-  -moz-transition: right $animation-default-length;
-  -o-transition: right $animation-default-length;
-  -ms-transition: right $animation-default-length;
-  transition: right $animation-default-length;
+  transition: right $animation-default-length, top 0.5s;
+
+  @include filter--brown;
+
+  @for $i from 0 through $cards-in-sidebar + 1 {
+    &:nth-of-type(#{$i}) {
+      top: ($i - 1) * percentage(1/$cards-in-sidebar);
+    }
+  }
 
   &:hover {
-    @include card--shaking;
+    @include mq(large) {
+      @include card--shaking;
+    }
   }
 
   h2 {
     position: absolute;
-    left: 0;
     top: $size--large;
-    width: 100%;
+    padding: $size--small $size--medium;
 
-    span {
-      color: color(white);
-      font-weight: bold;
-      background: transparentize(color(black), 0.4);
-      padding: $size--small;
-    }
+    color: color(white);
+    font-weight: bold;
+
+    background: color(black);
   }
 
 }
 
 .card--isIdle {
-  //animation-name: shake;
-  //animation-duration: 10s;
-  //animation-iteration-count: infinite;
-  //animation-timing-function: ease-in-out;
+  @include mq(medium) {
+    animation-name: shake;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
 
-  //@for $i from 1 through 10 {
-  //  &:nth-of-type(#{$i}) {
-  //    animation-delay: random(60)+s;
-  //  }
-  //}
+    @for $i from 1 through $cards-in-sidebar {
+      &:nth-of-type(#{$i}) {
+        animation-delay: random(60)+s;
+      }
+    }
+  }
+}
+
+.card--isBeingDragged {
+  @include mq(medium) {
+    opacity: 0;
+  }
 }

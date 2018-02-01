@@ -1,4 +1,6 @@
 export const maxNumberOfCardsOnMap = 3;
+export const maxNumberOfCardsInSideBar = 5;
+export const swipeGestures = false;
 
 export const mobileWarningMayBeIgnored = false;
 export const minimumDeviceWidthNeeded = 750;
