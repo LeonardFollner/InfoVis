@@ -19,12 +19,6 @@ class Card extends Component {
           case "height":
             dstNode.style.setProperty(csName, "135px", cs.getPropertyPriority(csName));
             break;
-          case "left":
-          case "right":
-          case "top":
-          case "bottom":
-            dstNode.style.setProperty(csName, "235px", cs.getPropertyPriority(csName));
-            break;
           default:
             dstNode.style.setProperty(csName, cs.getPropertyValue(csName), cs.getPropertyPriority(csName));
         }
@@ -56,10 +50,31 @@ class Card extends Component {
     // this removes any id's and stuff that could interfere with drag and drop
     this.prepareNodeCopyAsDragImage(sourceNode, dragImage);
 
-    document.body.appendChild(dragImage);
+    this.dragImage = document.body.appendChild(dragImage);
 
     return dragImage;
   };
+  handleDragEnd = event => {
+    this.setState({isBeingDragged: false});
+    this.applyDragImageSnapback(this.elem, this.dragImage, event);
+    this.props.cardDropped();
+  };
+
+  translateDragImage(dragImage, pnt, event) {
+    let x = pnt.x - event.screenX + 135 / 2;
+    let y = pnt.y - event.screenY + 135 / 2;
+    const translate = "translate3d(" + x + "px," + y + "px, 0)";
+    dragImage.style.setProperty("top", event.screenY - 135 / 2 + "px");
+    dragImage.style.setProperty("left", event.screenX - 135 / 2 + "px");
+    dragImage.style.setProperty("z-index", 3785);
+    dragImage.style.setProperty("transform", translate);
+    const csDragImage = getComputedStyle(dragImage);
+    const durationInS = parseFloat(csDragImage.transitionDuration);
+    setTimeout(() => {
+      this.dragImage.parentNode.removeChild(this.dragImage);
+      dragImage.style.setProperty("display", "none");
+    }, durationInS * 1000);
+  }
 
   handleDragStart = event => {
     event.dataTransfer.setData("text/plain", this.props.term.id.toString());
@@ -67,10 +82,21 @@ class Card extends Component {
     event.dataTransfer.setDragImage(this.createDragImage(this.elem), 135 / 2, 135 / 2);
     this.props.toggleCardIsBeingDragged(this.props.term.targetRegion);
   };
-  handleDragEnd = () => {
-    this.setState({isBeingDragged: false});
-    this.props.cardDropped();
-  };
+
+  applyDragImageSnapback(sourceEl, dragImage, event) {
+    const cs = getComputedStyle(sourceEl);
+    dragImage.classList.add("dnd-poly-snapback");
+    const rect = sourceEl.getBoundingClientRect();
+    const pnt = {
+      x: rect.left,
+      y: rect.top
+    };
+    pnt.x += (document.body.scrollLeft || document.documentElement.scrollLeft);
+    pnt.y += (document.body.scrollTop || document.documentElement.scrollTop);
+    pnt.x -= parseInt(cs.marginLeft, 10);
+    pnt.y -= parseInt(cs.marginTop, 10);
+    this.translateDragImage(dragImage, pnt, event);
+  }
 
   constructor(props) {
     super(props);
