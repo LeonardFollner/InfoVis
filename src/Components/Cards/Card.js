@@ -3,6 +3,7 @@ import classnames from "classnames";
 import {actions} from "../../Redux/index";
 import {connect} from "react-redux";
 import {polyfillActive} from "../../index";
+import {markerSize} from "../../settings";
 
 class Card extends Component {
   // copied and modified from mobile-drag-drop
@@ -18,7 +19,7 @@ class Card extends Component {
         switch (csName) {
           case "width":
           case "height":
-            dstNode.style.setProperty(csName, "135px", cs.getPropertyPriority(csName));
+            dstNode.style.setProperty(csName, markerSize + "px", cs.getPropertyPriority(csName));
             break;
           default:
             dstNode.style.setProperty(csName, cs.getPropertyValue(csName), cs.getPropertyPriority(csName));
@@ -65,29 +66,28 @@ class Card extends Component {
     }
     this.props.cardDropped();
   };
+  handleDragStart = event => {
+    event.dataTransfer.setData("text/plain", this.props.term.id.toString());
+    this.setState({isBeingDragged: true});
+    event.dataTransfer.setDragImage(this.createDragImage(this.elem), markerSize / 2, markerSize / 2);
+    this.props.toggleCardIsBeingDragged(this.props.term.targetRegion);
+  };
 
   translateDragImage(dragImage, pnt, event) {
-    let x = pnt.x - event.clientX + 135 / 2;
-    let y = pnt.y - event.clientY + 135 / 2;
+    let x = pnt.x - event.clientX + markerSize / 2;
+    let y = pnt.y - event.clientY + markerSize / 2;
     const translate = "translate3d(" + x + "px," + y + "px, 0)";
-    dragImage.style.setProperty("top", event.clientY - 135 / 2 + "px");
-    dragImage.style.setProperty("left", event.clientX - 135 / 2 + "px");
+    dragImage.style.setProperty("top", event.clientY - markerSize / 2 + "px");
+    dragImage.style.setProperty("left", event.clientX - markerSize / 2 + "px");
     dragImage.style.setProperty("z-index", 3785);
     dragImage.style.setProperty("transform", translate);
     const csDragImage = getComputedStyle(dragImage);
     const durationInS = parseFloat(csDragImage.transitionDuration);
     setTimeout(() => {
-      this.dragImage.parentNode.removeChild(this.dragImage);
+      //this.dragImage.parentNode.removeChild(this.dragImage);
       dragImage.style.setProperty("display", "none");
     }, durationInS * 1000);
   }
-
-  handleDragStart = event => {
-    event.dataTransfer.setData("text/plain", this.props.term.id.toString());
-    this.setState({isBeingDragged: true});
-    event.dataTransfer.setDragImage(this.createDragImage(this.elem), 135 / 2, 135 / 2);
-    this.props.toggleCardIsBeingDragged(this.props.term.targetRegion);
-  };
 
   applyDragImageSnapback(sourceEl, dragImage, event) {
     const cs = getComputedStyle(sourceEl);
