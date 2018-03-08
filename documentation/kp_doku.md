@@ -117,17 +117,14 @@ Konzepte:
 
 ## Entwurf
 
-_Ausgestaltung der Vorzugsvariante im Kontext zu zuvor aufgeführten Analyse stellen (Synthese)_
-Screnshots?? leonardfollner.de/infovis
+**Screnshots?? leonardfollner.de/infovis**
 
 
 # Fazit
-_Zusammenfassung: Aufgeworfene Fragen aus Aufgabenstellung und Einleitung abschließend beantworten und in Kontext stellen._
 
 Abschließend lässt sich sagen, dass das Ergebnis der ursprünglichen Aufgabe gerecht wird. Zwar ist sie nicht vollständig und lässt Fragen, die sich während des Entwicklungsprozesses gestellt haben, noch unbeantwortet, aber die ausgänglichen Anforderungen werden erfüllt. Auch hat sich der Wandel von Kalligrafie und Arabismen zu nur Arabismen sich positiv bemerkmar gemacht. Er führte zu einer kompakteren und inhaltich konzentrierten Anwendung, welche nicht viel, aber das gut umsetzt.
 
 
 # Ausblick
-_Was bleibt offen od. unbeantwortet? Wieso? Reflexion der Ergebnisse in Bezug zu Aufgabenstellung? Welche neuen Aspekte haben sich ergeben? An welchen Stelle könnte man weiterarbeiten?_
 
 Wie schon häufig erwähnt, ist die Anwendung nicht fertig - die größte Baustelle ist hier wohl die Detailansicht für den geographischen Wandel von Begriffen, hier muss noch ein gutes Konzept erarbeitet und implementiert werden. Zusätzlich stellt sich die Frage, ob die Anwendung in ihrer kontextuellen Niche bleiben soll, oder noch anders einen Bezug zum Damaskuszimmer hergestellt werden kann. Auch lässt sich noch diskutieren, ob man die Inhalte noch aus anderen Winkeln neben der geographischen und inhaltlichen Wandlung betrachten kann. 
