@@ -57,40 +57,14 @@ Neben dem kleinen, aber sehr schön ausgearbeiteten Werk "Von Algebra bis Zucker
 # Hauptteil
 
 ## Methodisches Vorgehen
-_Kurzer Abriss eures Methodischen Vorgehens (wie habt ihr versucht, das Problem zu lösen, erinnert euch an die genutzten Methoden)_
 
-_Hier reicht mir ein auf das wesentliche zusammengefasster Überblick, der die Nutzung bzw. Notwendigkeit der Methoden reflektiert. Eurer Arbeitsmaterial bzw. konkrete Ausarbeitungen packt also eher in den Anhang und verweist im Text darauf. Wichtig sind mir die Kriterien bzw. Anforderungen, die sich aus jedem Schritt ergeben. Aber auch eure Erfahrungen damit._
-
-	Methode
-
-	* Nutzung & Notwendigkeit reflektieren
-	* Kriterien & Anforderungen aus jedem Schritt
-	* Erfahrungen
-
-
-
-* affinitätsdiagramm
-	* Umfang des Themas erkennen, Bereiche schaffen, irrelevante Inhalte ausschließen
-	* -> Inhalt und Geographie! 2 detailviews? begriffe nur inhaltlich, nur geographisch?
-	* gute methode 
-* personas
-	* potentielle Nutzer erstellen, um use cases nachzuvollziehen, 2 personas
-	* es gibt jung & alt, mit wenig und viel erfahrung bezüglich medienstationen, und unterschiedlichem Interesse - wie können wir all diesem gerecht werden?
-	* schneller flüchtiger Nutzer vs langsam & detailliert
-* szenarios
-	* ermöglicht es, die anwendung im kontext zu erleben, 2 szenarios
-	* Anforderung der Zustandslosigkeit, sodass neu hinzukommende Besucher/Nutzer nicht mittem im flow des vorherigen Nutzers landen
-* mockups, screens, skizzen
-	* brainstorming für darstellungsmöglichkeiten
-	* einfache Trennung: Karte des Bereiches in Orient & Okzident, collagenmotiv zur spaltenansicht
-	* sehr hilfreich, hat meistens zu vielen verschiedenen ansätzen geführt, schnell und dirty
-* datensammlung/recherche (Algebra - Zucker)
-	* erfahren, welche informationen überhaupt noch dargestellt werden sollen/können (abgesehen von region)
-	* auch hier wieder geographisch und inhaltliche trennung aufgefallen
-	* wenig literatur, daür diese sehr schön aufbereitet (von algebra bis zucker)
+Beim Entwurfsprozess wurde auf diverse Methoden zurückgegriffen. Am grundlegendsten war dabei das Affinitätsdiagramm, es half enorm dabei, den Umfang des Themas zu erkennen, Bereiche zu schaffen, und Inhalte zu ordnen und zu priorisieren. 
+Für die Usability wurden Personas erstellt, sie vermittelten dabei, dass durchaus unterschiedliche Nutzer die Anwendung nutzen möchten, etwa weniger technisch affine, dafür aber interessierter an ausführlichen Inhalten, im Vergleich zu medial erfahrenen Nutzern, die aber eher hastig den Kern der Anwendung erfassen wollen und dann weiter ziehen. So konnte ein Kompromiss zwischen Komplexität und inhaltlichem Umfang ausgearbeitet werden.
+Szenarios halfen dabei, andere Probleme zu entdecken, hier konkret die Zustandslosigkeit: Nutzer sollen die Anwendung zu jedem Zeitpunkt "betreten" und "verlassen" können, ohne auf Artefakte von vorherigen Nutzern zu stoßen oder selber welche zu hinterlassen.
+Mit Skizzen, Screens und Mockups konnten schnell und einfach verschiedene Konzepte ausgearbeitet und verglichen werden, wie zum Beispiel die Karten- und die Spaltenansicht. 
+Um zu erfassen, welche Informationen überhaupt dargestellt werden sollen, half die Recherche. Hier stellte sich die Differenzierung zwischen geographischem und inhaltlichem Wandel als wichtiger Faktor heraus. Leider gab es jedoch wenig Literatur, die hier zur Hilfe gezogen werden konnten.
 
 ## Konzeption
-
 
 Bei der Konzeption gab es folgende Themen: Das Interface generell. Hier wurde ohne viele andere Möglichkeiten zu betrachten eine einfache Unterteilung des Screens in Karte und Sidebar am rechten Bildrande ausgewählt, da dieses unkompliziert ist und eine gute Metapher von Quelle (die Arabismen befinden sich in der Sidebar) und Ziel (sie sollen auf die Karte gezogen werden) darstellt.
 Für die Trennung von Orient und Okzident bot sich eine Karte an - die wohl naheliegendste Methode, um eine geographische Einordnung zu ermöglichen. Um die Regionen zu unterscheiden, werden sie mit zwei unterschiedlichen Tönen eingefärbt.
@@ -101,7 +75,6 @@ Bei der Detailansicht für die inhaltliche Wandlung wurden die meisten Konzepte 
 ## Entwurf
 
 **Screnshots?? leonardfollner.de/infovis**
-
 
 # Fazit
 
