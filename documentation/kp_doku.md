@@ -12,11 +12,15 @@ _Formuliert in eigenen Worten, was eure Aufgabenstellung in dieser Lehrveranstal
 Im Umfang des Komplexpraktikums Informationsvisualsierung sollten wir uns mit dem Damaskuszimmer der Staatlichen Kunstsammlungen Dresden auseinandersetzen, uns mit Anke, der leitenden Restauratorin des Zimmer 
 
 * Ausgangssituation: Informationsvisualisierung für das sich in Restauration befindende Damaskuszimmer der SKD
-* ansatz:
+* Ansatz:
 	* eindrücke festhalten vom DZ 	 
 	* gruppenbildung zu verschiedenen Themenkomplexen
-	* thema -> wie visualisieren / was für eine anwendung wäre sinnvoll / für wen?
-	* fragebogen für anforderungen und personas
+	* vertiefende Fragen und Anforderungen:
+		* für wen?
+		* Umfang der Anwendung?
+		* Relevanz / Bezug zum Zimmer
+		* Zustandslosigkeit
+		* 
 	* 
 
 
@@ -27,48 +31,61 @@ _Was ist das Ziel des Projektes ... Welche Ergebnisse liefert ihr und welche Tei
 
 ###Ziele
 
-* anwendung, die die aufgabenstellung befriedigt?
+* Anwendung für alle zugänglich machen, nicht zu komplex, leicht verständlich, aber auch tiefer gehende informationen für interessierte
+* interessant gestalten
+* zustandslos - jeder kann kommen und gehen, wann er möchte, und die anwendung bleibt davon unbetroffen
+* für den Besucher relevante und interessante Informationen liefern
 
 ###Ergebnisse
 
-* eine funktionierende, aber noch inhaltlich recht leere Anwendung
-* Noch nicht abgerundet (im Moment nur inhalticher Wandel, kein geographischer Weg)
-* Gestaltung 90% abgeschlossen
+* eine funktionierende, aber inhaltlich recht leere Anwendung
+* vorhandenes Konzept, aber nicht 100% in Anwendung abgebildet: geographischer Wandel nicht funktional und styling nicht komplett abgeschlossen
+* zustandslosigkeit gelungen
+* relevanz nur kontextuell - keine konkreten Infos zum DZ, aber atmospährisch passend, einstiegsthema
 
 ####Teilschritte
 
 ######Waren:
 
 * Auseinandersetzung mit dem Zimmer, Inspirationssuche
-* fragebogen für personas und anforderungen
 * Ankes analoges Arabismen raten: Wie viele der 25 (?) Begriffe stammen aus dem Arabischen?
 * Sammlung der Eindrücke, Bündelung
 * Themenfindung
 * Themenfindung: Kalligrafie - Bedeutung der Inhalte und der Handwerkskunst hinter den Schriftzügen im Zimmer - Arabismen noch nebensächlich
-* Verwerfen des Themas Kalligrafie
-* Entwicklung Spielidee um Arabismenraten: Wie kann man ihre Häufigkeit demonstrieren, und ihre Geschichte darstellen
-* Idee der endlosen Schleife
-* Aufsetzen eines Prototypes
-* Fortlaufende Entwicklung der Anwendung Anhand des Prototypen
-* Diverse Konzepte, geographischer Verlauf und Inhaltlicher Wandel
-* Collagenmotiv
-* Neugierde wecken: große Grafiken, kleine Teasing texte verbergen detaillierte Inhalte
+* auswertung fragebogen für personas und anforderungen
+* Verwerfen des Themas Kalligrafie & des mitbringsels
+* Entwicklung Spielidee um Arabismenraten
+* Fragestellung:
+	* Wie Orient und Okzident darstellen / trennen? 
+	* Wie kann man ihre Häufigkeit demonstrieren? - viele arabismen on map (visible distinction) vs viele arabismen einordnen (mental distinction)?
+	* ihre Geschichte darstellen? - detailView
+	* Zustandslosigkeit - loop on map 
+* Aufsetzen eines Prototypes mit React
+* Fortlaufende rapide Entwicklung der Anwendung mithilfe des Prototypen
+* ausarbeitung von Konzepten für cardsOnMap
+* ausarbeitung von Konzepten für detailView (erst nur inhaltlich) -> collage -> sections
+* konzept des teasens: viele grafiken, wenig text -> auf wunsch mehr detaillierte Inhalte
+* implementation vom geographischem wandel -> probleme in der darstellung, noch keine lösung
 
 
 ######Noch:
 
 * Inhaltliche Pflege
-* Evaluieren/Testen der Anwendung
-* Rückschlüsse ziehen
-* weiter entwickeln
+* Evaluation mit Nutzern, Ergebnisse anwenden -> Zyklus der Entwicklung Analyse / Konzeption / Implementation / _Eva fehlt_ repeat 
+* weiter entwickeln: geographischer wandel muss noch ausgearbeitet werden
 
-# EINLEITUNG (alle benötigten Grundlagen, die helfen sich der Aufgabe zu nähern bzw. diese zu bewerten)
+# EINLEITUNG 
+_(alle benötigten Grundlagen, die helfen sich der Aufgabe zu nähern bzw. diese zu bewerten)_
+
+_no text here_
 
 ## Anwendungsfall
-_Kontext beschreiben, in dem euer Projekt verortet ist. Auch gern hier auch die Inhaltliche Ebene eingehen, die gern vermitteln wollt._
+_Kontext beschreiben, in dem euer Projekt verortet ist. Auch gern hier auch die Inhaltliche Ebene eingehen, die ihr vermitteln wollt._
 
 ###Kontext 
-??
+* Kontext des Zimmers - keine konkrete Information zum Austellungsstück, sondern zum kulturellen Hintergrund
+* gut als Einleitung ins Thema
+* fördert Bewusstsein und Verständnis
 
 ###Inhaltlich 
 * einfluss des orients auf okzidents durch kulturellen austausch auch in sprachlicher form vermitteln 
@@ -76,7 +93,8 @@ _Kontext beschreiben, in dem euer Projekt verortet ist. Auch gern hier auch die 
 * inhaltliche wandlung beschreiben
 
 ###Weitere Fachbereiche od. Gebiete, die in die Problemlösung hineinspielen, bzw. die ihr betrachtet habt.
-Sprachgeschichte
+* Sprachgeschichte
+* 
 
 ## Verwandte Arbeiten
 _Projekte / Theorien od. Ansätze die in Beziehung zu eurer Aufgabe stehen,  das kann sich auch auf bestimmte Aspekte beschränken._
@@ -90,21 +108,59 @@ _Kurzer Abriss eures Methodischen Vorgehens (wie habt ihr versucht, das Problem 
 
 _Hier reicht mir ein auf das wesentliche zusammengefasster Überblick, der die Nutzung bzw. Notwendigkeit der Methoden reflektiert. Eurer Arbeitsmaterial bzw. konkrete Ausarbeitungen packt also eher in den Anhang und verweist im Text darauf. Wichtig sind mir die Kriterien bzw. Anforderungen, die sich aus jedem Schritt ergeben. Aber auch eure Erfahrungen damit._
 
+	Methode
+
+	* Nutzung & Notwendigkeit reflektieren
+	* Kriterien & Anforderungen aus jedem Schritt
+	* Erfahrungen
+
+
+
 * affinitätsdiagramm
-* card sorting
+	* Umfang des Themas erkennen, Bereiche schaffen, irrelevante Inhalte ausschließen
+	* -> Inhalt und Geographie! 2 detailviews? begriffe nur inhaltlich, nur geographisch?
+	* gute methode 
 * personas
+	* potentielle Nutzer erstellen, um use cases nachzuvollziehen, 2 personas
+	* es gibt jung & alt, mit wenig und viel erfahrung bezüglich medienstationen, und unterschiedlichem Interesse - wie können wir all diesem gerecht werden?
 * szenarios
-* mockups & screens
+	* ermöglicht es, die anwendung im kontext zu erleben, 2 szenarios
+	* Anforderung der Zustandslosigkeit, sodass neu hinzukommende Besucher/Nutzer nicht mittem im flow des vorherigen Nutzers landen
+* mockups, screens, skizzen
+	* brainstorming für darstellungsmöglichkeiten
+	* einfache Trennung: Karte des Bereiches in Orient & Okzident, collagenmotiv zur spaltenansicht
+	* sehr hilfreich, hat meistens zu vielen verschiedenen ansätzen geführt, schnell und dirty
 * datensammlung/recherche (Algebra - Zucker)
+	* erfahren, welche informationen überhaupt noch dargestellt werden sollen/können (abgesehen von region)
+	* auch hier wieder geographisch und inhaltliche trennung aufgefallen
+	* wenig literatur, daür diese sehr schön aufbereitet (von algebra bis zucker)
 
 ## Konzeption
 
 _Kurzer Überblick und Bewertung der unterschl. Konzept-Ansätze / Varianten und Auswahlkriterien für Vorzugsvariante_
 
+Konzepte:
+
+* trennung orient / okzident
+	* **map**
+	* ?
+	* ?
+* interface insgesamt
+	* **sidebar mit begriffen neben map**
+	* ?
+* detailView - inhaltlich
+	* **sections** -> dynamische spalten 
+	* comic panels
+	* photo album
+
+* detailView - geographical
+	* _missing_
 
 ## Entwurf
 
-_Ausgestaltung der Vorzugsvariante in Kontext zu zuvor aufgeführten Analyse stellen (Synthese)_
+_Ausgestaltung der Vorzugsvariante im Kontext zu zuvor aufgeführten Analyse stellen (Synthese)_
+
+
 
 # Fazit
 _Zusammenfassung: Aufgeworfene Fragen aus Aufgabenstellung und Einleitung abschließend beantworten und in Kontext stellen._
