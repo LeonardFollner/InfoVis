@@ -58,7 +58,9 @@ class Card extends Component {
 
   handleDragEnd = event => {
     this.setState({isBeingDragged: false});
-    if (!polyfillActive) {
+    // event === undefined, if card dropped correctly
+    // function is then called by componentWillUnmount with no event
+    if (!polyfillActive && event !== undefined) {
       this.applyDragImageSnapback(this.elem, this.dragImage, event);
     }
     this.props.cardDropped();
@@ -111,6 +113,7 @@ class Card extends Component {
     };
   }
 
+  // needed if dropped right
   // dirty workaround: dragEnd-Handler is not called on successful unmount because component is unmounted too early (?)
   componentWillUnmount() {
     if (this.state.isBeingDragged) {
@@ -133,6 +136,7 @@ class Card extends Component {
 
     return (
       <div className={className} ref={elem => this.elem = elem} draggable={true} onDragStart={this.handleDragStart}
+        // needed if dropped wrong
            onDragEnd={this.handleDragEnd}
            style={style}>
         <h2>{this.props.term.name}</h2>
