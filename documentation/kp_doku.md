@@ -35,6 +35,7 @@ _Was ist das Ziel des Projektes ... Welche Ergebnisse liefert ihr und welche Tei
 * interessant gestalten
 * zustandslos - jeder kann kommen und gehen, wann er möchte, und die anwendung bleibt davon unbetroffen
 * für den Besucher relevante und interessante Informationen liefern
+* überraschenden intuitiven Einblick verschaffen
 
 ###Ergebnisse
 
@@ -86,20 +87,22 @@ _Kontext beschreiben, in dem euer Projekt verortet ist. Auch gern hier auch die 
 * Kontext des Zimmers - keine konkrete Information zum Austellungsstück, sondern zum kulturellen Hintergrund
 * gut als Einleitung ins Thema
 * fördert Bewusstsein und Verständnis
+* Museum // Zuhause // Mobil
 
 ###Inhaltlich 
 * einfluss des orients auf okzidents durch kulturellen austausch auch in sprachlicher form vermitteln 
 * sprachliche wandlung beschreiben
 * inhaltliche wandlung beschreiben
+* geografische Wanderung darstellen / wie wurden Begriffe eingeschleppt?
 
 ###Weitere Fachbereiche od. Gebiete, die in die Problemlösung hineinspielen, bzw. die ihr betrachtet habt.
 * Sprachgeschichte
-* 
+* Webentwicklung
 
 ## Verwandte Arbeiten
 _Projekte / Theorien od. Ansätze die in Beziehung zu eurer Aufgabe stehen,  das kann sich auch auf bestimmte Aspekte beschränken._
 
-* Keine ahnung
+* _Von Algebra bis Zucker_
 
 # HAUPTTEIL
 
@@ -123,6 +126,7 @@ _Hier reicht mir ein auf das wesentliche zusammengefasster Überblick, der die N
 * personas
 	* potentielle Nutzer erstellen, um use cases nachzuvollziehen, 2 personas
 	* es gibt jung & alt, mit wenig und viel erfahrung bezüglich medienstationen, und unterschiedlichem Interesse - wie können wir all diesem gerecht werden?
+	* schneller flüchtiger Nutzer vs langsam & detailliert
 * szenarios
 	* ermöglicht es, die anwendung im kontext zu erleben, 2 szenarios
 	* Anforderung der Zustandslosigkeit, sodass neu hinzukommende Besucher/Nutzer nicht mittem im flow des vorherigen Nutzers landen
@@ -143,23 +147,23 @@ Konzepte:
 
 * trennung orient / okzident
 	* **map**
-	* ?
-	* ?
+	* verschiedene Konzepte während Prozess
+	* Grund: gute geogr. Einordnung
 * interface insgesamt
 	* **sidebar mit begriffen neben map**
-	* ?
+	* Grund Darstellung Quelle --> Ziel
 * detailView - inhaltlich
 	* **sections** -> dynamische spalten 
 	* comic panels
 	* photo album
 
 * detailView - geographical
-	* _missing_
+	* WIP/ _missing_
 
 ## Entwurf
 
 _Ausgestaltung der Vorzugsvariante im Kontext zu zuvor aufgeführten Analyse stellen (Synthese)_
-
+Screnshots?? leonardfollner.de/infovis
 
 
 # Fazit
