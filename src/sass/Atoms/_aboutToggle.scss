@@ -5,11 +5,11 @@
 
   padding: $size--tiny;
 
-  background: transparentize(color(white), 0.4);
+  background: transparentize(color(brown), 0.4);
   @include layer(aboutToggle);
 
   font-size: 0.8rem;
-  color: color(blue);
+  color: color(white);
 
   &:hover {
     text-decoration: underline;
