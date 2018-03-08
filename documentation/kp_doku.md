@@ -91,29 +91,12 @@ _Hier reicht mir ein auf das wesentliche zusammengefasster Überblick, der die N
 
 ## Konzeption
 
-_Kurzer Überblick und Bewertung der unterschl. Konzept-Ansätze / Varianten und Auswahlkriterien für Vorzugsvariante_
 
-Konzepte:
+Bei der Konzeption gab es folgende Themen: Das Interface generell. Hier wurde ohne viele andere Möglichkeiten zu betrachten eine einfache Unterteilung des Screens in Karte und Sidebar am rechten Bildrande ausgewählt, da dieses unkompliziert ist und eine gute Metapher von Quelle (die Arabismen befinden sich in der Sidebar) und Ziel (sie sollen auf die Karte gezogen werden) darstellt.
+Für die Trennung von Orient und Okzident bot sich eine Karte an - die wohl naheliegendste Methode, um eine geographische Einordnung zu ermöglichen. Um die Regionen zu unterscheiden, werden sie mit zwei unterschiedlichen Tönen eingefärbt.
+Eine umstrittene Frage war das Verdeutlichen der Gewichtung der Arabismen. Hierbei wurden zwei Konzepte betrachtet, die visuelle und die mentale Distinktion: bei der visuellen befinden sich viele Arabismen auf der Karte und der Nutzer erfasst dies auf Anhieb, während bei der mentalen nur wenige, insgesamt maximal fünf Begriffe auf der Karte liegen, und der Nutzer selber durch aktives Einordnen die Erkenntnis erlangen soll.
+Bei der Detailansicht für die inhaltliche Wandlung wurden die meisten Konzepte betrachtet. Mit dem Stichwort "Collage" wurden Ansichten wie eine Comicbook Seite oder eines Fotoalbums betrachtet, aber zu Gunsten von Spalten verworfen, da diese am besten dynamisch gestaltbar sind: Sollen mehr, detailliertere Inhalte angezeigt werden, kann die ausgewählte Spalte breiter werden und die anderen verdrängen. 
 
-* trennung orient / okzident
-	* **map**
-	* verschiedene Konzepte während Prozess
-	* Grund: gute geogr. Einordnung
-* interface insgesamt
-	* **sidebar mit begriffen neben map**
-	* Grund Darstellung Quelle --> Ziel
-
-* map 
-	* viele arabismen on map (visible distinction) 
-	* **viele arabismen einordnen (mental distinction)**
- 
-* detailView - inhaltlich
-	* **sections** -> dynamische spalten 
-	* comic panels
-	* photo album
-
-* detailView - geographical
-	* WIP/ _missing_
 
 ## Entwurf
 
