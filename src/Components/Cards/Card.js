@@ -54,6 +54,7 @@ class Card extends Component {
 
     return dragImage;
   };
+
   handleDragEnd = event => {
     this.setState({isBeingDragged: false});
     this.applyDragImageSnapback(this.elem, this.dragImage, event);
@@ -71,7 +72,9 @@ class Card extends Component {
     const csDragImage = getComputedStyle(dragImage);
     const durationInS = parseFloat(csDragImage.transitionDuration);
     setTimeout(() => {
-      this.dragImage.parentNode.removeChild(this.dragImage);
+      // the line below is meant to prevent DOM-polution, but conflicts with the mobile-drag-and-drop library,
+      // which tries to remove the DOM-Node as well
+      // this.dragImage.parentNode.removeChild(this.dragImage);
       dragImage.style.setProperty("display", "none");
     }, durationInS * 1000);
   }
