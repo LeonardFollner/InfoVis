@@ -84,7 +84,7 @@ class Card extends Component {
     const csDragImage = getComputedStyle(dragImage);
     const durationInS = parseFloat(csDragImage.transitionDuration);
     setTimeout(() => {
-      //this.dragImage.parentNode.removeChild(this.dragImage);
+      this.dragImage.parentNode.removeChild(this.dragImage);
       dragImage.style.setProperty("display", "none");
     }, durationInS * 1000);
   }

@@ -10,3 +10,4 @@ export const mapOverlayColorEurope = '#5F9EA0';
 export const mapOverlayColorArab = '#DC143C';
 
 export const markerSize = 135;
+export const locationMarkerSize = 30;

@@ -9,6 +9,7 @@ $main-container-width: percentage(0.7);
 $cards-in-sidebar: 5;
 
 $marker-size: $size--giant;
+$custom-location-marker-size: $size--large;
 
 $animation-default-length: 0.3s;
 
@@ -29,6 +30,8 @@ $layers: (
         exitButton,
         mobileWarning,
         about,
+        custom-location-marker--active,
+        custom-location-marker,
         sideBar,
         taskbar,
         aboutToggle,
