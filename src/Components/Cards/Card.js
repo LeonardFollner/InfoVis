@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import classnames from "classnames";
 import {actions} from "../../Redux/index";
 import {connect} from "react-redux";
+import {polyfillActive} from "../../index";
 
 class Card extends Component {
   // copied and modified from mobile-drag-drop
@@ -57,7 +58,9 @@ class Card extends Component {
 
   handleDragEnd = event => {
     this.setState({isBeingDragged: false});
-    this.applyDragImageSnapback(this.elem, this.dragImage, event);
+    if (!polyfillActive) {
+      this.applyDragImageSnapback(this.elem, this.dragImage, event);
+    }
     this.props.cardDropped();
   };
 

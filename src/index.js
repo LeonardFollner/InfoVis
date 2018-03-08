@@ -20,9 +20,10 @@ const store = createStore(
 store.dispatch(actions.System.init({}));
 
 // enable mobile drag and drop polyfill
-polyfill({
+export const polyfillActive = polyfill({
   dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride
 });
+
 // workaround for drag and drop scrolling window in mobile safari
 window.addEventListener('touchmove', function () {
 });
