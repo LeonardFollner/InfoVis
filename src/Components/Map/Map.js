@@ -4,7 +4,7 @@ import ReactDOMServer from 'react-dom/server';
 
 import {actions, selectors} from "../../Redux/index";
 import {connect} from "react-redux";
-import {mapOverlayColorArab, mapOverlayColorEurope, mapOverlayTransparency} from "../../settings";
+import {mapOverlayColorArab, mapOverlayColorEurope, mapOverlayTransparency, markerSize} from "../../settings";
 import {TargetRegions} from "../../constants";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css"
@@ -13,8 +13,8 @@ import CustomTermMarker from "./CustomTermMarker";
 
 class Map extends Component {
   allowDrop = event => {
-    const mouseX = event.screenX;
-    const mouseY = event.screenY;
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
     if (document.elementFromPoint(mouseX, mouseY).classList[0] === this.props.targetRegionOfDraggedCard) {
       event.preventDefault();
     }
@@ -22,8 +22,8 @@ class Map extends Component {
   drop = event => {
     event.preventDefault();
 
-    const mouseX = event.screenX;
-    const mouseY = event.screenY;
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
     const {x, y} = this.mapContainer.getBoundingClientRect();
     const mouseRelativeX = mouseX - x;
     const mouseRelativeY = mouseY - y;
@@ -51,7 +51,7 @@ class Map extends Component {
       const markerIcon = L.divIcon({
         html: iconHTML,
         className: 'classname-to-prevent-default-leaflet-rendering',
-        iconAnchor: [135 / 2, 135 / 2] //make marker drop directly under cursor, half of css-width
+        iconAnchor: [markerSize / 2, markerSize / 2] //make marker drop directly under cursor
       });
 
       this.markers[term.id] = (L.marker(term.coordinatesOnMap, {icon: markerIcon}));

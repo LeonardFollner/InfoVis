@@ -39,20 +39,7 @@ $detail-sidebar-image-height: 30%;
       color: color(white);
       font-weight: bold;
 
-      background: transparentize(color(black), 0.4);
-
-      &:after {
-        content: '';
-        display: block;
-        position: absolute;
-
-        top: 0;
-        right: 0;
-
-        border-top: $banner-height/2 solid transparent;
-        border-bottom: $banner-height/2 solid transparent;
-        border-right: $banner-height/2 solid color(map);
-      }
+      background: color(brown);
     }
 
     p {

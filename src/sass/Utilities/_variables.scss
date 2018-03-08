@@ -8,6 +8,9 @@ $size--giant: 5 * $size--large;
 $main-container-width: percentage(0.7);
 $cards-in-sidebar: 5;
 
+$marker-size: $size--giant;
+$custom-location-marker-size: $size--large;
+
 $animation-default-length: 0.3s;
 
 $colors: (
@@ -18,7 +21,8 @@ $colors: (
         card: slategray,
         map: #d2b8a7,
         red: crimson,
-        blue: cadetblue
+        blue: cadetblue,
+        brown: #77665B
 );
 
 
@@ -26,6 +30,8 @@ $layers: (
         exitButton,
         mobileWarning,
         about,
+        custom-location-marker--active,
+        custom-location-marker,
         sideBar,
         taskbar,
         aboutToggle,

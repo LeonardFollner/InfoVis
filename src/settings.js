@@ -8,3 +8,6 @@ export const minimumDeviceWidthNeeded = 750;
 export const mapOverlayTransparency = 0.65;
 export const mapOverlayColorEurope = '#5F9EA0';
 export const mapOverlayColorArab = '#DC143C';
+
+export const markerSize = 135;
+export const locationMarkerSize = 30;
