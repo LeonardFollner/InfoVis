@@ -13,8 +13,8 @@ import CustomTermMarker from "./CustomTermMarker";
 
 class Map extends Component {
   allowDrop = event => {
-    const mouseX = event.screenX;
-    const mouseY = event.screenY;
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
     if (document.elementFromPoint(mouseX, mouseY).classList[0] === this.props.targetRegionOfDraggedCard) {
       event.preventDefault();
     }
@@ -22,8 +22,8 @@ class Map extends Component {
   drop = event => {
     event.preventDefault();
 
-    const mouseX = event.screenX;
-    const mouseY = event.screenY;
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
     const {x, y} = this.mapContainer.getBoundingClientRect();
     const mouseRelativeX = mouseX - x;
     const mouseRelativeY = mouseY - y;

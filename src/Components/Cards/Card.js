@@ -67,11 +67,11 @@ class Card extends Component {
   };
 
   translateDragImage(dragImage, pnt, event) {
-    let x = pnt.x - event.screenX + 135 / 2;
-    let y = pnt.y - event.screenY + 135 / 2;
+    let x = pnt.x - event.clientX + 135 / 2;
+    let y = pnt.y - event.clientY + 135 / 2;
     const translate = "translate3d(" + x + "px," + y + "px, 0)";
-    dragImage.style.setProperty("top", event.screenY - 135 / 2 + "px");
-    dragImage.style.setProperty("left", event.screenX - 135 / 2 + "px");
+    dragImage.style.setProperty("top", event.clientY - 135 / 2 + "px");
+    dragImage.style.setProperty("left", event.clientX - 135 / 2 + "px");
     dragImage.style.setProperty("z-index", 3785);
     dragImage.style.setProperty("transform", translate);
     const csDragImage = getComputedStyle(dragImage);
