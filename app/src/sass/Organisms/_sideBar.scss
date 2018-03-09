@@ -1,0 +1,8 @@
+.side-bar {
+  height: inherit;
+  width: 100% - $main-container-width;
+
+  @include layer(sideBar);
+
+  background-color: color(map);
+}

@@ -1,7 +1,0 @@
-.main-container {
-  position: relative;
-  height: inherit;
-  width: $main-container-width;
-  display: flex;
-  @include layer(mainContainer);
-}

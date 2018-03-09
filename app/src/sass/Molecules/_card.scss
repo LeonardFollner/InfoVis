@@ -1,0 +1,87 @@
+@mixin card--shaking {
+  right: $size--large;
+}
+
+@keyframes shake {
+  0% {
+    right: 0;
+  }
+  97% {
+    right: 0;
+  }
+  98% {
+    @include card--shaking;
+  }
+  99% {
+    @include card--shaking;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+.card {
+  position: absolute;
+  right: 0;
+
+  height: percentage(1/$cards-in-sidebar);
+  width: 100%;
+
+  background: color(card);
+  @include center-background-image();
+
+  cursor: pointer;
+
+  transition: right $animation-default-length, top 0.5s;
+
+  @include filter--brown;
+
+  @for $i from 0 through $cards-in-sidebar + 1 {
+    &:nth-of-type(#{$i}) {
+      top: ($i - 1) * percentage(1/$cards-in-sidebar);
+    }
+  }
+
+  &:hover {
+    @include mq(large) {
+      @include card--shaking;
+    }
+  }
+
+  h2 {
+    position: absolute;
+    top: $size--large;
+    padding: $size--small $size--medium;
+
+    color: color(white);
+    font-weight: bold;
+
+    background: color(black);
+  }
+
+}
+
+.card--isIdle {
+  @include mq(medium) {
+    animation-name: shake;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+    @for $i from 1 through $cards-in-sidebar {
+      &:nth-of-type(#{$i}) {
+        animation-delay: random(60)+s;
+      }
+    }
+  }
+}
+
+.card--isBeingDragged {
+  opacity: 0;
+}
+
+.dnd-poly-snapback {
+  transition-property: transform, -webkit-transform !important;
+  transition-duration: 250ms !important;
+  transition-timing-function: ease-out !important;
+}
