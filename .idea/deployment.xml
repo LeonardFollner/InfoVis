@@ -5,7 +5,7 @@
       <paths name="leonardfollner.de">
         <serverdata>
           <mappings>
-            <mapping deploy="/infovis" local="$PROJECT_DIR$/build" web="/infovis" />
+            <mapping deploy="/infovis" local="$PROJECT_DIR$/app/build" web="/infovis" />
           </mappings>
         </serverdata>
       </paths>
