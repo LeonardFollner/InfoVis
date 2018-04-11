@@ -1,0 +1,82 @@
+.custom-term-marker {
+  position: relative;
+
+  height: $marker-size;
+  width: $marker-size;
+
+  border-radius: 50%;
+
+  background-color: color(card);
+  @include center-background-image();
+
+  @include filter--brown;
+
+  cursor: pointer;
+
+  @include shadow__custom-marker;
+  transition: 0.3s;
+
+  &:hover {
+    @include shadow__custom-marker--hover;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(1);
+  }
+}
+
+.custom-location-marker {
+  width: $custom-location-marker-size;
+  height: $custom-location-marker-size;
+
+  border: 2px solid color(black);
+  border-radius: 50%;
+
+  background-color: color(brown);
+
+  @include shadow__custom-marker;
+
+  cursor: pointer;
+
+  font-family: $font-family;
+
+  @include layer(custom-location-marker);
+
+  h2 {
+    margin: 0;
+    display: none;
+  }
+
+  p {
+    display: none;
+  }
+}
+
+.classname-to-prevent-default-leaflet-rendering {
+  // copied from leyer-mixin
+  z-index: 100 + (length($layers) - index($layers, custom-location-marker)) * 100 !important;
+}
+
+.custom-location-marker--active {
+  width: 300px;
+  height: initial;
+
+  border-radius: initial;
+
+  padding: $size--small;
+
+  cursor: initial;
+
+  font-family: $font-family;
+
+  @include layer(custom-location-marker--active);
+
+  h2 {
+    display: inline-block;
+  }
+
+  p {
+    display: inline-block;
+  }
+}

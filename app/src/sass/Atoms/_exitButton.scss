@@ -1,0 +1,8 @@
+.exit-button {
+  position: absolute;
+  top: $size--small;
+  right: $size--small;
+  color: color(faded);
+  cursor: pointer;
+  @include layer(exitButton);
+}

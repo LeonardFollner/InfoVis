@@ -1,0 +1,15 @@
+@function color($name) {
+  @if map-has_key($colors, $name) {
+    @return map-get($colors, $name);
+  } @else {
+    @error '"#{$name}" not found in "colors"';
+  }
+}
+
+@function breakpoint($key) {
+  @if map-has_key($breakpoints, $key) {
+    @return map-get($breakpoints, $key);
+  } @else {
+    @error '"#{$key}" not found in "breakpoints"';
+  }
+}

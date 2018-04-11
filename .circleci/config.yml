@@ -21,20 +21,22 @@ jobs:
 
       # Download and cache dependencies
       - restore_cache:
+          paths:
+            - app/node_modules
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-{{ checksum "app/package.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+      - run: cd app && yarn install
 
       - save_cache:
           paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - app/node_modules
+          key: v1-dependencies-{{ checksum "app/package.json" }}
 
       # run tests!
       # - run: yarn test
 
       # run build
-      - run: yarn build
+      - run: cd app && yarn build

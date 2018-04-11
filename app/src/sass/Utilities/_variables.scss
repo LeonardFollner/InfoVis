@@ -1,0 +1,53 @@
+$size--tiny: 3px;
+$size--small: 3 * $size--tiny;
+$size--medium: 2 * $size--small;
+$size--large: 3 * $size--small;
+$size--extralarge: 2 * $size--large;
+$size--giant: 5 * $size--large;
+
+$main-container-width: percentage(0.7);
+$cards-in-sidebar: 5;
+
+$marker-size: $size--giant;
+$custom-location-marker-size: $size--large;
+
+$animation-default-length: 0.3s;
+
+$colors: (
+        black: #333333,
+        white: white,
+        border: #cccccc,
+        faded: #cccccc,
+        card: slategray,
+        map: #d2b8a7,
+        red: crimson,
+        blue: cadetblue,
+        brown: #77665B
+);
+
+
+$layers: (
+        exitButton,
+        mobileWarning,
+        about,
+        custom-location-marker--active,
+        custom-location-marker,
+        sideBar,
+        taskbar,
+        aboutToggle,
+        map,
+        mainContainer
+);
+
+$font-family: "Playfair Display", serif;
+
+$font-sizes: (
+        normal: 1rem,
+        headline: 1.5rem
+);
+
+$breakpoints: (
+        small: '(max-width: 500px)',
+        medium: '(max-width: 1024px)',
+        large: '(min-width: 1025px)',
+);
